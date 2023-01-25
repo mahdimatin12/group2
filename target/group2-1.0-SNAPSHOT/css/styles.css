@@ -242,4 +242,32 @@ nav ul, header h1, footer p, .contentWrapper {
     text-shadow: 0;
 }
 
+.loginContent {
+    position: relative;
+    margin-left: 25%;
+    margin-bottom: 5%;
+    width: 500px;
+    height: 265px; 
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    
+}
+
+.admin {
+    display: none;
+}
+#p1, #p2 {
+    display: inline;
+    background-color: darkcyan;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+#form1 {
+    margin-top: 50px;
+}
+
+
 
