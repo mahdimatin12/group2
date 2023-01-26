@@ -19,38 +19,42 @@
             <header>
                 <nav class="clear">
                     <ul>
-                        <li><a href="#">About The App</a></li>
-                        <li><a href="#">Task One</a></li>
-                        <li><a href="#">Task Two</a></li>
-                        <li><a href="#">Task Three</a></li>
+                        <li><a href="#">About The App</a></li>                        
                         <li><a href="index.jsp">Home</a></li>
                     </ul>
                 </nav>
 
                 <span>&#9654</span>
-                <h1>mymovies.com</h1>
+                <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
             </header>
             <div class="contentWrapper">
                 <div class="columnWrapper">
                     <!-- main content goes here -->
                     <article class="main">
                         <div class="loginContent">
-                            <h1>Sign In As </h1><br>
-                            <button id="p1"><img src="image/admin-9575.svg" style="height: 20px;width: 20px;">Admin</button>
-                            <button id="p2"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
+                            <%
+                                String exist = (String) session.getAttribute("error");
+                            %>
+                            <h1>Sign In As <span style="font-size: 10px; color: orange;"><%= (exist != null) ? exist : ""%></span></h1>
+
+
+                            <button id="p1"><img src="image/admin-9584.svg" style="height: 30px;width: 30px;"><br>Admin</button>
+                            <button id="p2"><img src="image/person-295.svg" style="height: 30px;width: 30px;">Customer</button>
 
                             <form id="form1" class="admin" action="/group2/AdminServlet" method="POST">
+
                                 <input name="email" placeholder="admin email" type="text">
                                 <input name="password" placeholder="admin password" type="password"> 
                                 <input type="hidden" name="role" value="admin">
-                                <input type="submit" value="SIGN IN" style="cursor: pointer">            
+                                <input type="submit" value="SIGN IN" style="cursor: pointer">
+
                             </form>
 
                             <form id="form2" class="admin" action="/group2/CustomerServlet" method="POST">
                                 <input name="email" placeholder="customer email" type="text">
                                 <input name="password" placeholder="customer password" type="password"> 
                                 <input type="hidden" value="admin">
-                                <input type="submit" value="SIGN IN" style="cursor: pointer">            
+                                <input type="submit" value="SIGN IN" style="cursor: pointer;">            
                             </form>
                         </div>
 

@@ -37,7 +37,7 @@ public class AdminServlet extends HttpServlet {
         }
 
         if (admin == null) {
-            session.setAttribute("error", "Admin does not exist");
+            session.setAttribute("error", "Admin not found, Try again.");
             request.getRequestDispatcher("login.jsp").include(request, response);
         } else {
             session.setAttribute("admin", admin);

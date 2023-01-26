@@ -35,7 +35,7 @@ public class CustomerServlet extends HttpServlet {
             session.setAttribute("customer", customer);
             request.getRequestDispatcher("main.jsp").include(request, response);
         } else {
-            session.setAttribute("error", "Customer does not exist");
+            session.setAttribute("error", "Customer not found, try again.");
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
     }

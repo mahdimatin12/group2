@@ -10,49 +10,44 @@
     </head>
 
     <body>
-        <div class="pageWrapper">
-            <header>
-                <nav class="clear">
-                    <ul>
-                        <li><a href="/group2/LogoutServlet">logout</a></li>
-                    </ul>
-                </nav>
-                 <span>&#9654</span>
-                <h1>mymovies.com</h1>
-            </header>
-            <div class="contentWrapper">
-                <div class="columnWrapper">
-                    <!-- main content goes here -->
-                    <article class="main">
+        <header>
+            <nav class="clear">
+                <ul>
+                    <li><a href="#">ABOUT THE APP</a></li>
+                    <li><a href="/group2/LogoutServlet">LOGOUT</a></li>                   
+                </ul>
+            </nav>
 
-                        <aside>
-                            <%
-                                Customer customer = (Customer) session.getAttribute("customer");
-                                if (customer != null) {
-                            %>  
-                            <h2>Welcome, to your Dashboard <%= customer.getName()%>!</h2>
-                            <a href="#">MY PROFILE</a>
-                            <a href="#">Movies</a>
-                            <a href="#">MY BOOKINGS</a>
-                            
-                            <% } else {
-                            Admin admin = (Admin) session.getAttribute("admin");%>
-                            <h2>Welcome to Admin Dashboard <%= admin.getName()%>!</h2>
-                            
-                            <a href="#">MY PROFILE</a>
-                            <a href="#">CUSTOMERS</a>
-                            <a href="#">MOVIES</a>
-                            
-                            <% }%> 
-                        </aside>
-                </div>
-            </div>
-            <footer>
-                <p>SIUA 2023, UST, Sydney.
-                <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
-                <p>Contact: <a href="mailto:nobody@nowhere.com">group3@ust.com</a></p>
-            </footer>
-        </div>
-
+            <span>&#9654</span>
+            <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
+        </header>
+        <!-- main content goes here -->
+        <article class="main">
+            <%
+                Customer customer = (Customer) session.getAttribute("customer");
+                if (customer != null) {
+            %>  
+            <h2 class="welcomemsg">Welcome, to your Dashboard <%= customer.getName()%>!</h2>
+            
+            <aside class="adminAside">
+                <a href="#"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
+                <a href="#"><img src="image/video-833.svg"><br>Movies</a>
+                <a href="#"><img src="image/click-mobile-phone-2406.svg"><br>MY BOOKINGS</a>
+            </aside>
+            <% } else {
+                    Admin admin = (Admin) session.getAttribute("admin");%>
+                    <h2 class="welcomemsg">Welcome to Admin Dashboard <%= admin.getName()%>!</h2>
+            <aside class="customerAside">
+                <a href="#"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
+                <a href="#"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
+                <a href="#"><img src="image/video-833.svg"><br>MOVIES</a>
+            </aside>
+            <% }%> 
+        </article>
+           <footer>
+               <p>SIUA 2023, UST, Sydney.</p>
+               <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
+            <p>Contact: <a href="mailto:nobody@nowhere.com">group3@ust.com</a></p>
+        </footer>
     </body>
 </html>
