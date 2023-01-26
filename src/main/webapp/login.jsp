@@ -35,29 +35,43 @@
                     <!-- main content goes here -->
                     <article class="main">
                         <div class="loginContent">
-                        <h1>I want to login as: </h1><br>
-                        <p id="p1">Admin</p>
-                        <p id="p2">Customer</p>
+                            <h1>Sign In As </h1><br>
+                            <button id="p1"><img src="image/admin-9575.svg" style="height: 20px;width: 20px;">Admin</button>
+                            <button id="p2"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
-                        <form id="form1" class="admin" action="/group2/AdminServlet" method="POST">
-                            <input name="email" placeholder="email" type="text">
-                            <input name="password" placeholder="password" type="password"> 
-                            <input type="hidden" value="admin">
-                            <input type="submit" value="LOGIN" style="cursor: pointer">            
-                        </form>
+                            <form id="form1" class="admin" action="/group2/AdminServlet" method="POST">
+                                <input name="email" placeholder="admin email" type="text">
+                                <input name="password" placeholder="admin password" type="password"> 
+                                <input type="hidden" value="admin">
+                                <input type="submit" value="SIGN IN" style="cursor: pointer">            
+                            </form>
+
+                            <form id="form2" class="admin" action="/group2/CustomerServlet" method="POST">
+                                <input name="email" placeholder="customer email" type="text">
+                                <input name="password" placeholder="customer password" type="password"> 
+                                <input type="hidden" value="admin">
+                                <input type="submit" value="SIGN IN" style="cursor: pointer">            
+                            </form>
                         </div>
 
                         <script>
 
                             const a = document.getElementById('form1');
-                            const b = document.getElementById('customer');
+                            const b = document.getElementById('form2');
                             const p1 = document.getElementById('p1');
                             const p2 = document.getElementById('p2');
 
                             function third() {
-                                a.classList.toggle('admin');
+                                a.style.display = 'block';
+                                b.style.display = 'none';
+
+                            }
+                            function fourth() {
+                                a.style.display = 'none';
+                                b.style.display = 'block';
                             }
                             p1.addEventListener('click', third, false);
+                            p2.addEventListener('click', fourth, false);
                         </script>
                     </article>
 

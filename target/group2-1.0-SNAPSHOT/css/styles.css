@@ -49,7 +49,7 @@ body {
 header {
     background-color:rgb(93,43,78); 
     background-image: linear-gradient(to left, rgb(93,43,78), rgb(8,2,50)); 
-    
+
 }
 
 header h1, span {
@@ -67,7 +67,7 @@ nav {
     border: 1px solid rgba(255,255,255,.5);	
     border-left: none;
     border-right: none;
-   
+
 }
 nav ul {
     padding: 0;
@@ -132,7 +132,7 @@ footer a {
 }
 
 .main {
-    margin-top: 10%;    
+    margin-top: 5%;    
     width: 100%;   
     border-left: dashed 1px rgb(153,153,153);
     border-right: dashed 1px rgb(153,153,153);
@@ -244,29 +244,93 @@ nav ul, header h1, footer p, .contentWrapper {
 
 .loginContent {
     position: relative;
-    margin-left: 25%;
+    margin-left: 30%;
     margin-bottom: 5%;
-    width: 500px;
-    height: 265px; 
+    width: 400px;
+    height: 300px; 
     overflow: hidden;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
     text-align: center;
-    
+
+}
+.loginContent h1 {
+    margin-top: 10px;
+    color: gray;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+
 }
 
 .admin {
     display: none;
 }
-#p1, #p2 {
-    display: inline;
-    background-color: darkcyan;
-    color: white;
+.loginContent #p1, #p2 {
+    display: inline;    
+    color: black;
+    background-color: white;
     padding: 10px;
+    width: 30%;
     margin: 10px;
     cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 5px;
+
 }
+.loginContent #p1:active {
+    background-color: lightblue;
+}
+.loginContent #p2:active {
+    background-color: lightblue;
+}
+
+
 #form1 {
-    margin-top: 50px;
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+    margin-left: 60px;
+}
+
+#form2 {
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+    margin-left: 60px;
+}
+
+#form1 input{
+    display: block;
+    height: 30px;
+    width: 80%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    border: solid .5px gray;
+
+}
+
+#form2 input{
+    display: block;
+    height: 30px;
+    width: 80%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    border: solid .5px gray;
+
 }
 
 
