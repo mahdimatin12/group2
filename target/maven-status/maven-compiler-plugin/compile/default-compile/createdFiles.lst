@@ -2,8 +2,11 @@ com\model\Customers.class
 com\model\Admins.class
 com\model\Booking.class
 com\controller\AdminServlet.class
+com\controller\CustomerRegisterServlet.class
+com\controller\RegisterServlet.class
 com\model\Movies.class
 com\utils\In.class
+com\controller\AdminRegisterServlet.class
 com\model\dao\CustomerSqlDAO.class
 com\model\Admin.class
 com\controller\InitServlet.class
