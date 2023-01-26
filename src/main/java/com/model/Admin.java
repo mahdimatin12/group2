@@ -2,6 +2,7 @@ package com.model;
 
 import java.io.Serializable;
 import java.util.Random;
+import javax.management.relation.Role;
 
 public class Admin implements Serializable {
 
@@ -9,6 +10,7 @@ public class Admin implements Serializable {
     private String name;
     private String email;
     private String password;
+    
 
     public Admin() {
     }

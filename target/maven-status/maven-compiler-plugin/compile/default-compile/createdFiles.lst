@@ -9,6 +9,7 @@ com\model\Admin.class
 com\controller\InitServlet.class
 com\model\dao\SqlDB.class
 com\model\dao\SqlDBConnector.class
+com\controller\LogoutServlet.class
 com\model\Movie.class
 com\model\Customer.class
 com\controller\CustomerServlet.class

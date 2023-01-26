@@ -42,7 +42,7 @@
                             <form id="form1" class="admin" action="/group2/AdminServlet" method="POST">
                                 <input name="email" placeholder="admin email" type="text">
                                 <input name="password" placeholder="admin password" type="password"> 
-                                <input type="hidden" value="admin">
+                                <input type="hidden" name="role" value="admin">
                                 <input type="submit" value="SIGN IN" style="cursor: pointer">            
                             </form>
 
