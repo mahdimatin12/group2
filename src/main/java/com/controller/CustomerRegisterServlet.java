@@ -48,15 +48,15 @@ public class CustomerRegisterServlet extends HttpServlet {
 
             try {
                 CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
-                Customer userSql = customerSqlDAO.getCustomer(email);
-                if (userSql != null) {
+                Customer customerSql = customerSqlDAO.getCustomer(email);
+                if (customerSql != null) {
                     error = "Customer already exists";
                 } else {
                     nextPage = true;
                     customerSqlDAO.create(name, email, password);
-                    Customer user = customerSqlDAO.getCustomer(email);
+                    Customer customer = customerSqlDAO.getCustomer(email);
                    
-                  session.setAttribute("user", user);
+                  session.setAttribute("customer", customer);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);

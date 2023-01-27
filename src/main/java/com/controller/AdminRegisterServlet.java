@@ -1,86 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
+import com.model.Admin;
 import javax.servlet.http.HttpServlet;
+
+import com.model.Admin;
+import com.model.dao.AdminSqlDAO;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author 236370
- */
 public class AdminRegisterServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AdminRegisterServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AdminRegisterServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        HttpSession session = request.getSession();
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        boolean nextPage = false;
+        String error = "";
 
+        String emailRegEx = "[a-zA-Z0-9_%+-]+[.][a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+(.com)";
+        String passRegEx = "[A-Z][A-Za-z]{5,}\\d{2,}";
+
+        if (!email.matches(emailRegEx) || !password.matches(passRegEx)) {
+            error = "Incorrect ";
+            if (!email.matches(emailRegEx)) {
+                error += "email";
+            }
+
+            if (!password.matches(passRegEx)) {
+                if (error.contains("email")) {
+                    error += " and ";
+                }
+                error += "password";
+            }
+            error += " format";
+
+        } else {
+
+            try {
+                AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
+                Admin adminSql = adminSqlDAO.getAdmin(email);
+                if (adminSql != null) {
+                    error = "Admin already exists";
+                } else {
+                    nextPage = true;
+                    adminSqlDAO.create(name, email, password);
+                    Admin admin = adminSqlDAO.getAdmin(email);
+                   
+                  session.setAttribute("admin", admin);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (nextPage) {
+            request.getRequestDispatcher("main.jsp").include(request, response);
+        } else {
+            session.setAttribute("error", error);
+            request.getRequestDispatcher("register.jsp").include(request, response);
+    
+}
+}
 }
