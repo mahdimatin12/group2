@@ -38,7 +38,7 @@
                             <h1>Sign In As <span style="font-size: 10px; color: orange;"><%= (exist != null) ? exist : ""%></span></h1>
 
 
-                            <button id="p1"><img src="image/admin-9584.svg" style="height: 30px;width: 30px;"><br>Admin</button>
+                            <button id="p1"><img src="image/admin-9584.svg" style="height: 30px;width: 30px;">Admin</button>
                             <button id="p2"><img src="image/person-295.svg" style="height: 30px;width: 30px;">Customer</button>
 
                             <form id="form1" class="admin" action="/group2/AdminServlet" method="POST">
