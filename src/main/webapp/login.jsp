@@ -85,7 +85,7 @@
             <footer>
                 <p>SIUA 2023, UST, Sydney.
                 <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
-                <p>Contact: <a href="mailto:nobody@nowhere.com">group3@ust.com</a></p>
+                <p>Contact: <a href="mailto:nobody@nowhere.com">group2@ust.com</a></p>
             </footer>
         </div>
 

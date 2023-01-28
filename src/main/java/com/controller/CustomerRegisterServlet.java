@@ -65,7 +65,7 @@ public class CustomerRegisterServlet extends HttpServlet {
         if (nextPage) {
             request.getRequestDispatcher("main.jsp").include(request, response);
         } else {
-            session.setAttribute("error", error);
+            session.setAttribute("errorRegister", error);
             request.getRequestDispatcher("register.jsp").include(request, response);
     
 }

@@ -25,7 +25,7 @@
         <article class="main">
             <div class="loginContent">
                 <%
-                    String exist = (String) session.getAttribute("error");
+                    String exist = (String) session.getAttribute("errorRegister");
                 %>
                 <h1>Register As <span style="font-size: 10px; color: orange;"><%= (exist != null) ? exist : ""%></span></h1>
 
@@ -36,7 +36,7 @@
                 <form id="form1" class="admin" action="/group2/AdminRegisterServlet" method="POST">
 
                     <input name="name"  type="text" placeholder="Admin name">                       
-                    <input name="email" type="email" placeholder="Admin email">
+                    <input name="email" type="text" placeholder="Admin email">
                     <input name="password" type="password" placeholder="Admin password">
                     <input type="hidden" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">   
@@ -46,7 +46,7 @@
                 <form id="form2" class="admin" action="/group2/CustomerRegisterServlet" method="POST">
 
                     <input name="name" type="text" placeholder="Customer name">
-                    <input name="email" type="email" placeholder="Customer email">
+                    <input name="email" type="text" placeholder="Customer email">
                     <input name="password" type="password" placeholder="Customer password">
                     <input type="hidden" name="role" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">
@@ -77,7 +77,7 @@
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
-            <p>Contact: <a href="mailto:nobody@nowhere.com">group3@ust.com</a></p>
+            <p>Contact: <a href="mailto:nobody@nowhere.com">group2@ust.com</a></p>
         </footer>
     </div>
 

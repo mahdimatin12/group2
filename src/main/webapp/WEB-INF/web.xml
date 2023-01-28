@@ -16,6 +16,14 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.controller.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerRegisterServlet</servlet-name>
+        <servlet-class>com.controller.CustomerRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminRegisterServlet</servlet-name>
+        <servlet-class>com.controller.AdminRegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerRegisterServlet</servlet-name>
+        <url-pattern>/CustomerRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminRegisterServlet</servlet-name>
+        <url-pattern>/AdminRegisterServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

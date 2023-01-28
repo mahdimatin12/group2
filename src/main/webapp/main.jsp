@@ -28,6 +28,7 @@
                 if (customer != null) {
             %>  
             <h2 class="welcomemsg">Welcome, to your Dashboard <%= customer.getName()%>!</h2>
+             <h3 class="welcomemsg">Email: <%= customer.getEmail()%>!</h3>
             
             <aside class="adminAside">
                 <a href="#"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
@@ -37,6 +38,7 @@
             <% } else {
                     Admin admin = (Admin) session.getAttribute("admin");%>
                     <h2 class="welcomemsg">Welcome to Admin Dashboard <%= admin.getName()%>!</h2>
+                      <h3 class="welcomemsg">Email: <%= admin.getEmail()%>!</h3>
             <aside class="customerAside">
                 <a href="#"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
                 <a href="#"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
@@ -47,7 +49,7 @@
            <footer>
                <p>SIUA 2023, UST, Sydney.</p>
                <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
-            <p>Contact: <a href="mailto:nobody@nowhere.com">group3@ust.com</a></p>
+            <p>Contact: <a href="mailto:nobody@nowhere.com">group2@ust.com</a></p>
         </footer>
     </body>
 </html>
