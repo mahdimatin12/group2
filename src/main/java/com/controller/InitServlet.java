@@ -6,8 +6,9 @@
 package com.controller;
 
 import com.model.dao.AdminSqlDAO;
+import com.model.dao.BookingSqlDAO;
 import com.model.dao.CustomerSqlDAO;
-//import com.model.dao.BlogSqlDAO;
+//import com.model.dao.BookingSqlDAO;
 import com.model.dao.SqlDBConnector;
 //import com.model.dao.CustomerSqlDAO;
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class InitServlet extends HttpServlet {
 
     private CustomerSqlDAO customerSqlDAO;
     private AdminSqlDAO adminSqlDAO;
-    //private BlogSqlDAO blogSqlDAO;
+    private BookingSqlDAO bookingSqlDAO;
     private SqlDBConnector dBConnector;
     private Connection connection;
 
@@ -37,7 +38,7 @@ public class InitServlet extends HttpServlet {
             connection = dBConnector.connection(); //opening connection with the db
             customerSqlDAO = new CustomerSqlDAO(connection);
             adminSqlDAO = new AdminSqlDAO(connection);
-            //blogSqlDAO = new BlogSqlDAO(connection);
+            bookingSqlDAO = new BookingSqlDAO(connection);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InitServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -57,7 +58,7 @@ public class InitServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("adminSqlDAO", adminSqlDAO);
         session.setAttribute("customerSqlDAO", customerSqlDAO);
-        //session.setAttribute("blogSqlDAO", blogSqlDAO);
+        session.setAttribute("bookingSqlDAO", bookingSqlDAO);
     }
     
     @Override

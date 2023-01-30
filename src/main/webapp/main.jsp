@@ -33,7 +33,7 @@
             <aside class="adminAside">
                 <a href="#"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
                 <a href="#"><img src="image/video-833.svg"><br>Movies</a>
-                <a href="#"><img src="image/click-mobile-phone-2406.svg"><br>MY BOOKINGS</a>
+                <a href="booking.jsp"><img src="image/click-mobile-phone-2406.svg"><br>MY BOOKINGS</a>
             </aside>
             <% } else {
                     Admin admin = (Admin) session.getAttribute("admin");%>

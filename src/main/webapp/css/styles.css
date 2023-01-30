@@ -103,8 +103,23 @@ nav a:hover {
 }
 
 .main {
+    height: 1200px;  
 
+}
 
+.tableDiv {
+    width: 50%;
+    margin-left: 20%;
+}
+
+.tableDiv #add {
+    margin-top: 10px;
+    cursor: pointer;
+}
+.tableDiv #add:hover {
+    background-color: lightblue;
+    border-radius: 5px;
+    border: solid lightblue;
 }
 
 .main h2 {
@@ -365,6 +380,56 @@ aside a {
 
 aside a:hover {
     color: blue;
+}
+
+
+/* add table styles here */
+
+.bookings {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  width: 100%;
+  margin-top: 25px;
+  border-collapse: collapse;
+  
+}
+.bookings caption {
+  text-align: right;
+  font-size: .85em;
+  margin-bottom: 10px;
+}
+.bookings td, .bookings th {
+  font-size: 1.1em;
+  border: 1px solid #DDB575;
+  padding: 3px 7px 2px 7px;
+  vertical-align: middle;
+}
+.bookings th {
+  text-transform:uppercase;
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  background: rgb(229,76,16);
+  background: linear-gradient(to bottom, rgb(229,76,16), rgb(173,54,8));
+  color: white;
+}
+.bookings tr:nth-of-type(even){
+  background-color: rgba(255,255,255,.1);
+}
+.bookings tr:nth-of-type(odd){
+  background-color: rgba(229,76,16,.1);
+}
+
+
+.orderForm {
+    display: none;
+    
+}
+.mForm {
+    display: none;
+}
+
+#oForm {
+    margin-top: 2%;
 }
 
 

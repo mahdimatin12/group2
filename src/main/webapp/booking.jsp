@@ -26,6 +26,7 @@
             <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
         </header>
         <article class="main">
+
             <%
                 Customer customer = (Customer) session.getAttribute("customer");
                 int id = customer.getid();
@@ -33,46 +34,71 @@
                 List<Booking> bookings = bookingSqlDAO.getBookings(id);
                 int rows = bookings.size();
             %>
-            
-            <script>
-                const obtn = document.getElementById('add');
-                function toggleForm() {
-                    const of = document.getElementById('orderForm');
-                    of.classList.toggle('orderForm');
-                }
-                obtn.addEventListener('click',toggleForm,false);
-            </script>
-            
+
             <div class="tableDiv"> 
-                 <button id="add"><img src="image/blue-plus-11976.svg" height="10px" width="10px"> Add another booking</button>
-                <from  id="orderForm" action="/group2/BookingServlet">
+                <button id="add"><img src="image/blue-plus-11976.svg" height="10px" width="10px"> Add</button>
+                <br>
+                <br>
+                <from  class="orderForm" id="oForm" action="/group2/BookingServlet">
+                    <label for="date">Pick a date</label>
                     <input type="date" name="date">
-                    
-                </from>  
-            <table class="inventory" width="100%">
-                
-                <caption>
-                    You have <strong style="color:#e52323"><%= rows%></strong> bookings
-                </caption>
-                <colgroup>
-                    <col id="poster">
-                    <col id="name">
-                    <col id="date">
-                </colgroup>
-                <tr>
-                    <th scope="col">Poster</th>
-                    <th scope="col">Movie Name</th>
-                    <th scope="col">Booking Date</th>
-                </tr>
-                <% for(Booking booking:bookings) { %>
-                <tr>
-                    <td class="rating"><img src="<%= booking.getImgUrl()%>" width="50" height="50" alt="star"></td>
-                    <td> <%= booking.getName() %> </td>
-                    <td><%= booking.getDate() %></td>
-                    
-                </tr>
-               <% } %>
-            </table>
+                    <input id="selectMovie" type="submit" value="Select Movie">
+                </from>
+                <br>
+                <br>
+                <form id="mForm" class="mForm">
+                    <label for="pet-select">Choose a movie:</label>
+
+                    <select name="movies" id="movie-select">
+                        <option value="">--Please choose a movie--</option>
+                        <% List<String> movies = bookingSqlDAO.getMovies();
+                            for (String movie : movies) {%> 
+
+                        <option value="<%= movie%>"><%=movie%></option>
+                        <% }%>
+                    </select>
+
+                </form>
+                <script>
+                    const obtn = document.getElementById('add');
+                    function toggleForm() {
+                        const of = document.getElementById('oForm');
+                        of.classList.toggle('orderForm');
+                    }
+                    obtn.addEventListener('click', toggleForm, false);
+                </script>
+                <script>
+                    const selectMovie = document.getElementById('selectMovie');
+                    function togglemForm() {
+                        const mf = document.getElementById('mForm');
+                        mf.classList.toggle('mForm');
+                    }
+                    selectMovie.addEventListener('click', togglemForm, false);
+                </script>
+
+                <table class="bookings" width="100%">
+
+                    <caption>
+                        You have <strong style="color:#e52323"><%= rows%></strong> bookings
+                    </caption>
+                    <colgroup>
+                        <col id="poster">
+                        <col id="name">
+                        <col id="date">
+                    </colgroup>
+                    <tr>
+                        <th scope="col">Poster</th>
+                        <th scope="col">Movie Name</th>
+                        <th scope="col">Booking Date</th>
+                    </tr>
+                    <% for (Booking booking : bookings) {%>
+                    <tr>
+                        <td class="poster"><img src="<%= booking.getImgUrl()%>" width="50" height="50" alt="star"></td>
+                        <td> <%= booking.getName()%> </td>
+                        <td><%= booking.getDate()%></td>                    
+                    </tr>
+                    <% }%>
+                </table>
             </div>
         </article>
         <footer>

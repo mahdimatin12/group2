@@ -1,6 +1,7 @@
 package com.model.dao;
 
 import com.model.Booking;
+import com.model.Movie;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,10 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author George
- */
+
 public class BookingSqlDAO {
     
     private Statement st;
@@ -20,7 +18,7 @@ public class BookingSqlDAO {
         this.st = connection.createStatement();
     }
 
-    //Create Bookingg for a User by ID
+    //Create Booking for a User by ID
     public void create(int customerid, String date) throws SQLException {
         String columns = "INSERT INTO moviedb2.bookings(customerid,date)";
         String values = "VALUES('" + customerid + "','" + date + "')";
@@ -48,6 +46,30 @@ public class BookingSqlDAO {
         }
         return temp;
     }
+    
+    //Read All movies
+    public List<String> getMovies() throws SQLException {
+        String fetch = "select name from moviedb2.movies;";
+        
+        ResultSet rs = st.executeQuery(fetch);
+        
+        List<String> temp = new ArrayList<>();
+        
+        while (rs.next()) {            
+            String name = rs.getString(1);           
+            temp.add(name);
+        }
+        return temp;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     //Read a Booking by user ID
     public List<Booking> getBookings(int ID) throws SQLException {
