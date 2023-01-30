@@ -7,6 +7,7 @@ C:\group2\src\main\java\com\controller\InitServlet.java
 C:\group2\src\main\java\com\model\dao\SqlDB.java
 C:\group2\src\main\java\com\controller\CustomerRegisterServlet.java
 C:\group2\src\main\java\com\controller\LogoutServlet.java
+C:\group2\src\main\java\com\model\dao\BookingSqlDAO.java
 C:\group2\src\main\java\com\utils\In.java
 C:\group2\src\main\java\com\model\Admins.java
 C:\group2\src\main\java\com\model\Customer.java
@@ -17,3 +18,4 @@ C:\group2\src\main\java\com\model\Movies.java
 C:\group2\src\main\java\com\controller\AdminServlet.java
 C:\group2\src\main\java\com\model\Admin.java
 C:\group2\src\main\java\com\model\Booking.java
+C:\group2\src\main\java\com\controller\BookingServlet.java
