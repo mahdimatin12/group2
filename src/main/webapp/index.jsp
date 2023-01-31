@@ -26,6 +26,7 @@
                     <li><a href="register.jsp">SIGN UP</a></li>                    
                     <li><a href="login.jsp">LOGIN</a></li>
                     <li><a href="#">mahdi</a></li>
+                    <li><a href="#">zaki</a></li>
                 </ul>
             </nav>
 
