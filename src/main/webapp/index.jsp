@@ -27,6 +27,7 @@
                     <li><a href="login.jsp">LOGIN</a></li>
                     <li><a href="#">mahdi</a></li>
                     <li><a href="#">zaki</a></li>
+                      <li><a href="#">zaki is typing...</a></li>
                 </ul>
             </nav>
 
