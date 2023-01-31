@@ -25,6 +25,7 @@
                     <li><a href="#">ABOUT THE APP</a></li>
                     <li><a href="register.jsp">SIGN UP</a></li>                    
                     <li><a href="login.jsp">LOGIN</a></li>
+                    <li><a href="#">mahdi</a></li>
                 </ul>
             </nav>
 
