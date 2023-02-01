@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServlet;
 import com.model.Customer;
 import com.model.dao.CustomerSqlDAO;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,13 +24,22 @@ public class CustomerRegisterServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        Date dob= Date.valueOf( request.getParameter("dob"));
+        String phone= request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         boolean nextPage = false;
         String error = "";
-
+        
+        
+        String nameRegex="^[a-zA-Z\\\\s]+";
+        String dobRegex="^\\d{4}-\\d{2}-\\d{2}$";
+        String phoneRegex="^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
         String emailRegEx = "[a-zA-Z0-9_%+-]+[.][a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+(.com)";
         String passRegEx = "[A-Z][A-Za-z]{5,}\\d{2,}";
+        
+         
 
         if (!email.matches(emailRegEx) || !password.matches(passRegEx)) {
             error = "Incorrect ";
@@ -53,7 +64,7 @@ public class CustomerRegisterServlet extends HttpServlet {
                     error = "Customer already exists";
                 } else {
                     nextPage = true;
-                    customerSqlDAO.create(name, email, password);
+                    customerSqlDAO.create(name, gender, dob, phone, email, password);
                     Customer customer = customerSqlDAO.getCustomer(email);
                    
                   session.setAttribute("customer", customer);

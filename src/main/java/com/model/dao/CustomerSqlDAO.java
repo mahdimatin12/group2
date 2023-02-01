@@ -116,10 +116,10 @@ public class CustomerSqlDAO {
     }
 
     //Update Query (Name, Password) by ID
-    public void update(String name,String gender,String dob,String phone, String password, int ID) throws SQLException {
+    public void update(String name, String gender, Date dob, String phone, String password, int ID) throws SQLException {
         updateSt.setString(1, name);
         updateSt.setString(2, gender);
-        updateSt.setString(3,dob);
+        updateSt.setString(3, dob.toString());
         updateSt.setString(2, password);
         updateSt.setString(3, Integer.toString(ID));
         int row = updateSt.executeUpdate();
