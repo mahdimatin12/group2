@@ -254,9 +254,9 @@ nav ul, header h1, footer p, .contentWrapper {
     position: relative;
     margin-left: 35%;
     margin-bottom: 5%;
-    margin-top: 5%;
+    margin-top: 2%;
     width: 350px;
-    height: 320px; 
+    height: 380px; 
     overflow: hidden;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -264,25 +264,24 @@ nav ul, header h1, footer p, .contentWrapper {
 }
 .loginContent h1 {
     margin-top: 10px;    
-    color: gray;
-    
-    font-size: 20px;
+    color: gray;    
+    font-size: 15px;
     font-weight: 500;
     line-height: 10px;
-    text-align: center;
-    
+    text-align: center;    
 }
 
 .admin {
     display: none;
 }
+
 .loginContent #p1, #p2 {
     display: inline;    
     color: black;
     background-color: white;
     padding: 5px;
     width: 30%;
-    height: 20%;
+    height: 15%;
     margin: 10px;
     cursor: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -315,6 +314,7 @@ nav ul, header h1, footer p, .contentWrapper {
     border: none;
     margin-left: 60px;
 }
+
 
 #form1 input{
     display: block;
@@ -364,9 +364,9 @@ aside {
 aside img {
     height: 40px;
     width: 40px;
-    
-    
-    
+
+
+
 }
 
 aside a {
@@ -375,7 +375,7 @@ aside a {
     display: inline-block;
     text-decoration: none;
     color: white;
-   
+
 }
 
 aside a:hover {
@@ -386,43 +386,43 @@ aside a:hover {
 /* add table styles here */
 
 .bookings {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  width: 100%;
-  margin-top: 25px;
-  border-collapse: collapse;
-  
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+
 }
 .bookings caption {
-  text-align: right;
-  font-size: .85em;
-  margin-bottom: 10px;
+    text-align: right;
+    font-size: .85em;
+    margin-bottom: 10px;
 }
 .bookings td, .bookings th {
-  font-size: 1.1em;
-  border: 1px solid #DDB575;
-  padding: 3px 7px 2px 7px;
-  vertical-align: middle;
+    font-size: 1.1em;
+    border: 1px solid #DDB575;
+    padding: 3px 7px 2px 7px;
+    vertical-align: middle;
 }
 .bookings th {
-  text-transform:uppercase;
-  text-align: left;
-  padding-top: 5px;
-  padding-bottom: 4px;
-  background: rgb(229,76,16);
-  background: linear-gradient(to bottom, rgb(229,76,16), rgb(173,54,8));
-  color: white;
+    text-transform:uppercase;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background: rgb(229,76,16);
+    background: linear-gradient(to bottom, rgb(229,76,16), rgb(173,54,8));
+    color: white;
 }
 .bookings tr:nth-of-type(even){
-  background-color: rgba(255,255,255,.1);
+    background-color: rgba(255,255,255,.1);
 }
 .bookings tr:nth-of-type(odd){
-  background-color: rgba(229,76,16,.1);
+    background-color: rgba(229,76,16,.1);
 }
 
 
 .orderForm {
     display: none;
-    
+
 }
 .mForm {
     display: none;

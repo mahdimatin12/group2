@@ -35,7 +35,18 @@
 
                 <form id="form1" class="admin" action="/group2/AdminRegisterServlet" method="POST">
 
-                    <input name="name"  type="text" placeholder="Admin name">                       
+                    <input name="name"  type="text" placeholder="Admin name">
+
+                    <label style="color: black" class="form-control">
+                        Male
+                        <input type="radio" name="radio" value="male" />
+                        Female
+                        <input type="radio" name="radio" value="female" />
+                    </label>
+
+
+                    <input name="dob"  type="date" value="yyyy-mm-dd">
+                    <input type="text" name="phone" placeholder="Phone number">
                     <input name="email" type="text" placeholder="Admin email">
                     <input name="password" type="password" placeholder="Admin password">
                     <input type="hidden" value="admin">
@@ -45,11 +56,22 @@
 
                 <form id="form2" class="admin" action="/group2/CustomerRegisterServlet" method="POST">
 
-                    <input name="name" type="text" placeholder="Customer name">
-                    <input name="email" type="text" placeholder="Customer email">
-                    <input name="password" type="password" placeholder="Customer password">
-                    <input type="hidden" name="role" value="admin">
-                    <input type="submit" value="REGISTER" style="cursor: pointer">
+                    <input name="name"  type="text" placeholder="Admin name">
+
+                    <label style="color: black" class="form-control">
+                        Male
+                        <input type="radio" name="radio" value="male" />
+                        Female
+                        <input type="radio" name="radio" value="female" />
+                    </label>
+
+
+                    <input name="dob"  type="date">
+                    <input type="text" name="phone" placeholder="Phone number">
+                    <input name="email" type="text" placeholder="Admin email">
+                    <input name="password" type="password" placeholder="Admin password">
+                    <input type="hidden" value="admin">
+                    <input type="submit" value="REGISTER" style="cursor: pointer">   
 
                 </form>
             </div>
