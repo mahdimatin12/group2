@@ -44,7 +44,7 @@
                         <option value="female">Female</option>
                     </select>
 
-                    <input name="dob"  type="date" value="yyyy-mm-dd">
+                    <input name="dob"  type="date">
                     <input type="text" name="phone" placeholder="Phone number">
                     <input name="email" type="text" placeholder="Admin email">
                     <input name="password" type="password" placeholder="Admin password">
@@ -55,7 +55,7 @@
 
                 <form id="form2" class="admin" action="/group2/CustomerRegisterServlet" method="POST">
 
-                    <input name="name"  type="text" placeholder="Admin name">                  
+                    <input name="name"  type="text" placeholder="Customer name">                  
 
                     <select name="gender" id="gender">
                         <option value="">--Please choose gender--</option>
@@ -66,8 +66,8 @@
 
                     <input name="dob"  type="date">
                     <input type="text" name="phone" placeholder="Phone number">
-                    <input name="email" type="text" placeholder="Admin email">
-                    <input name="password" type="password" placeholder="Admin password">
+                    <input name="email" type="text" placeholder="Customer email">
+                    <input name="password" type="password" placeholder="Customer password">
                     <input type="hidden" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">   
 
@@ -80,11 +80,10 @@
                 const b = document.getElementById('form2');
                 const p1 = document.getElementById('p1');
                 const p2 = document.getElementById('p2');
-                const radio = document.getElementById('radio');
+             
 
                 function third() {
-                    a.style.display = 'block';
-                    radio.style.display = 'inline';
+                    a.style.display = 'block';            
                     b.style.display = 'none';
 
                 }
