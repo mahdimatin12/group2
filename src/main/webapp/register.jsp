@@ -37,13 +37,12 @@
 
                     <input name="name"  type="text" placeholder="Admin name">
 
-                    <label style="color: black" class="form-control">
-                        Male
-                        <input type="radio" name="radio" value="male" />
-                        Female
-                        <input type="radio" name="radio" value="female" />
-                    </label>
 
+                    <select name="gender" id="gender">
+                        <option value="">--Please choose gender--</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
 
                     <input name="dob"  type="date" value="yyyy-mm-dd">
                     <input type="text" name="phone" placeholder="Phone number">
@@ -56,14 +55,13 @@
 
                 <form id="form2" class="admin" action="/group2/CustomerRegisterServlet" method="POST">
 
-                    <input name="name"  type="text" placeholder="Admin name">
+                    <input name="name"  type="text" placeholder="Admin name">                  
 
-                    <label style="color: black" class="form-control">
-                        Male
-                        <input type="radio" name="radio" value="male" />
-                        Female
-                        <input type="radio" name="radio" value="female" />
-                    </label>
+                    <select name="gender" id="gender">
+                        <option value="">--Please choose gender--</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
 
 
                     <input name="dob"  type="date">
@@ -82,9 +80,11 @@
                 const b = document.getElementById('form2');
                 const p1 = document.getElementById('p1');
                 const p2 = document.getElementById('p2');
+                const radio = document.getElementById('radio');
 
                 function third() {
                     a.style.display = 'block';
+                    radio.style.display = 'inline';
                     b.style.display = 'none';
 
                 }

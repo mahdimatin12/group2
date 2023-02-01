@@ -24,7 +24,7 @@ public class AdminRegisterServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String name = request.getParameter("name");
-        String gender = request.getParameter("radio");
+        String gender = request.getParameter("gender");
         Date dob= Date.valueOf( request.getParameter("dob"));
         String phone= request.getParameter("phone");
         String email = request.getParameter("email");

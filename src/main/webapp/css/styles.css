@@ -330,6 +330,19 @@ nav ul, header h1, footer p, .contentWrapper {
 
 }
 
+select {
+    display: block;
+    height: 30px;
+    width: 80%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    border: solid .2px gray;
+}
+
 #form2 input{
     display: block;
     height: 30px;
@@ -343,6 +356,8 @@ nav ul, header h1, footer p, .contentWrapper {
     border: solid .2px gray;
 
 }
+
+
 #form1 input[type="submit"]:hover {
     background-color: lightblue;
 }
