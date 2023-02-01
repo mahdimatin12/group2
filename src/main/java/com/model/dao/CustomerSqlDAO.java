@@ -1,7 +1,5 @@
 package com.model.dao;
 
-//import com.model.Blog;
-
 import com.model.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,32 +7,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
+import java.util.List;
+import java.sql.Date;
 
 public class CustomerSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE moviedb.customers SET NAME=?, PASSWORD=? WHERE ID=?";
-    private PreparedStatement deleteCustomerSt;
-    private String deleteCustomerQuery = "DELETE FROM moviedb.customers WHERE ID=?";  
-    //private PreparedStatement deleteBlogSt;
-    //private String deleteBlogQuery = "DELETE FROM moviedb.blogs WHERE ID=?";
-    //private BlogSqlDAO blogSqlDAO;
-    
+    private String updateQuery = "UPDATE moviedb.customers SET NAME=?, PASSWORD=?, WHERE ID=?";
+    private PreparedStatement deleteSt;
+    private String deleteQuery = "DELETE FROM moviedb.customers WHERE ID=?";
+
     public CustomerSqlDAO(Connection connection) throws SQLException {
-        //this.blogSqlDAO = new BlogSqlDAO(connection);
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
-        this.deleteCustomerSt = connection.prepareStatement(deleteCustomerQuery);  
-        //this.deleteBlogSt = connection.prepareStatement(deleteBlogQuery);
+        this.deleteSt = connection.prepareStatement(deleteQuery);
     }
 
     //Create Query
-    public void create(String name, String email, String password) throws SQLException {
-        String columns = "INSERT INTO moviedb.customers(NAME,EMAIL,PASSWORD)";
-        String values = "VALUES('" + name + "','" + email + "','" + password + "')";
+    public void create(String name, String gender, Date dob, String phone, String email, String password) throws SQLException {
+        String columns = "INSERT INTO moviedb.customers(NAME,GENDER,DOB,PHONE,EMAIL,PASSWORD)";
+        String values = "VALUES('" + name + "','" + gender + "','" + dob + "','" + phone + "','" + email + "','" + password + "')";
         st.executeUpdate(columns + values);
     }
 
@@ -47,45 +41,55 @@ public class CustomerSqlDAO {
 
             if (ID == currentID) {
                 String name = rs.getString(2);
-                String email = rs.getString(3);
-                String password = rs.getString(4);               
-                return new Customer(ID, name, email, password);
+                String gender = rs.getString(3);
+                Date dob = Date.valueOf(rs.getString(4));
+                String phone = rs.getString(5);
+                String email = rs.getString(6);
+                String password = rs.getString(7);
+
+                return new Customer(ID, name, gender, dob, phone, email, password);
             }
         }
         return null;
     }
-    
-        //Read Query - Read One
+
+    //Read Query - Read One
     public Customer getCustomer(String email) throws SQLException {
-        String query = "SELECT * FROM moviedb.customers WHERE EMAIL='"+ email+"'";
+        String query = "SELECT * FROM moviedb.customers WHERE EMAIL='" + email + "'";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
-            String currentEmail = rs.getString(3);
+            String currentEmail = rs.getString(6);
 
             if (email.equals(currentEmail)) {
                 int ID = Integer.parseInt(rs.getString(1));
                 String name = rs.getString(2);
-                
-                String password = rs.getString(4);                
-                return new Customer(ID, name, email, password);
+                String gender = rs.getString(3);
+                Date dob = Date.valueOf(rs.getString(4));
+                String phone = rs.getString(5);
+                String password = rs.getString(7);
+
+                return new Customer(ID, name, gender, dob, phone, email, password);
             }
         }
         return null;
     }
-    
-     //Read Query - Read One by Email and Password
+
+    //Read Query - Read One by Email and Password
     public Customer login(String email, String password) throws SQLException {
-        String query = "SELECT * FROM moviedb.customers WHERE EMAIL='"+ email+"' AND PASSWORD='"+password+"'";
+        String query = "SELECT * FROM moviedb.customers WHERE EMAIL='" + email + "' AND PASSWORD='" + password + "'";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
-            String currentEmail = rs.getString(3);
-            String currentPassword = rs.getString(4);
+            String currentEmail = rs.getString(6);
+            String currentPassword = rs.getString(7);
 
-            if (email.equals(currentEmail)&&password.equals(currentPassword)) {
+            if (email.equals(currentEmail) && password.equals(currentPassword)) {
                 int ID = Integer.parseInt(rs.getString(1));
-                String name = rs.getString(2);            
-               
-                return new Customer(ID, name, email, password);
+                String name = rs.getString(2);
+                String gender = rs.getString(3);
+                Date dob = Date.valueOf(rs.getString(4));
+                String phone = rs.getString(5);
+
+                return new Customer(ID, name, gender, dob, phone, email, password);
             }
         }
         return null;
@@ -96,38 +100,36 @@ public class CustomerSqlDAO {
         String query = "SELECT * FROM moviedb.customers";
         ResultSet rs = st.executeQuery(query);
         List<Customer> temp = new ArrayList<>();
-        
+
         while (rs.next()) {
             int ID = Integer.parseInt(rs.getString(1));
             String name = rs.getString(2);
-            String email = rs.getString(3);
-            String password = rs.getString(4);
-           
-            //List<Blog> blogs = blogSqlDAO.getBlogs(ID);
-            Customer customer = new Customer(ID, name, email, password);
-            //customer.addAll(blogs);
-           temp.add(customer);
-        }    
+            String gender = rs.getString(3);
+            Date dob = Date.valueOf(rs.getString(4));
+            String phone = rs.getString(5);
+            String email = rs.getString(6);
+            String password = rs.getString(7);
+
+            temp.add(new Customer(ID, name, gender, dob, phone, email, password));
+        }
         return temp;
     }
-    
+
     //Update Query (Name, Password) by ID
-    public void update(String name, String password, int ID) throws SQLException{
+    public void update(String name,String gender,String dob,String phone, String password, int ID) throws SQLException {
         updateSt.setString(1, name);
-        updateSt.setString(2, password);        
+        updateSt.setString(2, gender);
+        updateSt.setString(3,dob);
+        updateSt.setString(2, password);
         updateSt.setString(3, Integer.toString(ID));
         int row = updateSt.executeUpdate();
-        System.out.println("Row "+row+" has been successflly updated");
+        System.out.println("Row " + row + " has been successflly updated");
     }
-   
+
     //Delete Query - by ID
-    public void delete(int ID) throws SQLException{
-        //blogSqlDAO.archive(ID);
-        //deleteBlogSt.setString(1, ""+ID);
-        //int y = deleteBlogSt.executeUpdate();
-        deleteCustomerSt.setString(1, ""+ID);
-        int x = deleteCustomerSt.executeUpdate();
-        
-        System.out.println("Customer has been successflly deleted");
+    public void delete(int ID) throws SQLException {
+        deleteSt.setString(1, "" + ID);
+        int row = deleteSt.executeUpdate();
+        System.out.println("Row " + row + " has been successflly deleted");
     }
 }

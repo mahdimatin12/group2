@@ -1,72 +1,92 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+import javax.management.relation.Role;
+import java.util.Date;
 
-public class Customer implements Serializable{
+public class Customer implements Serializable {
+
     private int id;
     private String name;
+    private String gender;
+    private Date dob;
+    private String phone;
     private String email;
     private String password;
-    private List<Booking> bookings = new ArrayList();
 
     public Customer() {
     }
 
-    public Customer(int id, String name, String email, String password) {
+    public Customer(int id, String name, String gender, Date dob, String phone, String email, String password) {
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;        
-    }
-
-    public Customer(String name, String email, String password) {
-        //this.id = (new Random()).nextInt(999999);
-        this.name = name;
+        this.gender = gender;
+        this.dob = dob;
+        this.phone = phone;
         this.email = email;
         this.password = password;
-        
-    }
-    
-    public void update(int id, String name, String email, String password){
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;        
     }
 
-    public void addAll(List<Booking> temp){
-        bookings.addAll(temp);
+    public Customer(String name, String gender, Date dob, String phone, String email, String password) {
+        this.name = name;
+        this.gender = gender;
+        this.dob = dob;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
     }
+
+    public void update(int id, String name, String gender, Date dob, String phone, String email, String password) {
+       this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.dob = dob;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+    }
+
     
-    public boolean login(String email, String password){
-        return this.email.equals(email)&&this.password.equals(password);
-    }    
-    
-    public boolean match(int id){
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public boolean login(String email, String password) {
+        return this.email.equals(email) && this.password.equals(password);
+    }
+
+    public boolean match(int id) {
         return this.id == id;
     }
-    
-    public boolean match(String email){
+
+    public boolean match(String email) {
         return this.email.equals(email);
     }
-    
-    public boolean match(Customer other){
-        return this.id == other.id;
-    }
-    
-    public void add(String date, int movieid,int customerid){
-        this.bookings.add(new Booking(bookings.size()+1, date, movieid, customerid));
-    }
-    
-    public List<Booking> getBookings() {
-        return bookings;
-    }
 
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
+    public boolean match(Customer other) {
+        return this.id == other.id;
     }
 
     public int getid() {
@@ -100,11 +120,11 @@ public class Customer implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-    
 
     @Override
     public String toString() {
-        return  id + "\t" + name + "\t" + email + "\t\t";
-    }    
-    
+        return "Customer{" + "id=" + id + ", name=" + name + ", gender=" + gender + ", dob=" + dob + ", phone=" + phone + ", email=" + email + ", password=" + password + '}';
+    }
+
+  
 }

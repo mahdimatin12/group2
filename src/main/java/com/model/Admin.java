@@ -3,36 +3,74 @@ package com.model;
 import java.io.Serializable;
 import java.util.Random;
 import javax.management.relation.Role;
+import java.util.Date;
 
 public class Admin implements Serializable {
 
     private int id;
     private String name;
+    private String gender;
+    private Date dob;
+    private String phone;
     private String email;
     private String password;
-    
 
     public Admin() {
     }
 
-    public Admin(int id, String name, String email, String password) {
+    public Admin(int id, String name, String gender, Date dob, String phone, String email, String password) {
         this.id = id;
         this.name = name;
+        this.gender = gender;
+        this.dob = dob;
+        this.phone = phone;
         this.email = email;
         this.password = password;
     }
 
-    public Admin(String name, String email, String password) {
-        //this.id = (new Random()).nextInt(999999);
+    public Admin(String name, String gender, Date dob, String phone, String email, String password) {
         this.name = name;
+        this.gender = gender;
+        this.dob = dob;
+        this.phone = phone;
         this.email = email;
         this.password = password;
     }
-    public void update(int id, String name, String email, String password){
-        this.id = id;
+
+    public void update(int id, String name, String gender, Date dob, String phone, String email, String password) {
+       this.id = id;
         this.name = name;
+        this.gender = gender;
+        this.dob = dob;
+        this.phone = phone;
         this.email = email;
-        this.password = password;        
+        this.password = password;
+    }
+
+    
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public boolean login(String email, String password) {
@@ -85,6 +123,8 @@ public class Admin implements Serializable {
 
     @Override
     public String toString() {
-        return id + "\t" + name + "\t" + email + "\t";
+        return "Admin{" + "id=" + id + ", name=" + name + ", gender=" + gender + ", dob=" + dob + ", phone=" + phone + ", email=" + email + ", password=" + password + '}';
     }
+
+  
 }
