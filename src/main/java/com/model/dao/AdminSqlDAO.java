@@ -15,7 +15,7 @@ public class AdminSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE moviedb.admins SET NAME=?, PASSWORD=?, WHERE ID=?";
+    private String updateQuery = "UPDATE moviedb.admins SET NAME=?,GENDER=?, DOB=?, PHONE=?, PASSWORD=?, WHERE ID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM moviedb.admins WHERE ID=?";
 
@@ -115,13 +115,14 @@ public class AdminSqlDAO {
         return temp;
     }
 
-    //Update Query (Name, Password) by ID
+    //Update Query (Name, gender,dob,phone Password) by ID
     public void update(String name,String gender,Date dob,String phone, String password, int ID) throws SQLException {
         updateSt.setString(1, name);
         updateSt.setString(2, gender);
         updateSt.setString(3,dob.toString());
-        updateSt.setString(2, password);
-        updateSt.setString(3, Integer.toString(ID));
+        updateSt.setString(4, phone);
+        updateSt.setString(5, password);
+        updateSt.setString(6, Integer.toString(ID));
         int row = updateSt.executeUpdate();
         System.out.println("Row " + row + " has been successflly updated");
     }

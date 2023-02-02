@@ -29,7 +29,7 @@ public class AdminAccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        
+
         AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
         String emailView = request.getParameter("emailView");
         String submitted = request.getParameter("submitted");
@@ -39,11 +39,16 @@ public class AdminAccountServlet extends HttpServlet {
             try {
                 int ID = Integer.parseInt(request.getParameter("ID"));
                 String name = request.getParameter("name");
-                String gender = request.getParameter("gender");
+                String gender = request.getParameter("radio");
                 Date dob = Date.valueOf(request.getParameter("dob"));
                 String phone = request.getParameter("phone");
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
+
+                String nameRegex = "^[a-zA-Z\\\\s]+";
+                String dobRegex = "^\\d{4}-\\d{2}-\\d{2}$";
+                String phoneRegex = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
+                String passRegEx = "[A-Z][A-Za-z]{5,}\\d{2,}";
 
                 emailView = (String) session.getAttribute("emailView");
 
@@ -52,9 +57,9 @@ public class AdminAccountServlet extends HttpServlet {
                 } else {
                     admin = (Admin) session.getAttribute("admin");
                 }
-
-                admin.update(ID, name, gender, dob, phone, email, password);
                 adminSqlDAO.update(name, gender, dob, phone, password, ID);
+                admin.update(ID, name, gender, dob, phone, email, password);
+               
                 session.setAttribute("admin", admin);
 
             } catch (SQLException ex) {

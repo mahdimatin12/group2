@@ -24,6 +24,38 @@
         <servlet-name>AdminRegisterServlet</servlet-name>
         <servlet-class>com.controller.AdminRegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerMainServlet</servlet-name>
+        <servlet-class>com.controller.CustomerMainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminMainServlet</servlet-name>
+        <servlet-class>com.controller.AdminMainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerAccountServlet</servlet-name>
+        <servlet-class>com.controller.CustomerAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdinRegisterServlet</servlet-name>
+        <servlet-class>com.controller.AdinRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CstomerRegisterServlet</servlet-name>
+        <servlet-class>com.controller.CstomerRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AminRegisterServlet</servlet-name>
+        <servlet-class>com.controller.AminRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminReisterServlet</servlet-name>
+        <servlet-class>com.controller.AdminReisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAccountServlet</servlet-name>
+        <servlet-class>com.controller.AdminAccountServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
@@ -47,6 +79,38 @@
     <servlet-mapping>
         <servlet-name>AdminRegisterServlet</servlet-name>
         <url-pattern>/AdminRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerMainServlet</servlet-name>
+        <url-pattern>/CustomerMainServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminMainServlet</servlet-name>
+        <url-pattern>/AdminMainServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerAccountServlet</servlet-name>
+        <url-pattern>/CustomerAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdinRegisterServlet</servlet-name>
+        <url-pattern>/AdinRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CstomerRegisterServlet</servlet-name>
+        <url-pattern>/CstomerRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AminRegisterServlet</servlet-name>
+        <url-pattern>/AminRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminReisterServlet</servlet-name>
+        <url-pattern>/AdminReisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAccountServlet</servlet-name>
+        <url-pattern>/AdminAccountServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

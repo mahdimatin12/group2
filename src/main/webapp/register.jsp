@@ -25,9 +25,13 @@
         <article class="main">
             <div class="loginContent">
                 <%
-                    String exist = (String) session.getAttribute("errorRegister");
+                    String error = (String) session.getAttribute("error");
+                    String nameerror = (String) session.getAttribute("nameerror");
+                    String emailerror = (String) session.getAttribute("emailerror");
+                    String passerror = (String) session.getAttribute("passerror");
+                    String phoneerror = (String) session.getAttribute("phoneerror");
                 %>
-                <h1>Register As <span style="font-size: 10px; color: orange;"><%= (exist != null) ? exist : ""%></span></h1>
+                <h1>Register As <span style="font-size: 10px; color: orange;"><%= (error != null) ? error : ""%></span></h1>
 
 
                 <button id="p1"><img src="image/admin-9575.svg" style="height: 20px;width: 20px;">Admin</button>
@@ -35,7 +39,7 @@
 
                 <form id="form1" class="admin" action="/group2/AdminRegisterServlet" method="POST">
 
-                    <input name="name"  type="text" placeholder="Admin name">
+                    <input name="name"  type="text" placeholder="<%= (nameerror != null) ? nameerror :"Enter your name"%>">
 
 
                     <select name="gender" id="gender">
@@ -45,9 +49,9 @@
                     </select>
 
                     <input name="dob"  type="date">
-                    <input type="text" name="phone" placeholder="Phone number">
-                    <input name="email" type="text" placeholder="Admin email">
-                    <input name="password" type="password" placeholder="Admin password">
+                    <input type="text" name="phone" placeholder="<%= (phoneerror != null) ? phoneerror :"Enter your phone"%>">
+                    <input name="email" type="text" placeholder="<%= (emailerror != null) ? emailerror :"Enter your email"%>">
+                    <input name="password" type="password" placeholder="<%= (passerror != null) ? passerror :"Enter your pass"%>">
                     <input type="hidden" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">   
 
@@ -80,10 +84,10 @@
                 const b = document.getElementById('form2');
                 const p1 = document.getElementById('p1');
                 const p2 = document.getElementById('p2');
-             
+
 
                 function third() {
-                    a.style.display = 'block';            
+                    a.style.display = 'block';
                     b.style.display = 'none';
 
                 }

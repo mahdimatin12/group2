@@ -15,7 +15,7 @@ public class CustomerSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE moviedb.customers SET NAME=?, PASSWORD=?, WHERE ID=?";
+    private String updateQuery = "UPDATE moviedb.customers SET NAME=?,GENDER=?, DOB=?, PHONE=?, PASSWORD=?, WHERE ID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM moviedb.customers WHERE ID=?";
 
@@ -120,8 +120,9 @@ public class CustomerSqlDAO {
         updateSt.setString(1, name);
         updateSt.setString(2, gender);
         updateSt.setString(3, dob.toString());
-        updateSt.setString(2, password);
-        updateSt.setString(3, Integer.toString(ID));
+        updateSt.setString(4, phone);
+        updateSt.setString(5, password);
+        updateSt.setString(6, Integer.toString(ID));
         int row = updateSt.executeUpdate();
         System.out.println("Row " + row + " has been successflly updated");
     }

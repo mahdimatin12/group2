@@ -46,7 +46,7 @@
         </style>
     </head>
     <body onload="startTime()"> 
-       
+
 
         <main>
             <article>
@@ -65,9 +65,12 @@
                                 <caption>Edit Customer <span class="message"><%= (submitted != null) ? "Update is Successful" : ""%></span></caption>
                                 <tr><td>ID: </td><td><input type="text" name="ID" value="<%= customer.getid()%>" readonly="true" /></td></tr>
                                 <tr><td>Name: </td><td><input type="text" name="name" value="<%= customer.getName()%>" /></td></tr>
+                                <tr><td>Gender: </td><td><input type="text" name="radio" value="<%= customer.getGender()%>" /></td></tr>
+                                <tr><td>DOB: </td><td><input type="text" name="dob" value="<%= customer.getDob()%>" /></td></tr>
+                                <tr><td>Mobile Number: </td><td><input type="phone" name="name" value="<%= customer.getPhone()%>" /></td></tr>
                                 <tr><td>Email: </td><td><input type="text" name="email" value="<%= customer.getEmail()%>" readonly="true"/></td></tr>
                                 <tr><td>Password: </td><td><input type="password" name="password" value="<%= customer.getPassword()%>" /></td></tr>
-                               
+
                                 <tr><input type="hidden" name="submitted" value="submitted"></tr>
                                 <tr>
                                     <td>
