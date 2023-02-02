@@ -4,11 +4,12 @@ import com.model.Customer;
 import javax.servlet.http.HttpServlet;
 
 import com.model.Customer;
+import com.model.Customer;
+import com.model.dao.CustomerSqlDAO;
 import com.model.dao.CustomerSqlDAO;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,62 +24,80 @@ public class CustomerRegisterServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
-        Date dob= Date.valueOf( request.getParameter("dob"));
-        String phone= request.getParameter("phone");
+        Date dob = Date.valueOf(request.getParameter("dob"));
+        String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         boolean nextPage = false;
+
         String error = "";
-        
-        
-        String nameRegex="^[a-zA-Z\\\\s]+";
-        String dobRegex="^\\d{4}-\\d{2}-\\d{2}$";
-        String phoneRegex="^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
+        String nameError = "";
+        String emailError = "";
+        String passError = "";
+        String dobError = "";
+        String phoneError = "";
+
+        int errorNum = 0;
+
+        //String startdate = "1900-01-01";
+        // String enddate = "2015-01-01";
+        String nameRegex = "[a-z A-Z]+([ '-][a-zA-Z]+)*";
+
+        String phoneRegex = "^[+0]\\d{1,2}\\d{6,11}$";
         String emailRegEx = "[a-zA-Z0-9_%+-]+[.][a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+(.com)";
         String passRegEx = "[A-Z][A-Za-z]{5,}\\d{2,}";
-        
-         
 
-        if (!email.matches(emailRegEx) || !password.matches(passRegEx)) {
-            error = "Incorrect ";
-            if (!email.matches(emailRegEx)) {
-                error += "email";
-            }
+        if (!name.matches(nameRegex)) {
+            nameError = "Incorrec name";
+            errorNum ++;
 
-            if (!password.matches(passRegEx)) {
-                if (error.contains("email")) {
-                    error += " and ";
-                }
-                error += "password";
-            }
-            error += " format";
-
-        } else {
-
+        }
+        if (!email.matches(emailRegEx)) {
+            emailError = "Incorrect email";
+            errorNum ++;
+        }
+        if (!password.matches(passRegEx)) {
+            passError = "Incorrect password";
+            errorNum ++;
+        }
+        if (!phone.matches(phoneRegex)) {
+            phoneError = "Incorrect phone";
+            errorNum ++;
+        }
+        if (errorNum == 0) {
             try {
                 CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
                 Customer customerSql = customerSqlDAO.getCustomer(email);
                 if (customerSql != null) {
                     error = "Customer already exists";
+                    session.setAttribute("error", error);
+                     request.getRequestDispatcher("register.jsp").include(request, response);
                 } else {
                     nextPage = true;
                     customerSqlDAO.create(name, gender, dob, phone, email, password);
                     Customer customer = customerSqlDAO.getCustomer(email);
-                   
-                  session.setAttribute("customer", customer);
+
+                    session.setAttribute("customer", customer);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+        } else {
+            
+            session.setAttribute("nameerror2", nameError);
+            session.setAttribute("emailerror2", emailError);
+            session.setAttribute("passerror2", passError);
+            session.setAttribute("phoneerror2", phoneError);
+            request.getRequestDispatcher("register.jsp").include(request, response);
+
         }
         if (nextPage) {
             request.getRequestDispatcher("main.jsp").include(request, response);
-        } else {
-            session.setAttribute("errorRegister", error);
-            request.getRequestDispatcher("register.jsp").include(request, response);
-    
-}
-}
+        }
+
+    }
 }

@@ -44,7 +44,7 @@ public class AdminRegisterServlet extends HttpServlet {
 
         //String startdate = "1900-01-01";
         // String enddate = "2015-01-01";
-        String nameRegex = "^[a-zA-Z]{2,20}";
+        String nameRegex = "[a-z A-Z]+([ '-][a-zA-Z]+)*";
 
         String phoneRegex = "^[+0]\\d{1,2}\\d{6,11}$";
         String emailRegEx = "[a-zA-Z0-9_%+-]+[.][a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+(.com)";
@@ -52,20 +52,20 @@ public class AdminRegisterServlet extends HttpServlet {
 
         if (!name.matches(nameRegex)) {
             nameError = "Incorrec name";
-            errorNum ++;
+            errorNum++;
 
         }
         if (!email.matches(emailRegEx)) {
             emailError = "Incorrect email";
-            errorNum ++;
+            errorNum++;
         }
         if (!password.matches(passRegEx)) {
             passError = "Incorrect password";
-            errorNum ++;
+            errorNum++;
         }
         if (!phone.matches(phoneRegex)) {
             phoneError = "Incorrect phone";
-            errorNum ++;
+            errorNum++;
         }
         if (errorNum == 0) {
             try {
@@ -73,6 +73,8 @@ public class AdminRegisterServlet extends HttpServlet {
                 Admin adminSql = adminSqlDAO.getAdmin(email);
                 if (adminSql != null) {
                     error = "Admin already exists";
+                    session.setAttribute("error", error);
+                    request.getRequestDispatcher("register.jsp").include(request, response);
                 } else {
                     nextPage = true;
                     adminSqlDAO.create(name, gender, dob, phone, email, password);
@@ -85,7 +87,7 @@ public class AdminRegisterServlet extends HttpServlet {
             }
 
         } else {
-            session.setAttribute("error", error);
+
             session.setAttribute("nameerror", nameError);
             session.setAttribute("emailerror", emailError);
             session.setAttribute("passerror", passError);

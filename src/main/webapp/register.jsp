@@ -37,10 +37,12 @@
                 <button id="p1"><img src="image/admin-9575.svg" style="height: 20px;width: 20px;">Admin</button>
                 <button id="p2"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
+                <!-- -----------------------------------------------Admin Register Form  ---------------------------------------------------------- -->
+                
+                
                 <form id="form1" class="admin" action="/group2/AdminRegisterServlet" method="POST">
 
-                    <input name="name"  type="text" placeholder="<%= (nameerror != null) ? nameerror :"Enter your name"%>">
-
+                    <input name="name"  type="text" placeholder="<%= (nameerror != null) ? nameerror : "Enter your name (Admin)"%>">
 
                     <select name="gender" id="gender">
                         <option value="">--Please choose gender--</option>
@@ -49,17 +51,26 @@
                     </select>
 
                     <input name="dob"  type="date">
-                    <input type="text" name="phone" placeholder="<%= (phoneerror != null) ? phoneerror :"Enter your phone"%>">
-                    <input name="email" type="text" placeholder="<%= (emailerror != null) ? emailerror :"Enter your email"%>">
-                    <input name="password" type="password" placeholder="<%= (passerror != null) ? passerror :"Enter your pass"%>">
+                    <input type="text" name="phone" placeholder="<%= (phoneerror != null) ? phoneerror : "Enter your phone (Admin)"%>">
+                    <input name="email" type="text" placeholder="<%= (emailerror != null) ? emailerror : "Enter your email (Admin)"%>">
+                    <input name="password" type="password" placeholder="<%= (passerror != null) ? passerror : "Enter your password (Admin)"%>">
                     <input type="hidden" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">   
 
                 </form>
 
+                <!-- -----------------------------------------------Customer Register Form---------------------------------------------------------- -->
+                 <%
+                   
+                    String nameerror2 = (String) session.getAttribute("nameerror2");
+                    String emailerror2 = (String) session.getAttribute("emailerror2");
+                    String passerror2 = (String) session.getAttribute("passerror2");
+                    String phoneerror2 = (String) session.getAttribute("phoneerror2");
+                %>
+
                 <form id="form2" class="admin" action="/group2/CustomerRegisterServlet" method="POST">
 
-                    <input name="name"  type="text" placeholder="Customer name">                  
+                    <input name="name"  type="text" placeholder="<%= (nameerror2 != null) ? nameerror2 : "Enter your name (Customer)"%>">                  
 
                     <select name="gender" id="gender">
                         <option value="">--Please choose gender--</option>
@@ -69,15 +80,15 @@
 
 
                     <input name="dob"  type="date">
-                    <input type="text" name="phone" placeholder="Phone number">
-                    <input name="email" type="text" placeholder="Customer email">
-                    <input name="password" type="password" placeholder="Customer password">
+                    <input type="text" name="phone" placeholder="<%=(phoneerror2 != null) ? phoneerror2 : "Enter your phone (Customer)"%>">
+                    <input name="email" type="text" placeholder="<%= (emailerror2 != null) ? emailerror2 : "Enter your email (Customer)"%>">
+                    <input name="password" type="password" placeholder="<%= (passerror2 != null) ? passerror2 : "Enter your password (Customer)"%>">
                     <input type="hidden" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">   
 
                 </form>
             </div>
-
+            <!-- -----------------------------------------------JavaScript for Differentiate ---------------------------------------------------------- -->
             <script>
 
                 const a = document.getElementById('form1');
@@ -98,7 +109,9 @@
                 p1.addEventListener('click', third, false);
                 p2.addEventListener('click', fourth, false);
             </script>
+
         </article>
+        <!-- -----------------------------------------------Footer ---------------------------------------------------------- -->
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
