@@ -1,8 +1,6 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.Random;
-import javax.management.relation.Role;
 import java.util.Date;
 
 public class Customer implements Serializable {

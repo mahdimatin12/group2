@@ -24,6 +24,26 @@
         <servlet-name>AdminRegisterServlet</servlet-name>
         <servlet-class>com.controller.AdminRegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.controller.MainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSearchServlet</servlet-name>
+        <servlet-class>com.controller.AdminSearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>com.controller.SearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSearchServlets</servlet-name>
+        <servlet-class>com.controller.AdminSearchServlets</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateCustomerServlet</servlet-name>
+        <servlet-class>com.controller.CreateCustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
@@ -47,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>AdminRegisterServlet</servlet-name>
         <url-pattern>/AdminRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/MainServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSearchServlets</servlet-name>
+        <url-pattern>/AdminSearchServlets</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateCustomerServlet</servlet-name>
+        <url-pattern>/CreateCustomerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,6 +6,7 @@ com\model\dao\BookingSqlDAO.class
 com\model\Booking.class
 com\controller\AdminServlet.class
 com\controller\DeleteAdminServlet.class
+com\controller\AdminSearchServlets.class
 com\controller\CustomerRegisterServlet.class
 com\controller\InitServlet.class
 com\model\Customer.class
@@ -13,12 +14,13 @@ com\controller\CustomerServlet.class
 com\controller\AdminMainServlet.class
 com\model\dao\AdminSqlDAO.class
 com\controller\AdminAccountServlet.class
-com\controller\RegisterServlet.class
 com\model\Movies.class
 com\utils\In.class
 com\controller\AdminRegisterServlet.class
 com\model\dao\CustomerSqlDAO.class
 com\model\Admin.class
+MainServlet.class
+com\controller\CreateCustomerServlet.class
 com\model\dao\SqlDB.class
 com\model\dao\SqlDBConnector.class
 com\controller\CustomerAccountServlet.class

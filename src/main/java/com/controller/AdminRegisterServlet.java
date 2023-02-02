@@ -70,7 +70,7 @@ public class AdminRegisterServlet extends HttpServlet {
                   session.setAttribute("admin", admin);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AdminRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (nextPage) {

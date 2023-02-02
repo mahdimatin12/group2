@@ -41,7 +41,7 @@
                       <h3 class="welcomemsg">Email: <%= admin.getEmail()%>!</h3>
             <aside class="customerAside">
                 <a href="#"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
-                <a href="#"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
+                <a href="customer.jsp"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
                 <a href="#"><img src="image/video-833.svg"><br>MOVIES</a>
             </aside>
             <% }%> 
