@@ -38,7 +38,7 @@ public class Admin implements Serializable {
     }
 
     public void update(int id, String name, String gender, Date dob, String phone, String email, String password) {
-       this.id = id;
+        this.id = id;
         this.name = name;
         this.gender = gender;
         this.dob = dob;
@@ -47,7 +47,9 @@ public class Admin implements Serializable {
         this.password = password;
     }
 
-    
+     public boolean login(String email, String password) {
+        return this.email.equals(email) && this.password.equals(password);
+    }
 
     public String getGender() {
         return gender;
@@ -73,9 +75,7 @@ public class Admin implements Serializable {
         this.phone = phone;
     }
 
-    public boolean login(String email, String password) {
-        return this.email.equals(email) && this.password.equals(password);
-    }
+   
 
     public boolean match(int id) {
         return this.id == id;

@@ -56,6 +56,18 @@
         <servlet-name>AdminAccountServlet</servlet-name>
         <servlet-class>com.controller.AdminAccountServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>com.controller.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteAdminServlet</servlet-name>
+        <servlet-class>com.controller.DeleteAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <servlet-class>com.controller.DeleteCustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
@@ -111,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>AdminAccountServlet</servlet-name>
         <url-pattern>/AdminAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteAdminServlet</servlet-name>
+        <url-pattern>/DeleteAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <url-pattern>/DeleteCustomerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

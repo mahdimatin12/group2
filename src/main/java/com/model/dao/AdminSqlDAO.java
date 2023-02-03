@@ -15,7 +15,7 @@ public class AdminSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE moviedb.admins SET NAME=?,GENDER=?, DOB=?, PHONE=?, PASSWORD=?, WHERE ID=?";
+    private String updateQuery = "UPDATE moviedb.admins SET NAME=?, GENDER=?, DOB=?, PHONE=?, PASSWORD=? WHERE ID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM moviedb.admins WHERE ID=?";
 

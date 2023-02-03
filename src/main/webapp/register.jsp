@@ -38,8 +38,8 @@
                 <button id="p2"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
                 <!-- -----------------------------------------------Admin Register Form  ---------------------------------------------------------- -->
-                
-                
+
+
                 <form id="form1" class="admin" action="/group2/AdminRegisterServlet" method="POST">
 
                     <input name="name"  type="text" placeholder="<%= (nameerror != null) ? nameerror : "Enter your name (Admin)"%>">
@@ -60,8 +60,8 @@
                 </form>
 
                 <!-- -----------------------------------------------Customer Register Form---------------------------------------------------------- -->
-                 <%
-                   
+                <%
+
                     String nameerror2 = (String) session.getAttribute("nameerror2");
                     String emailerror2 = (String) session.getAttribute("emailerror2");
                     String passerror2 = (String) session.getAttribute("passerror2");
