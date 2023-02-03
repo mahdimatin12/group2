@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register Now</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <header>
@@ -23,43 +23,50 @@
         </header>
         <main>
             <article>
-                <div class="content">           
+                <div class="loginContent">           
+
                     <%
-                        String exist = (String) session.getAttribute("error");
-                    %>            
-                    
-                        <fieldset>
-                            <legend>
-                                <%= (exist != null) ? exist : "Register Form"%>
-                            </legend>
-                            
-                            <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
-                            <form method="POST" id="registerForm" action="/group2/CreateCustomerServlet">                      
+                        String nameError = (String) session.getAttribute("nameError");
+                        session.removeAttribute("nameError");
+                        String phoneError = (String) session.getAttribute("phoneError");
+                        session.removeAttribute("phoneError");
+                        String emailError = (String) session.getAttribute("emailError");
+                        session.removeAttribute("emailError");
+                        String passError = (String) session.getAttribute("passError");
+                        session.removeAttribute("passError");
+                        String error = (String) session.getAttribute("error");
+                        session.removeAttribute("error");
+                    %>
+                    <h1>Register Form <span style="font-size: 10px; color: orange;"><%= (error != null) ? error : ""%></span></h1>
 
-                            <input name="name" type="text" placeholder="Customer name">
+                    <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
-                            <select name="gender" id="gender">
-                                <option value="">--Please choose gender--</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
+                    <form id="form1" method="post" action="/group2/CreateCustomerServlet" >                      
+
+                        <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Customer name"%>"
+
+                               <select name="gender" id="gender">     
+                        <option value="">--Please choose gender--</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        </select>
 
 
-                            <input name="dob" type="date">
+                        <input name="dob" type="date">
 
-                            <input type="text" name="phone" placeholder="Phone number">
+                        <input type="text" name="phone" placeholder="<%= (phoneError != null) ? phoneError : "Phone number"%>"
 
-                            <input name="email" type="text" placeholder="Customer email">
+                        <input name="email" type="text" placeholder="<%= (emailError != null) ? emailError : "Customer email"%>"
 
-                            <input name="password" type="password" placeholder="Customer password">
-                            <input style="cursor: pointer" type="submit" value="REGISTER">
+                               <input name="password" type="password" placeholder="<%= (passError != null) ? passError : "Customer password"%>"
+                               <input style="cursor: pointer" type="submit" value="REGISTER">
 
                         </fieldset>             
                     </form>
                 </div>
             </article>
         </main>
-        
+
 
     </body>
 </html>

@@ -49,7 +49,7 @@
                     <li><img src="image/Spiderman.jpg"></li>
 
                 </ul>
-                <a id="rev"href="#">&#8810;</a>
+                <a id="rev" href="#">&#8810;</a>
                 <a id="next" href="#">&#8811;</a>
             </div>
 
