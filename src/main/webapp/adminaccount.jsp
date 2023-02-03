@@ -1,5 +1,4 @@
 <%@page import="com.model.dao.AdminSqlDAO"%>
-<%@page import="com.model.Admins"%>
 <%@page import="com.model.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,51 +44,46 @@
 
         </style>
     </head>
-    <body onload="startTime()"> 
-        
-        <main>
-            <article>
-                <div class="content">
 
-                    <%
-                        AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
-                        Admin admin = (Admin) session.getAttribute("admin");
-                        String emailView = request.getParameter("emailView");
-                        String submitted = request.getParameter("submitted");
+    <main>
+        <article>
+            <div class="content">
 
-                    %>
-                    <div style="margin: auto;">
-                        <form style="width:100%" method="POST" action="/group2/AdminAccountServlet">
-                            <table class="table" style="width: 70%;">
-                                <caption>Edit Admin <span class="message"><%= (submitted != null) ? "Update is Successful" : ""%></span></caption>
-                                <tr><td>ID: </td><td><input type="text" name="ID" value="<%= admin.getid()%>" readonly="true" /></td></tr>
-                                <tr><td>Name: </td><td><input type="text" name="name" value="<%= admin.getName()%>" /></td></tr>
-                                <tr><td>Email: </td><td><input type="text" name="email" value="<%= admin.getEmail()%>" readonly="true"/></td></tr>
-                                <tr><td>Password: </td><td><input type="password" name="password" value="<%= admin.getPassword()%>" /></td></tr>
-                               
-                                <tr><input type="hidden" name="submitted" value="submitted"></tr>
-                                <tr>
-                                    <td>
-                                        <% if (emailView != null) { %>
-                                        <a id="cancelbtn" href="adminView.jsp">Accounts</a> 
-                                        <%} else { %>
-                                        <a id="dashboardbtn" href="main.jsp">Dashboard</a>
-                                        <%}%>
-                                    </td>
-                                    <td>
-                                        <input 10px;" id="cancelbtn" type="submit" value="Update" /> 
-                                        <a id="cancelbtn" href="/group2/DeleteAdminServlet">Delete</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div> 
-                </div>
-            </article>
-        </main>
-        <footer>
-            <p id="clock"></p>
-        </footer>
-    </body>
-</html>
+                <%
+                    AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
+                    Admin admin = (Admin) session.getAttribute("admin");
+                    String emailView = request.getParameter("emailView");
+                    String submitted = request.getParameter("submitted");
 
+                %>
+                <div style="margin: auto;">
+                    <form style="width:100%" method="POST" action="/group2/AdminAccountServlet">
+                        <table class="table" style="width: 70%;">
+                            <caption>Edit Admin <span class="message"><%= (submitted != null) ? "Update is Successful" : ""%></span></caption>
+                            <tr><td>ID: </td><td><input type="text" name="ID" value="<%= admin.getid()%>" readonly="true" /></td></tr>
+                            <tr><td>Name: </td><td><input type="text" name="name" value="<%= admin.getName()%>" /></td></tr>
+                            <tr><td>Email: </td><td><input type="text" name="email" value="<%= admin.getEmail()%>" readonly="true"/></td></tr>
+                            <tr><td>Password: </td><td><input type="password" name="password" value="<%= admin.getPassword()%>" /></td></tr>
+
+                            <tr><input type="hidden" name="submitted" value="submitted"></tr>
+                            <tr>
+                                <td>
+                                    <% if (emailView != null) { %>
+                                    <a id="cancelbtn" href="adminView.jsp">Accounts</a> 
+                                    <%} else { %>
+                                    <a id="dashboardbtn" href="main.jsp">Dashboard</a>
+                                    <%}%>
+                                </td>
+                                <td>
+                                    <input 10px;" id="cancelbtn" type="submit" value="Update" /> 
+                                    <a id="cancelbtn" href="/group2/DeleteAdminServlet">Delete</a>
+                                </td>
+                            </tr>
+                        </table>   
+                    </form>
+                    </article>
+                    <footer>
+                        <p id="clock"></p>
+                    </footer>
+                    </body>
+                    </html>

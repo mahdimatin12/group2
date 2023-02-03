@@ -44,6 +44,10 @@
         <servlet-name>CreateCustomerServlet</servlet-name>
         <servlet-class>com.controller.CreateCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updateCustomerServlet</servlet-name>
+        <servlet-class>com.controller.updateCustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
@@ -80,9 +84,11 @@
         <servlet-name>CreateCustomerServlet</servlet-name>
         <url-pattern>/CreateCustomerServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateCustomerServlet</servlet-name>
+        <url-pattern>/updateCustomerServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 </web-app>

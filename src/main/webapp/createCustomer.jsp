@@ -43,30 +43,32 @@
 
                     <form id="form1" method="post" action="/group2/CreateCustomerServlet" >                      
 
-                        <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Customer name"%>"
+                        <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Customer name"%>">
 
-                               <select name="gender" id="gender">     
-                        <option value="">--Please choose gender--</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <select name="gender" id="gender">     
+                            <option value="">--Please choose gender--</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
                         </select>
-
 
                         <input name="dob" type="date">
 
-                        <input type="text" name="phone" placeholder="<%= (phoneError != null) ? phoneError : "Phone number"%>"
+                        <input type="text" name="phone" placeholder="<%= (phoneError != null) ? phoneError : "Phone number"%>">
 
-                        <input name="email" type="text" placeholder="<%= (emailError != null) ? emailError : "Customer email"%>"
+                        <input name="email" type="text" placeholder="<%= (emailError != null) ? emailError : "Customer email"%>">
 
-                               <input name="password" type="password" placeholder="<%= (passError != null) ? passError : "Customer password"%>"
-                               <input style="cursor: pointer" type="submit" value="REGISTER">
+                        <input name="password" type="password" placeholder="<%= (passError != null) ? passError : "Customer password"%>">
+                        <input style="cursor: pointer" type="submit" value="REGISTER">
 
-                        </fieldset>             
                     </form>
                 </div>
             </article>
         </main>
-
+        <footer>
+            <p>SIUA 2023, UST, Sydney.
+            <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
+            <p>Contact: <a href="mailto:nobody@nowhere.com">group2@ust.com</a></p>
+        </footer>
 
     </body>
 </html>

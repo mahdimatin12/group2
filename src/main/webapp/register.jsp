@@ -35,7 +35,6 @@
 
                 <form id="form1" class="admin" action="/group2/AdminRegisterServlet" method="POST">
 
-                    <input name="name"  type="text" placeholder="Admin name">
 
 
                     <select name="gender" id="gender">
@@ -80,10 +79,10 @@
                 const b = document.getElementById('form2');
                 const p1 = document.getElementById('p1');
                 const p2 = document.getElementById('p2');
-             
+
 
                 function third() {
-                    a.style.display = 'block';            
+                    a.style.display = 'block';
                     b.style.display = 'none';
 
                 }

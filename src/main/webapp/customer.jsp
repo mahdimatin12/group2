@@ -16,7 +16,7 @@
             <nav class="clear">
                 <ul>
                     <li><a class="button" href="index.jsp">Home</a></li>                    
-                
+
                 </ul>
             </nav>
         </header>
@@ -28,6 +28,7 @@
                         <input id="searchbtn" type="submit" value="search">
 
                     </form>
+                    
 
                     <h1>Customers</h1>
                     <table>
@@ -49,7 +50,7 @@
                             <%
                                 //Customer customer = (Customer) session.getAttribute("customer");
                                 CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
-                                List<Customer> customers = customerSqlDAO.getCustomers();
+                                List<Customer> customers = customerSqlDAO.getCustomers();                            
                                 for (Customer customer : customers) {
 
                             %>
@@ -65,6 +66,11 @@
                             <% }%>
                         </tbody>
                     </table>
+                    <footer>
+                        <p>SIUA 2023, UST, Sydney.
+                        <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
+                        <p>Contact: <a href="mailto:nobody@nowhere.com">group2@ust.com</a></p>
+                    </footer>
                     </body>
                     </html>
 

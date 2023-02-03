@@ -9,6 +9,8 @@ com\controller\DeleteAdminServlet.class
 com\controller\AdminSearchServlets.class
 com\controller\CustomerRegisterServlet.class
 com\controller\InitServlet.class
+com\model\dao\MovieSqlDAO.class
+com\controller\updateCustomerServlet.class
 com\model\Customer.class
 com\controller\CustomerServlet.class
 com\controller\AdminMainServlet.class
@@ -20,9 +22,11 @@ com\controller\AdminRegisterServlet.class
 com\model\dao\CustomerSqlDAO.class
 com\model\Admin.class
 MainServlet.class
+com\controller\MovieAddServlet.class
 com\controller\CreateCustomerServlet.class
 com\model\dao\SqlDB.class
 com\model\dao\SqlDBConnector.class
 com\controller\CustomerAccountServlet.class
 com\controller\LogoutServlet.class
+com\controller\MovieSearchServlet.class
 com\model\Movie.class
