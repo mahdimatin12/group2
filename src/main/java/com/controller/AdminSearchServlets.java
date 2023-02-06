@@ -35,8 +35,8 @@ public class AdminSearchServlets extends HttpServlet {
             session.setAttribute("customer", customer);
             request.getRequestDispatcher("adminSearch.jsp").include(request, response);
         } else {
-            session.setAttribute("error", "Customer does not exist");
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            session.setAttribute("error", " ID Not Found!");
+            request.getRequestDispatcher("customer.jsp").include(request, response);
         }
     }
 }

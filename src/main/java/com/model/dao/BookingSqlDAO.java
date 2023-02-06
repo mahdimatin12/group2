@@ -1,7 +1,6 @@
 package com.model.dao;
 
 import com.model.Booking;
-import com.model.Movie;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +13,10 @@ public class BookingSqlDAO {
     
     private Statement st;
     
+    
     public BookingSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
+        
     }
 
     //Create Booking for a User by ID
@@ -62,15 +63,7 @@ public class BookingSqlDAO {
         return temp;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-
+   
     //Read a Booking by user ID
     public List<Booking> getBookings(int ID) throws SQLException {
         String fetch = "select imgUrl,name , date\n"
@@ -91,8 +84,10 @@ public class BookingSqlDAO {
             temp.add(new Booking(imgUrl, name, date));
         }
         return temp;
+        
     }
 
+    
     //archive blog
 //    public void archive(int ID) throws SQLException {
 //        List<Blog> blogs = getBlogs(ID);

@@ -20,7 +20,8 @@ public class CreateCustomerServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-
+  
+        int ID = Integer.parseInt(request.getParameter("ID"));
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
         Date dob = Date.valueOf(request.getParameter("dob"));
@@ -32,11 +33,15 @@ public class CreateCustomerServlet extends HttpServlet {
         String phoneRegEx= "^[+0]\\d{1,2}\\d{6,11}$";
         String emailRegEx = "[a-zA-Z0-9_%+-]+[.][a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+(.com)";
         String passRegEx = "[A-Z][A-Za-z]{5,}\\d{2,}";
+        String error="";
         
              if (!email.matches(emailRegEx) || !password.matches(passRegEx)){
             if (!name.matches(nameRegEx)) {
                 session.setAttribute("nameError", "Incorrect name format");
                 
+            if(gender.isEmpty()){
+              session.setAttribute("genderError", "Please Select your gender");
+            }
             }if (!phone.matches(phoneRegEx)) {
                 session.setAttribute("phoneError", "Incorrect phone format");
             }
@@ -46,6 +51,7 @@ public class CreateCustomerServlet extends HttpServlet {
             if (!password.matches(passRegEx)) {
                 session.setAttribute("passError", "Incorrect password format");
             }
+            
             request.getRequestDispatcher("createCustomer.jsp").include(request, response);
 
        } else {
@@ -60,7 +66,7 @@ public class CreateCustomerServlet extends HttpServlet {
                     customerSqlDAO.create(name, gender, dob, phone, email, password);
                     Customer customer = customerSqlDAO.getCustomer(email);
                     session.setAttribute("customer", customer);
-                    request.getRequestDispatcher("main.jsp").include(request, response);
+                    request.getRequestDispatcher("customer.jsp").include(request, response);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(CreateCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);

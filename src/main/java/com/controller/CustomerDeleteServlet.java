@@ -1,5 +1,5 @@
-package com.controller;
 
+package com.controller;
 
 import com.model.Customer;
 import com.model.dao.CustomerSqlDAO;
@@ -13,28 +13,44 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class MainServlet extends HttpServlet {
 
-    @Override
+public class CustomerDeleteServlet extends HttpServlet {
+    
+@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
-        String emailView = request.getParameter("emailview");
         
-         Customer customer = null;
+        String emailView = (String) session.getAttribute("email");
+
+        Customer customer = null;
         if (emailView != null) {
             try {
                 customer = customerSqlDAO.getCustomer(emailView);
-                session.setAttribute("emailView", emailView);
             } catch (SQLException ex) {
-                Logger.getLogger(MainServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DeleteCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             customer = (Customer) session.getAttribute("customer");
         }
-        session.setAttribute("customer", customer);
-        request.getRequestDispatcher("customerEmailview.jsp").include(request, response);
+
+        if (customer != null) {
+            try {
+                customerSqlDAO.delete(customer.getid());
+                customerSqlDAO.deletebookings(customer.getid());
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomerDeleteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        if (emailView != null) {
+            request.getRequestDispatcher("main.jsp").include(request, response);
+        } else {
+            session.invalidate();
+            request.getRequestDispatcher("index.jsp").include(request, response);
+        }
     }
+  
+
 }

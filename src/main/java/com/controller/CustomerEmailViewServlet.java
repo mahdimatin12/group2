@@ -1,6 +1,5 @@
 package com.controller;
 
-
 import com.model.Customer;
 import com.model.dao.CustomerSqlDAO;
 import java.io.IOException;
@@ -13,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class MainServlet extends HttpServlet {
+
+public class CustomerEmailViewServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -21,20 +21,20 @@ public class MainServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
-        String emailView = request.getParameter("emailview");
-        
-         Customer customer = null;
+        String emailView = request.getParameter("emailView");
+
+        Customer customer = null;
         if (emailView != null) {
             try {
                 customer = customerSqlDAO.getCustomer(emailView);
                 session.setAttribute("emailView", emailView);
             } catch (SQLException ex) {
-                Logger.getLogger(MainServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CustomerEmailViewServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             customer = (Customer) session.getAttribute("customer");
         }
         session.setAttribute("customer", customer);
-        request.getRequestDispatcher("customerEmailview.jsp").include(request, response);
+        request.getRequestDispatcher("cutomerEmailView.jsp").include(request, response);
     }
 }

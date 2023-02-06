@@ -16,6 +16,7 @@ C:\group2\src\main\java\com\model\Admin.java
 C:\group2\src\main\java\com\controller\CustomerMainServlet.java
 C:\group2\src\main\java\com\model\Booking.java
 C:\group2\src\main\java\com\controller\CreateCustomerServlet.java
+C:\group2\src\main\java\com\controller\CustomerDeleteServlet.java
 C:\group2\src\main\java\com\model\Customers.java
 C:\group2\src\main\java\com\model\dao\AdminSqlDAO.java
 C:\group2\src\main\java\com\controller\AdminRegisterServlet.java
@@ -25,9 +26,11 @@ C:\group2\src\main\java\com\controller\MovieSearchServlet.java
 C:\group2\src\main\java\com\utils\In.java
 C:\group2\src\main\java\com\model\Admins.java
 C:\group2\src\main\java\com\controller\AdminSearchServlets.java
+C:\group2\src\main\java\com\controller\CustomerEmailViewServlet.java
 C:\group2\src\main\java\com\model\dao\CustomerSqlDAO.java
 C:\group2\src\main\java\com\controller\CustomerServlet.java
 C:\group2\src\main\java\com\model\Movies.java
 C:\group2\src\main\java\com\controller\DeleteAdminServlet.java
+C:\group2\src\main\java\com\rest\CustomerService.java
 C:\group2\src\main\java\com\controller\BookingServlet.java
 C:\group2\src\main\java\com\model\dao\MovieSqlDAO.java

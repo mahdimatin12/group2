@@ -4,13 +4,16 @@ com\controller\DeleteCustomerServlet.class
 com\model\Admins.class
 com\model\dao\BookingSqlDAO.class
 com\model\Booking.class
+com\controller\MainServlet.class
 com\controller\AdminServlet.class
+com\controller\CustomerDeleteServlet.class
 com\controller\DeleteAdminServlet.class
 com\controller\AdminSearchServlets.class
 com\controller\CustomerRegisterServlet.class
 com\controller\InitServlet.class
 com\model\dao\MovieSqlDAO.class
 com\controller\updateCustomerServlet.class
+com\controller\CustomerEmailViewServlet.class
 com\model\Customer.class
 com\controller\CustomerServlet.class
 com\controller\AdminMainServlet.class
@@ -21,7 +24,7 @@ com\utils\In.class
 com\controller\AdminRegisterServlet.class
 com\model\dao\CustomerSqlDAO.class
 com\model\Admin.class
-MainServlet.class
+com\rest\CustomerService.class
 com\controller\MovieAddServlet.class
 com\controller\CreateCustomerServlet.class
 com\model\dao\SqlDB.class

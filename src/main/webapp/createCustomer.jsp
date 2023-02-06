@@ -15,7 +15,7 @@
                 <nav>
                     <ul class="nav">
                         <li><a class="button" href="index.jsp"> Home </a></li>
-                        <li><a class="button" href="login.jsp"> Login </a></li>
+                        <li><a class="button" href="customer.jsp">Cancel Register </a></li>
 
                     </ul>
                 </nav>
@@ -34,6 +34,8 @@
                         session.removeAttribute("emailError");
                         String passError = (String) session.getAttribute("passError");
                         session.removeAttribute("passError");
+                        String genderError = (String) session.getAttribute("genderError");
+                        session.removeAttribute("genderError");
                         String error = (String) session.getAttribute("error");
                         session.removeAttribute("error");
                     %>
@@ -46,7 +48,7 @@
                         <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Customer name"%>">
 
                         <select name="gender" id="gender">     
-                            <option value="">--Please choose gender--</option>
+                            <option value=""><%= (genderError != null) ? genderError : "Gender"%></option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>

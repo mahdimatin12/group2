@@ -48,6 +48,14 @@
         <servlet-name>updateCustomerServlet</servlet-name>
         <servlet-class>com.controller.updateCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <servlet-class>com.controller.CustomerDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerEmailViewServlet</servlet-name>
+        <servlet-class>com.controller.CustomerEmailViewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
@@ -80,6 +88,19 @@
         <servlet-name>AdminSearchServlets</servlet-name>
         <url-pattern>/AdminSearchServlets</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Servlet-name</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>"name of package containing the REST service"</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet-name </servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateCustomerServlet</servlet-name>
         <url-pattern>/CreateCustomerServlet</url-pattern>
@@ -87,6 +108,14 @@
     <servlet-mapping>
         <servlet-name>updateCustomerServlet</servlet-name>
         <url-pattern>/updateCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <url-pattern>/CustomerDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerEmailViewServlet</servlet-name>
+        <url-pattern>/CustomerEmailViewServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

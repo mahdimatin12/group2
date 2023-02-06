@@ -7,23 +7,35 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin View</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <header>
+        <header style ="background-color: yellow">
             <div class="Navbar">
                 <nav>
                     <ul class="nav">
-                        <li><a class="button" href="index.jsp">Home</a></li>
+                        <li><a class="button" href="customer.jsp">Customers List</a></li>
                         <li><a class="button" href="/group2/LogoutServlet">Logout</a></li> 
-                        <li><a class="button" href="/group2/createCustomer.jsp"> Register </a></li>
-                        <li><a class="button" href="#"> Update </a></li>
-                        <li><a class="button" href="#"> delete </a></li>
+
+                        <li><a class="button" href="/group2/updateCustomer.jsp"> Update </a></li>
+                        <li><a class="button" href="/group2/CustomerDeleteServlet"> delete </a></li>
                     </ul>
                 </nav>
             </div>
         </header>
-        <table>
+        <%
+            request.setAttribute("email", null);
+            request.removeAttribute("email");
+        %>
+        <%
+            Customer customer = (Customer) session.getAttribute("customer");
+            CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
+            customer = customerSqlDAO.getCustomer("id");
+
+        %>
+
+
+        <table style="align-content: center; margin-top: 15%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -35,17 +47,6 @@
                 </tr>
             </thead>
             <tbody>
-                <%
-                    request.setAttribute("email", null);
-                    request.removeAttribute("email");
-                %>
-                <%
-                    Customer customer = (Customer) session.getAttribute("customer");
-                    CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
-                    customer = customerSqlDAO.getCustomer("id");
-
-                %>
-
                 <tr>
                     <td>${customer.id}</td>
                     <td>${customer.name}</td>
@@ -58,11 +59,11 @@
 
             </tbody>
         </table>
+
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
             <p>Contact: <a href="mailto:nobody@nowhere.com">group2@ust.com</a></p>
         </footer>
     </body>
-
 </html>
