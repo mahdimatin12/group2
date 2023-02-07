@@ -46,6 +46,14 @@ body {
     background: #f5f4f4;
 }
 
+button {
+        display: inline-block;
+        background-color: #7b38d8;
+        padding: 20px;
+        width: 200px;
+        color: #ffffff;
+        text-align: center;
+      }
 
 header {
     background-color:rgb(93,43,78); 
@@ -458,7 +466,4 @@ aside a:hover {
 #oForm {
     margin-top: 2%;
 }
-
-
-
 

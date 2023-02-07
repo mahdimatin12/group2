@@ -1,3 +1,4 @@
+
 package com.controller;
 
 import com.model.Customer;
@@ -13,29 +14,29 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-public class CustomerServlet extends HttpServlet {
+public class AdminSearchServlets extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+     @Override
+     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        int id = Integer.parseInt(request.getParameter(""+"id"));        
+      
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
 
         Customer customer = null;
         try {
-            customer = customerSqlDAO.login(email, password);
+            customer = customerSqlDAO.getCustomer(id);
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminSearchServlets.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (customer != null) {
             session.setAttribute("customer", customer);
-            request.getRequestDispatcher("main.jsp").include(request, response);
+            request.getRequestDispatcher("adminSearch.jsp").include(request, response);
         } else {
-            session.setAttribute("error", "Customer not found, try again.");
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            session.setAttribute("error", " ID Not Found!");
+            request.getRequestDispatcher("customer.jsp").include(request, response);
         }
     }
 }

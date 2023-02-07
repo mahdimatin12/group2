@@ -25,9 +25,7 @@
                     <li><a href="#">ABOUT THE APP</a></li>
                     <li><a href="register.jsp">SIGN UP</a></li>                    
                     <li><a href="login.jsp">LOGIN</a></li>
-                    <li><a href="#">mahdi</a></li>
-                    <li><a href="#">zaki</a></li>
-                      <li><a href="#">Mahdi is typing...</a></li>
+                    
                 </ul>
             </nav>
 
@@ -49,7 +47,7 @@
                     <li><img src="image/Spiderman.jpg"></li>
 
                 </ul>
-                <a id="rev"href="#">&#8810;</a>
+                <a id="rev" href="#">&#8810;</a>
                 <a id="next" href="#">&#8811;</a>
             </div>
 
