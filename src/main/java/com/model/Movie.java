@@ -1,13 +1,18 @@
 package com.model;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "movie")
 public class Movie implements Serializable {
 
     private int id;
     private String name;
     private String genre;
-    private String year;    
+    private int year;    
     private String description;
     private String runtime;
     private String imgUrl;
@@ -17,7 +22,7 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(int id, String name, String genre, String year, String description, String runtime, String imgUrl, String vidUrl) {
+    public Movie(int id, String name, String genre, int year, String description, String runtime, String imgUrl, String vidUrl) {
         this.id = id;
         this.name = name;
         this.genre = genre;
@@ -30,7 +35,8 @@ public class Movie implements Serializable {
 
   
 
-    public Movie(String name, String genre, String year, String description, String runtime, String imgUrl, String vidUrl) {
+    public Movie(String name, String genre, int year, String description,
+                 String runtime, String imgUrl, String vidUrl) {
         this.name = name;
         this.genre = genre;
         this.year = year;
@@ -39,6 +45,16 @@ public class Movie implements Serializable {
         this.imgUrl = imgUrl;
         this.vidUrl = vidUrl;
     }    
+     public void update(int id, String name, String genre, int year, String description, String runtime, String imgUrl, String vidUrl) {
+        this.id = id;
+        this.name = name;
+        this.genre = genre;
+        this.year = year;
+        this.description = description;
+        this.runtime = runtime;
+        this.imgUrl = imgUrl;
+        this.vidUrl = vidUrl;
+    }
 
     public boolean match(int id) {
         return this.id == id;
@@ -76,11 +92,11 @@ public class Movie implements Serializable {
         this.genre = genre;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 

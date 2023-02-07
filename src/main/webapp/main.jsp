@@ -33,7 +33,7 @@
 
             <aside class="adminAside">
                 <a href="/group2/CustomerMainServlet"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
-                <a href="#"><img src="image/video-833.svg"><br>Movies</a>
+                <a href="movies.jsp"><img src="image/video-833.svg"><br>Movies</a>
                 <a href="booking.jsp"><img src="image/click-mobile-phone-2406.svg"><br>MY BOOKINGS</a>
             </aside>
             
@@ -44,7 +44,7 @@
             <aside class="customerAside">
                 <a href="/group2/AdminMainServlet"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
                 <a href="#"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
-                <a href="#"><img src="image/video-833.svg"><br>MOVIES</a>
+                <a href="movies.jsp"><img src="image/video-833.svg"><br>MOVIES</a>
             </aside>
             
             <% }%> 

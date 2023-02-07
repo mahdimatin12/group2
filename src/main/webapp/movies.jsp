@@ -4,6 +4,7 @@
     Author     : 236365
 --%>
 
+<%@page import="com.model.Admin"%>
 <%@page import="com.model.Movie"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.dao.MovieSqlDAO"%>
@@ -15,14 +16,7 @@
         <link href="css/styles.css" rel="stylesheet">
         <title>Movies</title>
     </head>
-    <body>
-        <h1></h1>
-
-        <%
-            MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
-            List<Movie> movies = movieSqlDAO.getMovies();
-
-        %>
+    <body>       
         <header>
             <nav class="clear">
                 <ul>
@@ -31,42 +25,52 @@
                     <li><a href="/group2/LogoutServlet">LOGOUT</a></li> 
                 </ul>
             </nav>
-
             <span>&#9654</span>
-            <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
+            <h1>my movies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
         </header>
 
-        <article class="main">
+        <%
+            String movieDeleteMsg = (String) session.getAttribute("movieDeleteMsg");
+            String movieAddMsg = (String) session.getAttribute("movieAddMsg");
 
+            MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
+            List<Movie> movies = movieSqlDAO.getMovies();
+            Admin admin = (Admin) session.getAttribute("admin");
+        %>        
+        <div>
             <form action="/group2/MovieSearchServlet" method="POST">
-                <input name="id" type="text" placeholder="search by id" id="id">
-                <input type="submit" value="search">
-
+                <input name="name" type="text" placeholder="Movie Name/Title">
+                <input type="submit" value="search">                
             </form>
-            <br>
-            <form action="addmovie.jsp" method="POST">
-                <input type="submit" value="+New Movie">
+        </div>
+        <br>       
+        <% if (admin != null) {%>
+        <form action="addmovie.jsp" method="POST">
+            <input name="addmovie"type="submit" value="AddMovie">
+        </form>
+        <% } %>
 
-            </form>
+        <%
+            if (movieDeleteMsg != null) {%>
+            <h3><%=movieDeleteMsg%></h3>
+        <% } %>
 
-            <table>
-                <% for (Movie movie : movies) {%>
-                <tr>
-                    <td>
-                        <a href="moviedetails.jsp"><img src="<%= movie.getImgUrl()%>" width="150px" height="180px"></a>                        
+        <table>
+            <% for (Movie movie : movies) {%>
+            <tr>
+                <td>
+                    <a href="http://localhost:8080/group2/MovieViewServlet?Id=<%=movie.getid()%>">
+                        <img src="<%= movie.getImgUrl()%>" width="100px" height="100px">
+                    </a>                        
+                </td>
+                <td><%= movie.getName()%></td>
+                <td><%= movie.getGenre()%></td>
+                <td><%= movie.getYear()%></td>
+                <td><%= movie.getRuntime()%></td>
+            </tr> 
+            <%}%>
 
-                    </td>
-                    <td><%= movie.getName()%></td>
-                    <td><%= movie.getGenre()%></td>
-                    <td><%= movie.getYear()%></td>
-                    <td><%= movie.getRuntime()%></td>
-                </tr> 
-                <%}%>
-
-            </table>
-
-        </article>
-
+        </table>           
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>

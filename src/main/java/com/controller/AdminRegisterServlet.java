@@ -53,7 +53,6 @@ public class AdminRegisterServlet extends HttpServlet {
         if (!name.matches(nameRegex)) {
             nameError = "Incorrec name";
             errorNum++;
-
         }
         if (!email.matches(emailRegEx)) {
             emailError = "Incorrect email";

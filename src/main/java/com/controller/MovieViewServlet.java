@@ -8,6 +8,7 @@ package com.controller;
 import com.model.Movie;
 import com.model.dao.MovieSqlDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,49 +22,34 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236365
  */
-public class MovieSearchServlet extends HttpServlet {
+public class MovieViewServlet extends HttpServlet {
 
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        String movieSearchMsg="";
-        String IdRegex = "^[0-9]{6}$";
-        String Iderror = "Incorrect ID format";
+        String movieSearchMsg = "";
         
         MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
         Movie movie = null;
-        String name = request.getParameter("name");
-        
-
-        if (name != null) {
+        int Id = Integer.parseInt(request.getParameter("Id"));      
             try {
-                movie = movieSqlDAO.getMovie(name);
+                movie = movieSqlDAO.getMovie(Id);
             } catch (SQLException ex) {
                 Logger.getLogger(MovieSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } 
         
         if (movie != null) {
             session.setAttribute("movie", movie);
-            
-            //session.removeAttribute("movieSearchMsg");
-
             request.getRequestDispatcher("moviedetails.jsp").include(request, response);
         } else {
-            movieSearchMsg="Movie does not exist";
-            session.setAttribute("movieSearchMsg",movieSearchMsg );
+            movieSearchMsg = "Movie does not exist";
+            session.setAttribute("movieSearchMsg", movieSearchMsg);
             session.removeAttribute("movie");
             request.getRequestDispatcher("movies.jsp").include(request, response);
         }
 
     }
+
 }

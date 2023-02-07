@@ -41,22 +41,18 @@
                 
                 
                 <form id="form1" class="admin" action="/group2/AdminRegisterServlet" method="POST">
-
                     <input name="name"  type="text" placeholder="<%= (nameerror != null) ? nameerror : "Enter your name (Admin)"%>">
-
                     <select name="gender" id="gender">
                         <option value="">--Please choose gender--</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
-
                     <input name="dob"  type="date">
                     <input type="text" name="phone" placeholder="<%= (phoneerror != null) ? phoneerror : "Enter your phone (Admin)"%>">
                     <input name="email" type="text" placeholder="<%= (emailerror != null) ? emailerror : "Enter your email (Admin)"%>">
                     <input name="password" type="password" placeholder="<%= (passerror != null) ? passerror : "Enter your password (Admin)"%>">
                     <input type="hidden" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">   
-
                 </form>
 
                 <!-- -----------------------------------------------Customer Register Form---------------------------------------------------------- -->

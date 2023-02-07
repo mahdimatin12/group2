@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+      
+    <servlet>
+        <servlet-name>group2</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>com.rest</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet>
         <servlet-name>InitServlet</servlet-name>
         <servlet-class>com.controller.InitServlet</servlet-class>
@@ -37,24 +47,28 @@
         <servlet-class>com.controller.CustomerAccountServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdinRegisterServlet</servlet-name>
-        <servlet-class>com.controller.AdinRegisterServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CstomerRegisterServlet</servlet-name>
-        <servlet-class>com.controller.CstomerRegisterServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AminRegisterServlet</servlet-name>
-        <servlet-class>com.controller.AminRegisterServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AdminReisterServlet</servlet-name>
-        <servlet-class>com.controller.AdminReisterServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminAccountServlet</servlet-name>
         <servlet-class>com.controller.AdminAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieAddServlet</servlet-name>
+        <servlet-class>com.controller.MovieAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieSearchServlet</servlet-name>
+        <servlet-class>com.controller.MovieSearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieDeleteServlet</servlet-name>
+        <servlet-class>com.controller.MovieDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieUpdateServlet</servlet-name>
+        <servlet-class>com.controller.MovieUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieViewServlet</servlet-name>
+        <servlet-class>com.controller.MovieViewServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
@@ -93,24 +107,32 @@
         <url-pattern>/CustomerAccountServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdinRegisterServlet</servlet-name>
-        <url-pattern>/AdinRegisterServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CstomerRegisterServlet</servlet-name>
-        <url-pattern>/CstomerRegisterServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AminRegisterServlet</servlet-name>
-        <url-pattern>/AminRegisterServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminReisterServlet</servlet-name>
-        <url-pattern>/AdminReisterServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AdminAccountServlet</servlet-name>
         <url-pattern>/AdminAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieAddServlet</servlet-name>
+        <url-pattern>/MovieAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieSearchServlet</servlet-name>
+        <url-pattern>/MovieSearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieDeleteServlet</servlet-name>
+        <url-pattern>/MovieDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieUpdateServlet</servlet-name>
+        <url-pattern>/MovieUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieViewServlet</servlet-name>
+        <url-pattern>/MovieViewServlet</url-pattern>
+    </servlet-mapping>
+      <servlet-mapping>
+        <servlet-name>group2</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
