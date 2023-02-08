@@ -13,13 +13,27 @@
             <param-value>com.rest</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+    </servlet>    
+    <servlet>
+        <servlet-name>MovieAddServlet</servlet-name>
+        <servlet-class>com.controller.MovieAddServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>group2</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
-    
-    
+    <servlet>
+        <servlet-name>MovieSearchServlet</servlet-name>
+        <servlet-class>com.controller.MovieSearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieDeleteServlet</servlet-name>
+        <servlet-class>com.controller.MovieDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieUpdateServlet</servlet-name>
+        <servlet-class>com.controller.MovieUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieViewServlet</servlet-name>
+        <servlet-class>com.controller.MovieViewServlet</servlet-class>
+    </servlet>    
     <servlet>
         <servlet-name>InitServlet</servlet-name>
         <servlet-class>com.controller.InitServlet</servlet-class>
@@ -64,6 +78,7 @@
         <servlet-name>DeleteCustomerServlet</servlet-name>
         <servlet-class>com.controller.DeleteCustomerServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
@@ -107,6 +122,26 @@
     <servlet-mapping>
         <servlet-name>DeleteCustomerServlet</servlet-name>
         <url-pattern>/DeleteCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieSearchServlet</servlet-name>
+        <url-pattern>/MovieSearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieDeleteServlet</servlet-name>
+        <url-pattern>/MovieDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieUpdateServlet</servlet-name>
+        <url-pattern>/MovieUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieViewServlet</servlet-name>
+        <url-pattern>/MovieViewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>group2</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     
 </web-app>

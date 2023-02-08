@@ -29,7 +29,7 @@ import javax.xml.bind.JAXBException;
 public class MovieSqlService {
 
     @GET
-    @Path("movies") //http://localhost:8080/group2/rest/sqlapi/movies
+    @Path("movies") //http://localhost:8080/group2/rest/movieapi/movies
     @Produces(MediaType.APPLICATION_XML)
     public Movies getMovies() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         MovieSqlDAO movieSqlDAO = new MovieSqlDAO(new SqlDBConnector().connection());
@@ -40,7 +40,7 @@ public class MovieSqlService {
 
     @GET
     @Path("savemovie/{name}-{genre}-{year}-{description}-{runtime}-{imgurl}-{vidurl}")
-    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
     public Response saveMovie(@PathParam("name") String name, @PathParam("genre") String genre,
             @PathParam("year") int year, @PathParam("description") String description,
             @PathParam("runtime") String runtime, @PathParam("imgurl") String imgurl,
@@ -49,13 +49,11 @@ public class MovieSqlService {
             SQLException, InstantiationException, IllegalAccessException, IOException {
 
         MovieSqlDAO movieSqlDAO = new MovieSqlDAO(new SqlDBConnector().connection());
-        Movie movie = new Movie(name, genre, year,description,runtime,imgurl,vidurl);
-        Movies movies = new Movies();
-        movies.addAll(movieSqlDAO.getMovies());
-        movies.add(movie);
         movieSqlDAO.create(name, genre, year, description, runtime, imgurl, vidurl);
-        movies.addAll(movieSqlDAO.getMovies());
-        return Response.status(200).entity(movies).build();     
+        Movie movie = movieSqlDAO.getMovie(name);
+        Movies movies=new Movies();        
+        movies.add(movie);      
+         return Response.status(200).entity(movies).build();     
         
     }
     
