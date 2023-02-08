@@ -44,16 +44,14 @@
                             <form id="form1" class="admin" action="/group2/AdminServlet" method="POST">
 
                                 <input name="email" placeholder="admin email" type="text">
-                                <input name="password" placeholder="admin password" type="password"> 
-                                <input type="hidden" name="role" value="admin">
+                                <input name="password" placeholder="admin password" type="password">                               
                                 <input type="submit" value="SIGN IN" style="cursor: pointer">
 
                             </form>
 
                             <form id="form2" class="admin" action="/group2/CustomerServlet" method="POST">
                                 <input name="email" placeholder="customer email" type="text">
-                                <input name="password" placeholder="customer password" type="password"> 
-                                <input type="hidden" value="admin">
+                                <input name="password" placeholder="customer password" type="password">                               
                                 <input type="submit" value="SIGN IN" style="cursor: pointer;">            
                             </form>
                         </div>

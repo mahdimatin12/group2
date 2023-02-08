@@ -46,14 +46,6 @@ body {
     background: #f5f4f4;
 }
 
-button {
-        display: inline-block;
-        background-color: #7b38d8;
-        padding: 20px;
-        width: 200px;
-        color: #ffffff;
-        text-align: center;
-      }
 
 header {
     background-color:rgb(93,43,78); 
@@ -74,6 +66,9 @@ header span {
     margin-left: 5%;
     font-size: 2em;
 
+}
+legend {
+    color:#e52323;
 }
 
 nav {
@@ -303,18 +298,6 @@ nav ul, header h1, footer p, .contentWrapper {
 .loginContent #p2:hover {
     background-color: lightblue;
 }
-.updatecontent{    
-    border-radius: 5px;
-    position: relative;
-    margin-left: 35%;
-    margin-bottom: 5%;
-    margin-top: 2%;
-    width: 300px;
-    height: 700px; 
-    overflow: hidden;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
 
 
 #form1 {
@@ -466,4 +449,29 @@ aside a:hover {
 #oForm {
     margin-top: 2%;
 }
+
+.formDiv {
+    margin: 10px;   
+    position: absolute;
+    width: 16%;
+    height: 20%;
+}
+
+.formDiv fieldset {
+    border: 1px solid black;
+    float: right;
+   
+}
+
+.formDiv legend {
+    text-align: right;
+}
+
+.formDiv input,select,fieldset {
+    margin: 5px;
+    width: 90%;
+}
+
+
+
 

@@ -22,8 +22,7 @@ public class AdminServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String role = request.getParameter("role");
+        String password = request.getParameter("password");       
         Admin admin = null;
 
         if (email != null) {
