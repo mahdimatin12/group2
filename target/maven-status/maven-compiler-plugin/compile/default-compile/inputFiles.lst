@@ -6,6 +6,7 @@ C:\group2\src\main\java\com\controller\DeleteCustomerServlet.java
 C:\group2\src\main\java\com\controller\LogoutServlet.java
 C:\group2\src\main\java\com\model\dao\BookingSqlDAO.java
 C:\group2\src\main\java\com\model\Customer.java
+C:\group2\src\main\java\com\controller\Step3Servlet.java
 C:\group2\src\main\java\com\model\dao\SqlDBConnector.java
 C:\group2\src\main\java\com\controller\AdminMainServlet.java
 C:\group2\src\main\java\com\controller\AdminServlet.java
@@ -21,7 +22,13 @@ C:\group2\src\main\java\com\model\dao\SqlDB.java
 C:\group2\src\main\java\com\utils\In.java
 C:\group2\src\main\java\com\model\Admins.java
 C:\group2\src\main\java\com\model\dao\CustomerSqlDAO.java
+C:\group2\src\main\java\com\rest\BookingSqlService.java
+C:\group2\src\main\java\com\controller\DeleteBookingServlet.java
 C:\group2\src\main\java\com\controller\CustomerServlet.java
 C:\group2\src\main\java\com\model\Movies.java
 C:\group2\src\main\java\com\controller\DeleteAdminServlet.java
+C:\group2\src\main\java\com\controller\Step2Servlet.java
+C:\group2\src\main\java\com\controller\Step1Servlet.java
 C:\group2\src\main\java\com\controller\BookingServlet.java
+C:\group2\src\main\java\com\controller\EditBookingServlet.java
+C:\group2\src\main\java\com\model\Bookings.java

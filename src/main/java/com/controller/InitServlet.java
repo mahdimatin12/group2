@@ -4,13 +4,10 @@
  * and open the template in the editor.
  */
 package com.controller;
-
 import com.model.dao.AdminSqlDAO;
 import com.model.dao.BookingSqlDAO;
 import com.model.dao.CustomerSqlDAO;
-//import com.model.dao.BookingSqlDAO;
 import com.model.dao.SqlDBConnector;
-//import com.model.dao.CustomerSqlDAO;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -21,7 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 public class InitServlet extends HttpServlet {
 
@@ -60,9 +56,9 @@ public class InitServlet extends HttpServlet {
         session.setAttribute("customerSqlDAO", customerSqlDAO);
         session.setAttribute("bookingSqlDAO", bookingSqlDAO);
     }
-    
+
     @Override
-    public void destroy(){
+    public void destroy() {
         try {
             dBConnector.closeConnection();
         } catch (SQLException ex) {

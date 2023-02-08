@@ -6,37 +6,62 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Random;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "booking")
 public class Booking implements Serializable {
-
-    private int id;
-    private String date;  
-    private int customerid;  
+    private int ID;
+    private String movieName;
     private String imgUrl;
-    private String name;
-    
+    private String date;
+    private int bookingid;
+   
 
     public Booking() {
     }
 
-    public Booking(int id, String date, int movieid, int customerid) {
-        this.id = id;
-        this.date = date;     
-        this.customerid = customerid;
+    public Booking(int ID, String movieName, String imgUrl, String date, int bookingid) {
+        this.ID = ID;
+        this.movieName = movieName;
+        this.imgUrl = imgUrl;
+        this.date = date;
+        this.bookingid = bookingid;
+    }
+  
+    
+   
+    public Booking(String movieName, String imgUrl, int bookingid, String date) {
+        
+        this.movieName = movieName;
+        this.imgUrl = imgUrl;
+        this.bookingid = bookingid;
+        this.date = date;
     }
 
-    public Booking(String date, int movieid, int customerid) {        
-        this.date = date;      
-        this.customerid = customerid;
+    public int getBookingid() {
+        return this.bookingid;
     }
-    
-    public Booking(String imgUrl, String name, String date) {
+
+    public void setBookingid(int bookingid) {
+        this.bookingid = bookingid;
+    }
+
+    public Booking(int ID, String movieName, String imgUrl, String date) {
+        this.ID = ID;
+        this.movieName = movieName;
         this.imgUrl = imgUrl;
-        this.name = name;
         this.date = date;
-        
+    }
+
+    public Booking(String movieName, String imgUrl, String date) {
+
+        this.movieName = movieName;
+        this.imgUrl = imgUrl;
+        this.date = date;
     }
 
     public String getImgUrl() {
@@ -47,43 +72,45 @@ public class Booking implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getid() {
-        return id;
-    }
-
-    public void setid(int id) {
-        this.id = id;
-    }
-
     public String getDate() {
-        return date;
+        return this.date;
     }
 
     public void setDate(String date) {
         this.date = date;
     }
 
-    public int getUserid() {
-        return customerid;
+    public int getID() {
+        return this.ID;
     }
 
-    public void setUserid(int customerid) {
-        this.customerid = customerid;
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public boolean match(int id) {
+        return this.ID == id;
+    }
+
+    public boolean match(String name) {
+        return this.movieName.equals(name);
+    }
+
+    public boolean match(Booking other) {
+        return this.ID == other.ID;
     }
 
     @Override
     public String toString() {
-        return "Booking{" + "id=" + id + ", date=" + date + ", movieid="+ ", customerid=" + customerid + '}';
+        return "Booking{" + "ID=" + ID + ", movieName=" + movieName + ", imgUrl=" + imgUrl + ", date=" + date + '}';
     }
-    
-    
 
 }

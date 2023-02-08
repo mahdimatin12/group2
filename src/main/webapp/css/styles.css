@@ -67,6 +67,9 @@ header span {
     font-size: 2em;
 
 }
+legend {
+    color:#e52323;
+}
 
 nav {
     background-color:black;     
@@ -445,6 +448,28 @@ aside a:hover {
 
 #oForm {
     margin-top: 2%;
+}
+
+.formDiv {
+    margin: 10px;   
+    position: absolute;
+    width: 16%;
+    height: 20%;
+}
+
+.formDiv fieldset {
+    border: 1px solid black;
+    float: right;
+   
+}
+
+.formDiv legend {
+    text-align: right;
+}
+
+.formDiv input,select,fieldset {
+    margin: 5px;
+    width: 90%;
 }
 
 

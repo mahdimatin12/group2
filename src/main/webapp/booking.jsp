@@ -1,9 +1,14 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.Date"%>
 <%@page import="com.model.Customer"%>
 <%@page import="com.model.dao.CustomerSqlDAO"%>
 <%@page import="com.model.Booking"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.dao.BookingSqlDAO"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head lang="en">
@@ -18,12 +23,14 @@
             <nav class="clear">
                 <ul>
                     <li><a href="#">ABOUT THE APP</a></li>
-                    <li><a href="main.jsp">Dashboard</a></li>                    
+                    <li><a href="main.jsp">Dashboard</a></li> 
+                    <li><a href="testjsp.jsp">TEST JSP</a></li> 
+                    <li><a href="/group2/LogoutServlet">LOGOUT</a></li>    
                 </ul>
             </nav>
 
             <span>&#9654</span>
-            <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
+            <h1>mymovies<span style="font-size: 0.5em;margin-left: 0">.com</span></h1>
         </header>
         <article class="main">
 
@@ -34,50 +41,11 @@
                 List<Booking> bookings = bookingSqlDAO.getBookings(id);
                 int rows = bookings.size();
             %>
+            <div class="tableDiv">
 
-            <div class="tableDiv"> 
-                <button id="add"><img src="image/blue-plus-11976.svg" height="10px" width="10px"> Add</button>
-                <br>
-                <br>
-                <from  class="orderForm" id="oForm" action="/group2/BookingServlet">
-                    <label for="date">Pick a date</label>
-                    <input type="date" name="date">
-                    <input id="selectMovie" type="submit" value="Select Movie">
-                </from>
-                <br>
-                <br>
-                <form id="mForm" class="mForm">
-                    <label for="pet-select">Choose a movie:</label>
-
-                    <select name="movies" id="movie-select">
-                        <option value="">--Please choose a movie--</option>
-                        <% List<String> movies = bookingSqlDAO.getMovies();
-                            for (String movie : movies) {%> 
-
-                        <option value="<%= movie%>"><%=movie%></option>
-                        <% }%>
-                    </select>
-
-                </form>
-                <script>
-                    const obtn = document.getElementById('add');
-                    function toggleForm() {
-                        const of = document.getElementById('oForm');
-                        of.classList.toggle('orderForm');
-                    }
-                    obtn.addEventListener('click', toggleForm, false);
-                </script>
-                <script>
-                    const selectMovie = document.getElementById('selectMovie');
-                    function togglemForm() {
-                        const mf = document.getElementById('mForm');
-                        mf.classList.toggle('mForm');
-                    }
-                    selectMovie.addEventListener('click', togglemForm, false);
-                </script>
+                <a href="step1.jsp" style="vertical-align: middle;text-decoration: none"><img src="image/add.png" style="margin-top:10%"></a>
 
                 <table class="bookings" width="100%">
-
                     <caption>
                         You have <strong style="color:#e52323"><%= rows%></strong> bookings
                     </caption>
@@ -90,12 +58,21 @@
                         <th scope="col">Poster</th>
                         <th scope="col">Movie Name</th>
                         <th scope="col">Booking Date</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
+
                     <% for (Booking booking : bookings) {%>
+                    <p style="display: none"><%= booking.getBookingid()%></p>
                     <tr>
                         <td class="poster"><img src="<%= booking.getImgUrl()%>" width="50" height="50" alt="star"></td>
-                        <td> <%= booking.getName()%> </td>
-                        <td><%= booking.getDate()%></td>                    
+                        <td> <%= booking.getMovieName()%> </td>
+                        <td><%= booking.getDate()%></td>
+                        <%
+                            int mbID = bookingSqlDAO.getmbID(bookingSqlDAO.getMovieID(booking.getMovieName()), booking.getBookingid());
+                        %>
+                        <td><a href="http://localhost:8080/group2/EditBooking.jsp?bID=<%= booking.getBookingid()%>&mID=<%=bookingSqlDAO.getMovieID(booking.getMovieName())%>&d=<%= booking.getDate()%>&mbID=<%=mbID%>"><img src="image/pencil-327.png"></a></td>
+                            <td><a href="http://localhost:8080/group2/DeleteBooking.jsp?mbID=<%=mbID%>&mName=<%=booking.getMovieName()%>&d=<%= booking.getDate()%>"><img src="image/trash-can-10417.png"></a></td>
                     </tr>
                     <% }%>
                 </table>
