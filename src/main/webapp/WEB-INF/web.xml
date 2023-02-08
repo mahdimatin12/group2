@@ -14,6 +14,12 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>group2</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>InitServlet</servlet-name>
         <servlet-class>com.controller.InitServlet</servlet-class>
@@ -39,40 +45,28 @@
         <servlet-class>com.controller.AdminRegisterServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BookingServlet</servlet-name>
-        <servlet-class>com.controller.BookingServlet</servlet-class>
+        <servlet-name>CustomerAccountServlet</servlet-name>
+        <servlet-class>com.controller.CustomerAccountServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Step1Servlet</servlet-name>
-        <servlet-class>com.controller.Step1Servlet</servlet-class>
+        <servlet-name>AdminAccountServlet</servlet-name>
+        <servlet-class>com.controller.AdminAccountServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Step2Servlet</servlet-name>
-        <servlet-class>com.controller.Step2Servlet</servlet-class>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>com.controller.NewServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Step3Servlet</servlet-name>
-        <servlet-class>com.controller.Step3Servlet</servlet-class>
+        <servlet-name>DeleteAdminServlet</servlet-name>
+        <servlet-class>com.controller.DeleteAdminServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditServlet</servlet-name>
-        <servlet-class>com.controller.EditServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditBookingServlet</servlet-name>
-        <servlet-class>com.controller.EditBookingServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteBookingServlet</servlet-name>
-        <servlet-class>com.controller.DeleteBookingServlet</servlet-class>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <servlet-class>com.controller.DeleteCustomerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>group2</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
@@ -95,32 +89,24 @@
         <url-pattern>/AdminRegisterServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>BookingServlet</servlet-name>
-        <url-pattern>/BookingServlet</url-pattern>
+        <servlet-name>CustomerAccountServlet</servlet-name>
+        <url-pattern>/CustomerAccountServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Step1Servlet</servlet-name>
-        <url-pattern>/Step1Servlet</url-pattern>
+        <servlet-name>AdminAccountServlet</servlet-name>
+        <url-pattern>/AdminAccountServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Step2Servlet</servlet-name>
-        <url-pattern>/Step2Servlet</url-pattern>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Step3Servlet</servlet-name>
-        <url-pattern>/Step3Servlet</url-pattern>
+        <servlet-name>DeleteAdminServlet</servlet-name>
+        <url-pattern>/DeleteAdminServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditServlet</servlet-name>
-        <url-pattern>/EditServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditBookingServlet</servlet-name>
-        <url-pattern>/EditBookingServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteBookingServlet</servlet-name>
-        <url-pattern>/DeleteBookingServlet</url-pattern>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <url-pattern>/DeleteCustomerServlet</url-pattern>
     </servlet-mapping>
     
 </web-app>
