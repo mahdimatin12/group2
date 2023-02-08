@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.sql.Date;
+
 
 public class CustomerSqlDAO {
 
@@ -18,18 +18,15 @@ public class CustomerSqlDAO {
     private String updateQuery = "UPDATE moviedb.customers SET NAME=?,GENDER=?, DOB=?, PHONE=?, PASSWORD=? WHERE ID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM moviedb.customers WHERE ID=?";
-    private PreparedStatement deleteStatement;
-    private String deletebookings = "DELETE FROM moviedb.bookings WHERE customerid=?";
 
     public CustomerSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
         this.deleteSt = connection.prepareStatement(deleteQuery);
-        this.deleteStatement = connection.prepareStatement(deletebookings);
     }
 
     //Create Query
-    public void create(String name, String gender, Date dob, String phone, String email, String password) throws SQLException {
+    public void create(String name, String gender, String dob, String phone, String email, String password) throws SQLException {
         String columns = "INSERT INTO moviedb.customers(NAME,GENDER,DOB,PHONE,EMAIL,PASSWORD)";
         String values = "VALUES('" + name + "','" + gender + "','" + dob + "','" + phone + "','" + email + "','" + password + "')";
         st.executeUpdate(columns + values);
@@ -45,7 +42,7 @@ public class CustomerSqlDAO {
             if (ID == currentID) {
                 String name = rs.getString(2);
                 String gender = rs.getString(3);
-                Date dob = Date.valueOf(rs.getString(4));
+                String dob =rs.getString(4);
                 String phone = rs.getString(5);
                 String email = rs.getString(6);
                 String password = rs.getString(7);
@@ -67,7 +64,7 @@ public class CustomerSqlDAO {
                 int ID = Integer.parseInt(rs.getString(1));
                 String name = rs.getString(2);
                 String gender = rs.getString(3);
-                Date dob = Date.valueOf(rs.getString(4));
+                String dob = rs.getString(4);
                 String phone = rs.getString(5);
                 String password = rs.getString(7);
 
@@ -89,7 +86,7 @@ public class CustomerSqlDAO {
                 int ID = Integer.parseInt(rs.getString(1));
                 String name = rs.getString(2);
                 String gender = rs.getString(3);
-                Date dob = Date.valueOf(rs.getString(4));
+                String dob = rs.getString(4);
                 String phone = rs.getString(5);
 
                 return new Customer(ID, name, gender, dob, phone, email, password);
@@ -108,7 +105,7 @@ public class CustomerSqlDAO {
             int ID = Integer.parseInt(rs.getString(1));
             String name = rs.getString(2);
             String gender = rs.getString(3);
-            Date dob = Date.valueOf(rs.getString(4));
+            String dob =rs.getString(4);
             String phone = rs.getString(5);
             String email = rs.getString(6);
             String password = rs.getString(7);
@@ -119,28 +116,21 @@ public class CustomerSqlDAO {
     }
 
     //Update Query (Name, Password) by ID
-    public void update(String name, String gender, Date dob, String phone, String password, int ID) throws SQLException {
+    public void update(String name, String gender, String dob, String phone, String password, int ID) throws SQLException {
         updateSt.setString(1, name);
         updateSt.setString(2, gender);
-        updateSt.setString(3, dob.toString());
+        updateSt.setString(3, dob);
         updateSt.setString(4, phone);
         updateSt.setString(5, password);
         updateSt.setString(6, Integer.toString(ID));
         int row = updateSt.executeUpdate();
-        System.out.println("Row " + row + " has been successfully updated");
-    }
-
-//Delete query bookings - by customerID
-    public void deletebookings(int ID) throws SQLException {
-        deleteStatement.setString(1, "" + ID);
-        int row = deleteStatement.executeUpdate();
-        System.out.println("Row " + row + " has been successfully deleted");
+        System.out.println("Row " + row + " has been successflly updated");
     }
 
     //Delete Query - by ID
     public void delete(int ID) throws SQLException {
         deleteSt.setString(1, "" + ID);
         int row = deleteSt.executeUpdate();
-        System.out.println("Row " + row + " has been successfully deleted");
+        System.out.println("Row " + row + " has been successflly deleted");
     }
 }

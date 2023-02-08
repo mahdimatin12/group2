@@ -1,7 +1,8 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Random;
+import javax.management.relation.Role;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -13,7 +14,7 @@ public class Customer implements Serializable {
     private int id;
     private String name;
     private String gender;
-    private Date dob;
+    private String dob;
     private String phone;
     private String email;
     private String password;
@@ -21,7 +22,7 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-    public Customer(int id, String name, String gender, Date dob, String phone, String email, String password) {
+    public Customer(int id, String name, String gender, String dob, String phone, String email, String password) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -31,7 +32,7 @@ public class Customer implements Serializable {
         this.password = password;
     }
 
-    public Customer(String name, String gender, Date dob, String phone, String email, String password) {
+    public Customer(String name, String gender, String dob, String phone, String email, String password) {
         this.name = name;
         this.gender = gender;
         this.dob = dob;
@@ -40,7 +41,7 @@ public class Customer implements Serializable {
         this.password = password;
     }
 
-    public void update(int id, String name, String gender, Date dob, String phone, String email, String password) {
+    public void update(int id, String name, String gender, String dob, String phone, String email, String password) {
        this.id = id;
         this.name = name;
         this.gender = gender;
@@ -60,11 +61,11 @@ public class Customer implements Serializable {
         this.gender = gender;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
