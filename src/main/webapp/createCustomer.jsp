@@ -10,16 +10,12 @@
     </head>
     <body>
         <header>
-            <div class="Navbar">             
-
-                <nav>
-                    <ul class="nav">
-                        <li><a class="button" href="index.jsp"> Home </a></li>
-                        <li><a class="button" href="customer.jsp">Cancel Register </a></li>
-
-                    </ul>
-                </nav>
-            </div>
+            <nav class="clear">
+                <ul>
+                    <li><a class="button" href="index.jsp"> Home </a></li>
+                    <li><a class="button" href="customer.jsp">Cancel</a></li>
+                </ul>
+            </nav>
         </header>
         <main>
             <article>

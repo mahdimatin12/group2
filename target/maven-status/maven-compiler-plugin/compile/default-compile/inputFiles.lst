@@ -31,6 +31,6 @@ C:\group2\src\main\java\com\model\dao\CustomerSqlDAO.java
 C:\group2\src\main\java\com\controller\CustomerServlet.java
 C:\group2\src\main\java\com\model\Movies.java
 C:\group2\src\main\java\com\controller\DeleteAdminServlet.java
-C:\group2\src\main\java\com\rest\CustomerService.java
+C:\group2\src\main\java\com\rest\CustomersSqlService.java
 C:\group2\src\main\java\com\controller\BookingServlet.java
 C:\group2\src\main\java\com\model\dao\MovieSqlDAO.java

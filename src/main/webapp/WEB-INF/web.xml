@@ -89,16 +89,16 @@
         <url-pattern>/AdminSearchServlets</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Servlet-name</servlet-name>
+        <servlet-name>group2</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>"name of package containing the REST service"</param-value>
+            <param-value>com.rest</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Servlet-name </servlet-name>
+        <servlet-name>group2</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServlet;
 import com.model.Customer;
 import com.model.dao.CustomerSqlDAO;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +21,7 @@ public class CustomerRegisterServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
-        Date dob= Date.valueOf( request.getParameter("dob"));
+        String dob= String.valueOf( request.getParameter("dob"));
         String phone= request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");

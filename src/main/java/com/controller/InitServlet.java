@@ -32,6 +32,7 @@ public class InitServlet extends HttpServlet {
     private SqlDBConnector dBConnector;
     private Connection connection;
     private MovieSqlDAO movieSqlDAO;
+    
     @Override
     public void init() {
         try {
@@ -41,6 +42,7 @@ public class InitServlet extends HttpServlet {
             adminSqlDAO = new AdminSqlDAO(connection);
             movieSqlDAO = new MovieSqlDAO(connection);
             bookingSqlDAO = new BookingSqlDAO(connection);
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InitServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
