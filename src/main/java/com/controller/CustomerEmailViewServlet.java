@@ -13,29 +13,28 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-public class CustomerServlet extends HttpServlet {
+public class CustomerEmailViewServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
+        String emailView = request.getParameter("emailView");
 
         Customer customer = null;
-        try {
-            customer = customerSqlDAO.login(email, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (customer != null) {
-            session.setAttribute("customer", customer);
-            request.getRequestDispatcher("main.jsp").include(request, response);
+        if (emailView != null) {
+            try {
+                customer = customerSqlDAO.getCustomer(emailView);
+                session.setAttribute("emailView", emailView);
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomerEmailViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
-            session.setAttribute("error", "Customer not found, try again.");
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            customer = (Customer) session.getAttribute("customer");
         }
+        session.setAttribute("customer", customer);
+        request.getRequestDispatcher("cutomerEmailView.jsp").include(request, response);
     }
 }

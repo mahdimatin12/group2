@@ -62,7 +62,7 @@ public class BookingSqlDAO {
     // Return the last booking id from bookings table
     //Read All Bookings for a User
     public List<Booking> getBookings(int customerid) throws SQLException {
-        String fetch = "SELECT *\n"
+        String fetch = "SELECT name,imgUrl,bookingid,date\n"
                 + "FROM moviedb.movies m\n"
                 + "JOIN moviedb.movies_bookings mb ON m.ID = mb.moviesid\n"
                 + "JOIN moviedb.bookings b ON mb.bookingid = b.ID\n"
@@ -73,109 +73,57 @@ public class BookingSqlDAO {
         List<Booking> temp = new ArrayList<>();
 
         while (rs.next()) {
-            String name = rs.getString(2);
-            String imgUrl = rs.getString(7);
-            int bookingid = Integer.parseInt(rs.getString(11));
-            String date = rs.getString(14);
-             int bmid = Integer.parseInt(rs.getString(9));
-            temp.add(new Booking(bmid, name, imgUrl, date, bookingid));
+            String name = rs.getString(1);
+            String imgUrl = rs.getString(2);
+            int bookingid = Integer.parseInt(rs.getString(3));
+            String date = rs.getString(4);
+            temp.add(new Booking(name, imgUrl, bookingid, date));
         }
         return temp;
     }
-    
-    // get all bookings for all customers bookings:
+
+    // get booking by id:
+    public Booking getBooking(int bookingID) throws SQLException {
+        String fetch = "SELECT name,imgUrl,bookingid,date\n"
+                + "FROM moviedb.movies m\n"
+                + "JOIN moviedb.movies_bookings mb ON m.ID = mb.moviesid\n"
+                + "JOIN moviedb.bookings b ON mb.bookingid = b.ID\n"
+                + "where mb.ID =" + "'" + bookingID + "'";
+
+        ResultSet rs = st.executeQuery(fetch);
+        Booking booking = null;
+
+        while (rs.next()) {
+            String name = rs.getString(1);
+            String imgUrl = rs.getString(2);
+            int bookingid = Integer.parseInt(rs.getString(3));
+            String date = rs.getString(4);
+            booking = new Booking(bookingid, name, imgUrl, date, bookingid);
+        }
+
+        return booking;
+    }
+
+    // get all bookings:
     public List<Booking> getBookings() throws SQLException {
-        String fetch = "SELECT *\n"
+        String fetch = "SELECT name,imgUrl,bookingid,date\n"
                 + "FROM moviedb.movies m\n"
                 + "JOIN moviedb.movies_bookings mb ON m.ID = mb.moviesid\n"
                 + "JOIN moviedb.bookings b ON mb.bookingid = b.ID\n";
-               
 
         ResultSet rs = st.executeQuery(fetch);
 
         List<Booking> temp = new ArrayList<>();
 
         while (rs.next()) {
-            String name = rs.getString(2);
-            String imgUrl = rs.getString(7);
-            int bookingid = Integer.parseInt(rs.getString(11));
-            String date = rs.getString(14);
-             int bmid = Integer.parseInt(rs.getString(9));
-            temp.add(new Booking(bmid, name, imgUrl, date, bookingid));
+            String name = rs.getString(1);
+            String imgUrl = rs.getString(2);
+            int bookingid = Integer.parseInt(rs.getString(3));
+            String date = rs.getString(4);
+            temp.add(new Booking(name, imgUrl, bookingid, date));
         }
         return temp;
     }
-    
-    
-    // get a booking by b.ID:
-    public Booking getBooking(int bookingID) throws SQLException {
-        String fetch = "select *\n"
-                + "FROM moviedb.movies m\n"
-                + "JOIN moviedb.movies_bookings mb ON m.ID = mb.moviesid\n"
-                + "JOIN moviedb.bookings b ON mb.bookingid = b.ID\n"
-                + "where b.ID =" + "'" + bookingID + "'";
-
-        ResultSet rs = st.executeQuery(fetch);
-        Booking booking = null;
-
-        while (rs.next()) {
-            String name = rs.getString(2);
-            String imgUrl = rs.getString(7);
-            int bookingid = Integer.parseInt(rs.getString(11));
-            String date = rs.getString(14);
-             int bmid = Integer.parseInt(rs.getString(9));
-            booking = new Booking(bmid, name, imgUrl, date, bookingid);
-        }
-
-        return booking;
-    }
-    
-    
-    
-    
-    
-    // get booking by id:
-//    public Booking getBooking(int bookingID) throws SQLException {
-//        String fetch = "SELECT name,imgUrl,bookingid,date\n"
-//                + "FROM moviedb.movies m\n"
-//                + "JOIN moviedb.movies_bookings mb ON m.ID = mb.moviesid\n"
-//                + "JOIN moviedb.bookings b ON mb.bookingid = b.ID\n"
-//                + "where mb.ID =" + "'" + bookingID + "'";
-//
-//        ResultSet rs = st.executeQuery(fetch);
-//        Booking booking = null;
-//
-//        while (rs.next()) {
-//            String name = rs.getString(1);
-//            String imgUrl = rs.getString(2);
-//            int bookingid = Integer.parseInt(rs.getString(3));
-//            String date = rs.getString(4);
-//            booking = new Booking(bookingid, name, imgUrl, date, bookingid);
-//        }
-//
-//        return booking;
-//    }
-
-    // get all bookings:
-//    public List<Booking> getBookings() throws SQLException {
-//        String fetch = "SELECT name,imgUrl,bookingid,date\n"
-//                + "FROM moviedb.movies m\n"
-//                + "JOIN moviedb.movies_bookings mb ON m.ID = mb.moviesid\n"
-//                + "JOIN moviedb.bookings b ON mb.bookingid = b.ID\n";
-//
-//        ResultSet rs = st.executeQuery(fetch);
-//
-//        List<Booking> temp = new ArrayList<>();
-//
-//        while (rs.next()) {
-//            String name = rs.getString(1);
-//            String imgUrl = rs.getString(2);
-//            int bookingid = Integer.parseInt(rs.getString(3));
-//            String date = rs.getString(4);
-//            temp.add(new Booking(name, imgUrl, bookingid, date));
-//        }
-//        return temp;
-//    }
 
     // Get a movie name by it's ID:
     public String getMovieName(int id) throws SQLException {

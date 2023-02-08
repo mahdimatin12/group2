@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "booking")
 public class Booking implements Serializable {
+
     private int ID;
     private String movieName;
     private String imgUrl;

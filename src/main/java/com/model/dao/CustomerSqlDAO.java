@@ -15,14 +15,17 @@ public class CustomerSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE moviedb.customers SET NAME=?, PASSWORD=?, WHERE ID=?";
+    private String updateQuery = "UPDATE moviedb.customers SET NAME=?,GENDER=?, DOB=?, PHONE=?, PASSWORD=? WHERE ID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM moviedb.customers WHERE ID=?";
+    private PreparedStatement deleteStatement;
+    private String deletebookings = "DELETE FROM moviedb.bookings WHERE customerid=?";
 
     public CustomerSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
         this.deleteSt = connection.prepareStatement(deleteQuery);
+        this.deleteStatement = connection.prepareStatement(deletebookings);
     }
 
     //Create Query
@@ -120,16 +123,24 @@ public class CustomerSqlDAO {
         updateSt.setString(1, name);
         updateSt.setString(2, gender);
         updateSt.setString(3, dob.toString());
-        updateSt.setString(2, password);
-        updateSt.setString(3, Integer.toString(ID));
+        updateSt.setString(4, phone);
+        updateSt.setString(5, password);
+        updateSt.setString(6, Integer.toString(ID));
         int row = updateSt.executeUpdate();
-        System.out.println("Row " + row + " has been successflly updated");
+        System.out.println("Row " + row + " has been successfully updated");
+    }
+
+//Delete query bookings - by customerID
+    public void deletebookings(int ID) throws SQLException {
+        deleteStatement.setString(1, "" + ID);
+        int row = deleteStatement.executeUpdate();
+        System.out.println("Row " + row + " has been successfully deleted");
     }
 
     //Delete Query - by ID
     public void delete(int ID) throws SQLException {
         deleteSt.setString(1, "" + ID);
         int row = deleteSt.executeUpdate();
-        System.out.println("Row " + row + " has been successflly deleted");
+        System.out.println("Row " + row + " has been successfully deleted");
     }
 }

@@ -29,7 +29,7 @@ public class CustomerAccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        
+
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
         String emailView = request.getParameter("emailView");
         String submitted = request.getParameter("submitted");
@@ -52,9 +52,9 @@ public class CustomerAccountServlet extends HttpServlet {
                 } else {
                     customer = (Customer) session.getAttribute("customer");
                 }
-
                 customer.update(ID, name, gender, dob, phone, email, password);
                 customerSqlDAO.update(name, gender, dob, phone, password, ID);
+                              
                 session.setAttribute("customer", customer);
 
             } catch (SQLException ex) {

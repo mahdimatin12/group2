@@ -29,7 +29,7 @@ public class AdminAccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        
+
         AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
         String emailView = request.getParameter("emailView");
         String submitted = request.getParameter("submitted");
@@ -52,9 +52,9 @@ public class AdminAccountServlet extends HttpServlet {
                 } else {
                     admin = (Admin) session.getAttribute("admin");
                 }
-
                 admin.update(ID, name, gender, dob, phone, email, password);
                 adminSqlDAO.update(name, gender, dob, phone, password, ID);
+                              
                 session.setAttribute("admin", admin);
 
             } catch (SQLException ex) {
