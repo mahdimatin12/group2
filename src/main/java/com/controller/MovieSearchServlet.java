@@ -36,11 +36,11 @@ public class MovieSearchServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String movieSearchMsg="";
-        String IdRegex = "^[0-9]{6}$";
-        String Iderror = "Incorrect ID format";
+        //tring IdRegex = "^[0-9]{6}$";
+        //String Iderror = "Incorrect ID format";
         
         MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
-        Movie movie = null;
+        Movie movie = new Movie();
         String name = request.getParameter("name");
         
 
@@ -53,15 +53,11 @@ public class MovieSearchServlet extends HttpServlet {
         } 
         
         if (movie != null) {
-            session.setAttribute("movie", movie);
-            
-            //session.removeAttribute("movieSearchMsg");
-
+            session.setAttribute("movie", movie);            
             request.getRequestDispatcher("moviedetails.jsp").include(request, response);
         } else {
-            movieSearchMsg="Movie does not exist";
+            movieSearchMsg="Movie not found";
             session.setAttribute("movieSearchMsg",movieSearchMsg );
-            session.removeAttribute("movie");
             request.getRequestDispatcher("movies.jsp").include(request, response);
         }
 

@@ -30,29 +30,52 @@
         </header>
 
         <%
+            Admin admin = (Admin) session.getAttribute("admin");
             String movieDeleteMsg = (String) session.getAttribute("movieDeleteMsg");
             String movieAddMsg = (String) session.getAttribute("movieAddMsg");
+       
 
             MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
             List<Movie> movies = movieSqlDAO.getMovies();
-            Admin admin = (Admin) session.getAttribute("admin");
+
         %>        
         <div>
             <form action="/group2/MovieSearchServlet" method="POST">
                 <input name="name" type="text" placeholder="Movie Name/Title">
-                <input type="submit" value="search">                
+                <input type="submit" value="search">                                
             </form>
         </div>
-        <br>       
+
+        <%  
+            String moviesearchmsg = (String) session.getAttribute("movieSearchMsg");
+            if (moviesearchmsg != null) {
+                session.removeAttribute("movieSearchMsg");
+        %>
+        <div id="notification" style="display: none;">
+            <p><%= moviesearchmsg%></p>
+        </div>
+
+        <script>
+            document.getElementById("notification").style.display = "block";
+            setTimeout(function () {
+                document.getElementById("notification").style.display = "none";
+            }, 3000); // 3000 milliseconds = 3 seconds
+        </script>
+        <%
+            }
+        %>    
+        <br>
+        <br> 
+
         <% if (admin != null) {%>
         <form action="addmovie.jsp" method="POST">
-            <input name="addmovie"type="submit" value="AddMovie">
+            <input name="addmovie" type="submit" value="AddMovie">
         </form>
         <% } %>
 
         <%
             if (movieDeleteMsg != null) {%>
-            <h3><%=movieDeleteMsg%></h3>
+        <h3><%=movieDeleteMsg%></h3>
         <% } %>
 
         <table>
