@@ -9,91 +9,89 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add Movie</title>
+        <link href="css/styles.css" rel="stylesheet">
     </head>
     <body>
-
+        <header>    
+            <nav class="clear">
+                <ul>
+                    <li><a href="#">About The App</a></li>                        
+                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="movies.jsp">Movies</a></li>
+                </ul>
+            </nav>
+            <span>&#9654</span>
+            <h1>my movies.com</h1>
+        </header>
+        <div>
         <%
-            String moviemsg = (String) session.getAttribute("moviemsg");
+            String yearerror = (String) session.getAttribute("yearError");
+            String runerror = (String) session.getAttribute("runError");
+            String movieAddmsg = (String) session.getAttribute("movieAddMsg");
         %>
-        <h1> <span style="font-size: 10px; color: orange;"><%= (moviemsg != null) ? moviemsg : ""%></span></h1>
-        <form class="form-horizontal"action="/group2/MovieAddServlet" method="POST">
-            <fieldset>
 
-                <!-- Form Name -->
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="textinput">Title</label>  
-                    <div class="col-md-4">
-                        <input id="namee" name="name" type="text" placeholder="Movie name/title" class="form-control input-md">
-
-                    </div>
-                </div>
-
-                <!-- Button Drop Down -->
-                <label for="genre">Movie genre/category:</label>
-                <select name="genre" id="genre">
-                    <option value="Action">Action</option>
-                    <option value="Adventure">Adventure</option>
-                    <option value="Comdey" disabled>Comedy</option>
-                    <option value="Fantasy" selected>Fantasy</option>
-                </select>
-
-
-                <!-- Text area -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="description">Summary</label>
-                    <div class="col-md-4">                     
-                        <textarea class="form-control" id="description" name="description">Summary, Casting...</textarea>
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="year">Year</label>  
-                    <div class="col-md-4">
-                        <input id="year" name="year" type="text" placeholder="Release year" class="form-control input-md">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="runtime">Runtime</label>  
-                    <div class="col-md-4">
-                        <input id="runtime" name="runtime" type="text" placeholder="eg:2h 30m" class="form-control input-md">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="imgurl">Image URL</label>  
-                    <div class="col-md-4">
-                        <input id="imgurl" name="imgurl" type="text" placeholder="Add a image URL link" class="form-control input-md">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="vidurl">Trailer URL</label>  
-                    <div class="col-md-4">
-                        <input id="vidurl" name="vidurl" type="text" placeholder="Add a video URL link" class="form-control input-md">
-
-                    </div>
-                </div>
-
-                <!-- Button (Double) -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="add">Add</label>
-                    <div class="col-md-8">
-                        <button id="add" name="add" class="btn btn-success">Add</button>
-                        <button id="cancel" name="cancel" class="btn btn-default">Cancel</button>
-                    </div>
-                </div>
-            </fieldset>
+        <h1> Movie Details</h1>
+        <br>
+        <h3><span style="font-size: 10px; color: orange;"><%= (movieAddmsg != null) ? movieAddmsg : ""%></span></h3>
+        <h3><span style="font-size: 10px; color: orange;"><%= (yearerror != null) ? yearerror : ""%></span></h3>
+        <h3><span style="font-size: 10px; color: orange;"><%= (runerror != null) ? runerror : ""%></span></h3>
+        <form id="form1" action="/group2/MovieAddServlet" method="POST" align="center">
+            <div>
+                <label>Movie Title/Name</label>
+                <input name="name"  id="name" type="text" placeholder="Movie Title/Name"%>">
+            </div>
+            <div>
+                <label>Movie Genre</label>
+            <select name="genre" id="genre">
+                <option value="">--Please choose genre--</option>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="animation">Animation</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="horror">Horror</option>
+                <option value="romance">Romance</option>                        
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="thriller">Thriller</option>
+                <option value="war">War</option>
+            </select>
+            </div>
+            <div>
+                <label>Release Year </label>
+                <input name="year"  id="year" type="text" placeholder="<%= (yearerror != null) ? yearerror : "Release year"%>">
+            </div>
+            <div>
+                <label>Description </label>
+                <input name="description" id="description" type="text" placeholder="Summary,Cast...">
+            </div>
+            
+            <div>
+                <label>Run time </label>
+                <input name="runtime" id="runtime" type="text" placeholder="<%= (runerror != null) ? runerror :"movie length"%>">
+            </div>
+             <div>
+                <label>Image URL </label>
+                <input name="imgurl" id="imgurl"   type="text" placeholder="Add image URL Link">
+            </div>      
+            <div>
+                <label>Video URL </label>
+                <input name="vidurl" id="vidurl" type="text" placeholder="Add video URL Link">
+            </div>            
+            
+            <div><input type="hidden" value="movie">
+            <input type="submit" value="ADD" style="cursor: pointer">
+            </div>
         </form>
+        </div>
+
+        <footer>
+            <p>SIUA 2023, UST, Sydney.
+            <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
+            <p>Contact: <a href="mailto:nobody@nowhere.com">group2@ust.com</a></p>
+        </footer>
 
     </body>
 </html>
+

@@ -1,4 +1,3 @@
-
 <%@page import="com.model.Admin"%>
 <%@page import="com.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,7 +14,7 @@
             <nav class="clear">
                 <ul>
                     <li><a href="#">ABOUT THE APP</a></li>
-                    <li><a href="/group2/LogoutServlet">LOGOUT</a></li> 
+                    <li><a href="/group2/LogoutServlet">LOGOUT</a></li>                   
                 </ul>
             </nav>
 
@@ -28,23 +27,26 @@
                 Customer customer = (Customer) session.getAttribute("customer");
                 if (customer != null) {
             %>  
+            
             <h2 class="welcomemsg">Welcome, to your Dashboard <%= customer.getName()%>!</h2>
-            <h3 class="welcomemsg">Email: <%= customer.getEmail()%>!</h3>
+        
 
             <aside class="adminAside">
-                <a href="#"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
-                <a href="#"><img src="image/video-833.svg"><br>Movies</a>
+                <a href="usersaccount.jsp"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
+                <a href="movies.jsp"><img src="image/video-833.svg"><br>Movies</a>
                 <a href="booking.jsp"><img src="image/click-mobile-phone-2406.svg"><br>MY BOOKINGS</a>
-            </aside>
+            </aside> 
+            
             <% } else {
                 Admin admin = (Admin) session.getAttribute("admin");%>
             <h2 class="welcomemsg">Welcome to Admin Dashboard <%= admin.getName()%>!</h2>
-            <h3 class="welcomemsg">Email: <%= admin.getEmail()%>!</h3>
+         
             <aside class="customerAside">
-                <a href="#"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
-                <a href="customer.jsp"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
-                <a href="#"><img src="image/video-833.svg"><br>MOVIES</a>
+                <a href="usersaccount.jsp"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
+                <a href="#"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
+                <a href="movies.jsp"><img src="image/video-833.svg"><br>MOVIES</a>
             </aside>
+            
             <% }%> 
         </article>
         <footer>

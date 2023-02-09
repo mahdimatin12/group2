@@ -23,7 +23,7 @@
         
         <%
             MovieSqlDAO movieSqlDAO = (MovieSqlDAO)session.getAttribute("movieSqlDAO");
-            //List<Movie> movies= movieSqlDAO.getMovies();             
+            List<Movie> movies= movieSqlDAO.getMovies();             
         %>
         <header>
             <nav class="clear">
@@ -47,14 +47,14 @@
               </form> 
 
             <table>
-                <% //for(Movie movie:movies){%>
+                <% for(Movie movie:movies){%>
                 <tr>
                     <td>
                         <a href="moviedetails.jsp"><img src="<%= movie.getImgUrl()%>" width="150px" height="180px"></a>                        
 
                     </td>
-                    <td><%= //movie.getName()%></td>
-                    <td><%=// movie.getGenre()%></td>
+                    <td><%= movie.getName()%></td>
+                    <td><%= movie.getGenre()%></td>
                 </tr> 
                 <%}%>
                

@@ -8,7 +8,6 @@ package com.controller;
 import com.model.Movie;
 import com.model.dao.MovieSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,24 +35,31 @@ public class MovieSearchServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        int id = Integer.parseInt(request.getParameter("" + "id"));
+        String movieSearchMsg="";
+        //tring IdRegex = "^[0-9]{6}$";
+        //String Iderror = "Incorrect ID format";
+        
+        MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
+        Movie movie = new Movie();
+        String name = request.getParameter("name");
+        
 
-        MovieSqlDAO movieSqlDAO = (MovieSqlDAO)session.getAttribute("movieSqlDAO");
-
-        Movie movie = null;
-        try {
-            movie = movieSqlDAO.getMovie(id);
-        } catch (SQLException ex) {
-        }
-
+        if (name != null) {
+            try {
+                movie = movieSqlDAO.getMovie(name);
+            } catch (SQLException ex) {
+                Logger.getLogger(MovieSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+        
         if (movie != null) {
-            session.setAttribute("movie", movie);
+            session.setAttribute("movie", movie);            
             request.getRequestDispatcher("moviedetails.jsp").include(request, response);
-            
         } else {
-            session.setAttribute("Movieerror", "Movie id does not exist");
+            movieSearchMsg="Movie not found";
+            session.setAttribute("movieSearchMsg",movieSearchMsg );
             request.getRequestDispatcher("movies.jsp").include(request, response);
         }
-    }
 
+    }
 }

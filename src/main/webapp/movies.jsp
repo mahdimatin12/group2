@@ -4,6 +4,7 @@
     Author     : 236365
 --%>
 
+<%@page import="com.model.Admin"%>
 <%@page import="com.model.Movie"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.dao.MovieSqlDAO"%>
@@ -15,14 +16,7 @@
         <link href="css/styles.css" rel="stylesheet">
         <title>Movies</title>
     </head>
-    <body>
-        <h1></h1>
-
-        <%
-            MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
-            List<Movie> movies = movieSqlDAO.getMovies();
-
-        %>
+    <body>       
         <header>
             <nav class="clear">
                 <ul>
@@ -31,42 +25,75 @@
                     <li><a href="/group2/LogoutServlet">LOGOUT</a></li> 
                 </ul>
             </nav>
-
             <span>&#9654</span>
-            <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
+            <h1>my movies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
         </header>
 
-        <article class="main">
+        <%
+            Admin admin = (Admin) session.getAttribute("admin");
+            String movieDeleteMsg = (String) session.getAttribute("movieDeleteMsg");
+            String movieAddMsg = (String) session.getAttribute("movieAddMsg");
+       
 
+            MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
+            List<Movie> movies = movieSqlDAO.getMovies();
+
+        %>        
+        <div>
             <form action="/group2/MovieSearchServlet" method="POST">
-                <input name="id" type="text" placeholder="search by id" id="id">
-                <input type="submit" value="search">
-
+                <input name="name" type="text" placeholder="Movie Name/Title">
+                <input type="submit" value="search">                                
             </form>
-            <br>
-            <form action="addmovie.jsp" method="POST">
-                <input type="submit" value="+New Movie">
+        </div>
 
-            </form>
+        <%  
+            String moviesearchmsg = (String) session.getAttribute("movieSearchMsg");
+            if (moviesearchmsg != null) {
+                session.removeAttribute("movieSearchMsg");
+        %>
+        <div id="notification" style="display: none;">
+            <p><%= moviesearchmsg%></p>
+        </div>
 
-            <table>
-                <% for (Movie movie : movies) {%>
-                <tr>
-                    <td>
-                        <a href="moviedetails.jsp"><img src="<%= movie.getImgUrl()%>" width="150px" height="180px"></a>                        
+        <script>
+            document.getElementById("notification").style.display = "block";
+            setTimeout(function () {
+                document.getElementById("notification").style.display = "none";
+            }, 3000); // 3000 milliseconds = 3 seconds
+        </script>
+        <%
+            }
+        %>    
+        <br>
+        <br> 
 
-                    </td>
-                    <td><%= movie.getName()%></td>
-                    <td><%= movie.getGenre()%></td>
-                    <td><%= movie.getYear()%></td>
-                    <td><%= movie.getRuntime()%></td>
-                </tr> 
-                <%}%>
+        <% if (admin != null) {%>
+        <form action="addmovie.jsp" method="POST">
+            <input name="addmovie" type="submit" value="AddMovie">
+        </form>
+        <% } %>
 
-            </table>
+        <%
+            if (movieDeleteMsg != null) {%>
+        <h3><%=movieDeleteMsg%></h3>
+        <% } %>
 
-        </article>
+        <table>
+            <% for (Movie movie : movies) {%>
+            <tr>
+                <td>
+                    <a href="http://localhost:8080/group2/MovieViewServlet?Id=<%=movie.getid()%>">
+                        <img src="<%= movie.getImgUrl()%>" width="100px" height="100px">
+                    </a>                        
+                </td>
+                <td><%= movie.getName()%></td>
+                <td><%= movie.getGenre()%></td>
+                <td><%= movie.getYear()%></td>
+                <td><%= movie.getRuntime()%></td>
+            </tr> 
+            <%}%>
 
+        </table>           
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>

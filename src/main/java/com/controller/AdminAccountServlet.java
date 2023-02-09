@@ -9,7 +9,7 @@ import com.model.Admin;
 import com.model.dao.AdminSqlDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,10 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author 236370
- */
 public class AdminAccountServlet extends HttpServlet {
 
     @Override
@@ -32,37 +28,101 @@ public class AdminAccountServlet extends HttpServlet {
 
         AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
         String emailView = request.getParameter("emailView");
-        String submitted = request.getParameter("submitted");
+
         Admin admin = null;
+        boolean nextPage = false;
 
-        if (submitted != null && submitted.equals("submitted")) {
-            try {
-                int ID = Integer.parseInt(request.getParameter("ID"));
-                String name = request.getParameter("name");
-                String gender = request.getParameter("gender");
-                Date dob = Date.valueOf(request.getParameter("dob"));
-                String phone = request.getParameter("phone");
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
+        String nameError = "";
+        String emailError = "";
+        String passError = "";
+        String dobError = "";
+        String phoneError = "";
+        String genderError = "";
 
-                emailView = (String) session.getAttribute("emailView");
+        int errorNum = 0;
 
-                if (emailView != null) {
-                    admin = adminSqlDAO.getAdmin(emailView);
-                } else {
-                    admin = (Admin) session.getAttribute("admin");
-                }
-                admin.update(ID, name, gender, dob, phone, email, password);
-                adminSqlDAO.update(name, gender, dob, phone, password, ID);
-                              
-                session.setAttribute("admin", admin);
+        String nameRegex = "[a-z A-Z]+([ '-][a-zA-Z]+)*";
+        String dobRgex = "^(19)[\\d]{2,2}[-][\\d]{1,2}[-][\\d]{1,2}$|^(200)[\\d]{1,1}[-][\\d]{1,2}[-][\\d]{1,2}$|^(201)[\\d 0][-][\\d]{1,2}[-][\\d]{1,2}$";//1900-2010
+        String phoneRegex = "^[+0]\\d{1,2}\\d{6,11}$";
+        String genderRegEx = "^M(ale)?$|^F(emale)?$";
+        String passRegEx = "[A-Z][A-Za-z1-9!@#$%^&*]{8,}";
 
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        int ID = Integer.parseInt(request.getParameter("ID"));
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String dob = request.getParameter("dob");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        if (!name.matches(nameRegex)) {
+            nameError = "*Update Failed: The name must be alphabetical!";
+            errorNum++;
+
         }
-        session.setAttribute("admin", admin);
-        request.getRequestDispatcher("adminaccount.jsp").include(request, response);
-    }
 
+        if (!password.matches(passRegEx)) {
+            passError = "*Update Faild :Invalid Password!,minimum length:8,First letter:Capital";
+            errorNum++;
+        }
+        if (!phone.matches(phoneRegex)) {
+            phoneError = "*Update Faild: Enter a valid number";
+            errorNum++;
+        }
+        if (!dob.matches(dobRgex)) {
+            dobError = "*Update Faild: You've to be 13 or older to register";
+            errorNum++;
+        }
+        if (!gender.matches(genderRegEx)) {
+            genderError = "*Update Faild: Select: (F)emale|(M)ale";
+            errorNum++;
+        }
+
+        if (errorNum == 0) {
+            String submitted = request.getParameter("submitted");
+            if (submitted != null && submitted.equals("submitted")) {
+
+                try {
+                    emailView = (String) session.getAttribute("emailView");
+                    if (emailView != null) {
+                        admin = adminSqlDAO.getAdmin(emailView);
+                    } else {
+                        admin = (Admin) session.getAttribute("admin");
+                    }
+                    admin.update(ID, name, gender, dob, phone, email, password);
+                    adminSqlDAO.update(name, gender, dob, phone, password, ID);
+                    nextPage = true;
+                    session.setAttribute("admin", admin);
+                    session.setAttribute("updatemsg", "update Successful!");
+
+                    session.removeAttribute("nameerror");
+                    session.removeAttribute("passerror");
+                    session.removeAttribute("phoneerror");
+                    session.removeAttribute("doberror");
+                    session.removeAttribute("gendererror");
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+
+        } else {
+
+            session.setAttribute("nameerror", nameError);
+            session.setAttribute("emailerror", emailError);
+            session.setAttribute("passerror", passError);
+            session.setAttribute("phoneerror", phoneError);
+            session.setAttribute("doberror", dobError);
+            session.setAttribute("gendererror", genderError);
+            session.removeAttribute("updatemsg");
+            request.getRequestDispatcher("usersaccount.jsp").include(request, response);
+
+        }
+
+        if (nextPage) {
+            session.setAttribute("admin", admin);
+            request.getRequestDispatcher("usersaccount.jsp").include(request, response);
+        }
+    }
 }

@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.sql.Date;
+
 
 public class AdminSqlDAO {
 
@@ -26,7 +26,7 @@ public class AdminSqlDAO {
     }
 
     //Create Query
-    public void create(String name, String gender, Date dob, String phone, String email, String password) throws SQLException {
+    public void create(String name, String gender, String dob, String phone, String email, String password) throws SQLException {
         String columns = "INSERT INTO moviedb.admins(NAME,GENDER,DOB,PHONE,EMAIL,PASSWORD)";
         String values = "VALUES('" + name + "','" + gender + "','" + dob + "','" + phone + "','" + email + "','" + password + "')";
         st.executeUpdate(columns + values);
@@ -42,7 +42,7 @@ public class AdminSqlDAO {
             if (ID == currentID) {
                 String name = rs.getString(2);
                 String gender = rs.getString(3);
-                Date dob = Date.valueOf(rs.getString(4));
+                String dob = rs.getString(4);
                 String phone = rs.getString(5);
                 String email = rs.getString(6);
                 String password = rs.getString(7);
@@ -64,7 +64,7 @@ public class AdminSqlDAO {
                 int ID = Integer.parseInt(rs.getString(1));
                 String name = rs.getString(2);
                 String gender = rs.getString(3);
-                Date dob = Date.valueOf(rs.getString(4));
+                String dob = rs.getString(4);
                 String phone = rs.getString(5);
                 String password = rs.getString(7);
 
@@ -86,7 +86,7 @@ public class AdminSqlDAO {
                 int ID = Integer.parseInt(rs.getString(1));
                 String name = rs.getString(2);
                 String gender = rs.getString(3);
-                Date dob = Date.valueOf(rs.getString(4));
+                String dob =rs.getString(4);
                 String phone = rs.getString(5);
 
                 return new Admin(ID, name, gender, dob, phone, email, password);
@@ -105,7 +105,7 @@ public class AdminSqlDAO {
             int ID = Integer.parseInt(rs.getString(1));
             String name = rs.getString(2);
             String gender = rs.getString(3);
-            Date dob = Date.valueOf(rs.getString(4));
+            String dob = rs.getString(4);
             String phone = rs.getString(5);
             String email = rs.getString(6);
             String password = rs.getString(7);
@@ -116,10 +116,10 @@ public class AdminSqlDAO {
     }
 
     //Update Query (Name, gender,dob,phone Password) by ID
-    public void update(String name,String gender,Date dob,String phone, String password, int ID) throws SQLException {
+    public void update(String name,String gender,String dob,String phone, String password, int ID) throws SQLException {
         updateSt.setString(1, name);
         updateSt.setString(2, gender);
-        updateSt.setString(3,dob.toString());
+        updateSt.setString(3,dob);
         updateSt.setString(4, phone);
         updateSt.setString(5, password);
         updateSt.setString(6, Integer.toString(ID));

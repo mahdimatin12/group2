@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.controller;
 
 import com.model.dao.AdminSqlDAO;
 import com.model.dao.BookingSqlDAO;
 import com.model.dao.CustomerSqlDAO;
 import com.model.dao.MovieSqlDAO;
-
 import com.model.dao.SqlDBConnector;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -23,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class InitServlet extends HttpServlet {
 
     private CustomerSqlDAO customerSqlDAO;
@@ -32,7 +24,7 @@ public class InitServlet extends HttpServlet {
     private SqlDBConnector dBConnector;
     private Connection connection;
     private MovieSqlDAO movieSqlDAO;
-    
+
     @Override
     public void init() {
         try {
@@ -40,9 +32,9 @@ public class InitServlet extends HttpServlet {
             connection = dBConnector.connection(); //opening connection with the db
             customerSqlDAO = new CustomerSqlDAO(connection);
             adminSqlDAO = new AdminSqlDAO(connection);
-            movieSqlDAO = new MovieSqlDAO(connection);
             bookingSqlDAO = new BookingSqlDAO(connection);
-            
+            movieSqlDAO = new MovieSqlDAO(connection);
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InitServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -65,9 +57,9 @@ public class InitServlet extends HttpServlet {
         session.setAttribute("bookingSqlDAO", bookingSqlDAO);
         session.setAttribute("movieSqlDAO", movieSqlDAO);
     }
-    
+
     @Override
-    public void destroy(){
+    public void destroy() {
         try {
             dBConnector.closeConnection();
         } catch (SQLException ex) {
