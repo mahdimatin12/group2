@@ -23,7 +23,11 @@ com\controller\CustomerServlet.class
 com\controller\MovieUpdateServlet.class
 com\model\dao\AdminSqlDAO.class
 com\controller\AdminAccountServlet.class
+<<<<<<< HEAD
+com\rest\CustomersSqlService.class
+=======
 com\rest\BookingSqlService.class
+>>>>>>> main
 com\model\Movies.class
 com\utils\In.class
 com\controller\AdminRegisterServlet.class

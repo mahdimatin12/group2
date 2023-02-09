@@ -1,11 +1,10 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.Random;
-import javax.management.relation.Role;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "customer")

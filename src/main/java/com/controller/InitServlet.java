@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.controller;
+
 import com.model.dao.AdminSqlDAO;
 import com.model.dao.BookingSqlDAO;
 import com.model.dao.CustomerSqlDAO;
@@ -38,6 +34,7 @@ public class InitServlet extends HttpServlet {
             adminSqlDAO = new AdminSqlDAO(connection);
             bookingSqlDAO = new BookingSqlDAO(connection);
             movieSqlDAO = new MovieSqlDAO(connection);
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InitServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

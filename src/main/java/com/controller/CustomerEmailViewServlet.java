@@ -7,12 +7,13 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+@WebServlet("/ShowCustomerInfoServlet")
 public class CustomerEmailViewServlet extends HttpServlet {
 
     @Override
@@ -35,6 +36,6 @@ public class CustomerEmailViewServlet extends HttpServlet {
             customer = (Customer) session.getAttribute("customer");
         }
         session.setAttribute("customer", customer);
-        request.getRequestDispatcher("cutomerEmailView.jsp").include(request, response);
+        request.getRequestDispatcher("customerEmailView.jsp").include(request, response);
     }
 }
