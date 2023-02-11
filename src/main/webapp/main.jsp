@@ -28,23 +28,23 @@
                 if (customer != null) {
             %>  
             
-            <h2 class="welcomemsg">Welcome, to your Dashboard <%= customer.getName()%>!</h2>
+            <h2 class="welcomemsg">Welcome, to your Dashboard <span style="color: purple; font-size: 1.5em;text-transform: capitalize"><%= customer.getName()%></span></h2>
         
 
             <aside class="adminAside">
-                <a href="usersaccount.jsp"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
-                <a href="movies.jsp"><img src="image/video-833.svg"><br>Movies</a>
-                <a href="booking.jsp"><img src="image/click-mobile-phone-2406.svg"><br>MY BOOKINGS</a>
+                <div class="dashOptions"><a href="usersaccount.jsp"><img src="image/resume-9870.svg"><br>MY PROFILE</a></div>
+                <div class="dashOptions"><a href="movies.jsp"><img src="image/video-833.svg"><br>My Movies</a></div>
+                <div class="dashOptions"><a href="booking.jsp"><img src="image/click-mobile-phone-2406.svg"><br>MY BOOKINGS</a></div>
             </aside> 
             
             <% } else {
                 Admin admin = (Admin) session.getAttribute("admin");%>
-            <h2 class="welcomemsg">Welcome to Admin Dashboard <%= admin.getName()%>!</h2>
+                <h2 class="welcomemsg">Welcome to Admin Dashboard <span style="color:purple; font-size: 1.5em;text-transform: capitalize"><%= admin.getName()%></span></h2>
          
             <aside class="customerAside">
-                <a href="usersaccount.jsp"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
-                <a href="customer.jsp"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
-                <a href="movies.jsp"><img src="image/video-833.svg"><br>MOVIES</a>
+                <div class="dashOptions"> <a href="usersaccount.jsp"><img src="image/resume-9870.svg"><br>MY PROFILE</a></div>
+                <div class="dashOptions"><a href="customer.jsp"><img src="image/client-5253.svg"><br>CUSTOMERS</a></div>
+                <div class="dashOptions"><a href="movies.jsp"><img src="image/video-833.svg"><br>MOVIES</a></div>
             </aside>
             
             <% }%> 

@@ -25,7 +25,9 @@ com\model\dao\BookingSqlDAO.class
 com\controller\CustomerDeleteServlet.class
 com\controller\AdminSearchServlets.class
 com\controller\CustomerRegisterServlet.class
+
 com\controller\CreateCustomersServlet.class
+
 com\model\dao\MovieSqlDAO.class
 com\controller\Step1Servlet.class
 com\controller\updateCustomerServlet.class
@@ -39,6 +41,9 @@ com\utils\In.class
 com\controller\AdminRegisterServlet.class
 com\rest\AdminSqlService.class
 com\controller\MoviePageStep1Servlet.class
+
+com\controller\CreateCustomerServlet.class
+
 com\rest\MovieSqlService.class
 com\controller\BookingServlet.class
 com\controller\CustomerAccountServlet.class
