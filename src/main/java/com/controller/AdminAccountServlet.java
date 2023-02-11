@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.controller;
 
 import com.model.Admin;
 import com.model.dao.AdminSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,7 +52,6 @@ public class AdminAccountServlet extends HttpServlet {
         if (!name.matches(nameRegex)) {
             nameError = "*Update Failed: The name must be alphabetical!";
             errorNum++;
-
         }
 
         if (!password.matches(passRegEx)) {

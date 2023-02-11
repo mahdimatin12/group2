@@ -3,7 +3,6 @@ package com.controller;
 import com.model.Admin;
 import com.model.dao.AdminSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

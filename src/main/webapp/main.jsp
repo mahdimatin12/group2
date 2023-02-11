@@ -43,7 +43,7 @@
          
             <aside class="customerAside">
                 <a href="usersaccount.jsp"><img src="image/resume-9870.svg"><br>MY PROFILE</a>
-                <a href="#"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
+                <a href="customer.jsp"><img src="image/client-5253.svg"><br>CUSTOMERS</a>
                 <a href="movies.jsp"><img src="image/video-833.svg"><br>MOVIES</a>
             </aside>
             
