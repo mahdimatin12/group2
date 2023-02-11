@@ -35,11 +35,11 @@
         <article class="main">
             <div class="tableDiv" style="width:20%">
 
-                <form id="form1" method="POST" action="/group2/Step1Servlet"> 
+                <form class="dateForm" method="POST" action="/group2/Step1Servlet"> 
                     <fieldset style="border: 1px solid black">
-                        <legend><%=(empty != null) ? empty : ""%></legend>
+                        <legend><%=(empty != null) ? empty : "Select your bookig date"%></legend>
                         <input type="date" name="date">             
-                        <input type="submit" value="ADD">
+                        <input type="submit" value="NEXT">
                     </fieldset>
                 </form>                        
             </div>
