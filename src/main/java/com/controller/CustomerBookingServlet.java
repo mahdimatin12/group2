@@ -6,6 +6,7 @@
 package com.controller;
 
 import com.model.Customer;
+import com.model.Movie;
 import com.model.dao.BookingSqlDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,7 +29,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236347
  */
-public class Step1Servlet extends HttpServlet {
+public class CustomerBookingServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,11 +38,14 @@ public class Step1Servlet extends HttpServlet {
         HttpSession session = request.getSession();
         String inputDate = request.getParameter("date");
         String empty = "";
+        String confirmationmsg = "";
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Calendar currentDate = Calendar.getInstance();
         String systemDate = formatter.format(currentDate.getTime());
-
+        Movie movie = (Movie)session.getAttribute("movie");
+        int moviesid = movie.getid();
+        
         if (!inputDate.isEmpty()) {
 
             try {
@@ -62,8 +66,19 @@ public class Step1Servlet extends HttpServlet {
                     } catch (SQLException ex) {
                         Logger.getLogger(Step1Servlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    session.setAttribute("customer", customer);
-                    request.getRequestDispatcher("Step2Servlet").include(request, response);
+                    
+                    try {
+                        int bookingid = (Integer)bookingSqlDAO.currentBooking();
+                        if(bookingid < 0) {
+                            bookingSqlDAO.addMovieBooking(moviesid, bookingid);
+                            confirmationmsg = "your booking was successful";
+                            session.setAttribute("confirmationmsg", confirmationmsg);
+                            request.getRequestDispatcher("booking.jsp").include(request, response);
+                        
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(CustomerBookingServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             } catch (ParseException ex) {
                 Logger.getLogger(Step1Servlet.class.getName()).log(Level.SEVERE, null, ex);
