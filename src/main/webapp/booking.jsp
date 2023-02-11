@@ -45,7 +45,7 @@
             %>
             <div class="tableDiv">
 
-                <a href="step1.jsp" style="vertical-align: middle;text-decoration: none"><img src="image/add.png" style="margin-top:10%"></a>
+                <a href="step1.jsp" style="vertical-align: middle;text-decoration: none"><img src="image/add.png"></a>
 
                 <table class="bookings" width="100%">
                     <caption>

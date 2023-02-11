@@ -16,6 +16,7 @@
                 margin-top: 6%;
                 margin-left:40%;
             }
+           
         </style>
     </head>
 
@@ -76,8 +77,8 @@
                             <a class="button" href="main.jsp">Dashboard</a>
                         </td>
                         <td>
-                            <input class="button" id="updatebtn" type="submit" value="Update" /> 
-                            <a class="button" id="deletebtn" href="deletemsg.jsp">Delete</a>
+                            <input class="button" type="submit" value="Update" /> 
+                            <a class="button" href="deletemsg.jsp">Delete</a>
                         </td>
                     </tr>
                 </table>   

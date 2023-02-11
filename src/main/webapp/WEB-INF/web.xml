@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
     <servlet>
         <servlet-name>CustomerBookingServlet</servlet-name>
         <servlet-class>com.controller.CustomerBookingServlet</servlet-class>
     </servlet>
+    
     <servlet>
         <servlet-name>MoviePageStep1Servlet</servlet-name>
         <servlet-class>com.controller.MoviePageStep1Servlet</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>CreateCustomersServlet</servlet-name>
         <url-pattern>/CreateCustomersServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+        <servlet-name>EditBookingServlet</servlet-name>
+        <url-pattern>/EditBookingServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CustomerBookingServlet</servlet-name>
+        <url-pattern>/CustomerBookingServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>MoviePageStep1Servlet</servlet-name>
+        <url-pattern>/MoviePageStep1Servlet</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
         30
     </session-timeout>
     </session-config>
+    
     <servlet>
         <servlet-name>group2</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
@@ -26,14 +46,17 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet>
         <servlet-name>Step1Servlet</servlet-name>
         <servlet-class>com.controller.Step1Servlet</servlet-class>
     </servlet>
+    
     <servlet>
         <servlet-name>Step2Servlet</servlet-name>
         <servlet-class>com.controller.Step2Servlet</servlet-class>
     </servlet>
+    
     <servlet>
         <servlet-name>Step3Servlet</servlet-name>
         <servlet-class>com.controller.Step3Servlet</servlet-class>
@@ -46,6 +69,24 @@
         <servlet-name>EditBookingServlet</servlet-name>
         <servlet-class>com.controller.EditBookingServlet</servlet-class>
     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteBookingServlet</servlet-name>
+        <url-pattern>/DeleteBookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Step1Servlet</servlet-name>
+        <url-pattern>/Step1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Step2Servlet</servlet-name>
+        <url-pattern>/Step2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Step3Servlet</servlet-name>
+        <url-pattern>/Step3Servlet</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>MovieAddServlet</servlet-name>
         <servlet-class>com.controller.MovieAddServlet</servlet-class>
@@ -111,6 +152,10 @@
         <servlet-class>com.controller.updateCustomerServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <servlet-class>com.controller.CustomerDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CustomerEmailViewServlet</servlet-name>
         <servlet-class>com.controller.CustomerEmailViewServlet</servlet-class>
     </servlet>
@@ -126,6 +171,7 @@
         <servlet-name>DeleteCustomerServlet</servlet-name>
         <servlet-class>com.controller.DeleteCustomerServlet</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>CustomerDeleteServlet</servlet-name>
         <servlet-class>com.controller.CustomerDeleteServlet</servlet-class>
@@ -166,6 +212,7 @@
         <servlet-name>MoviePageStep1Servlet</servlet-name>
         <url-pattern>/MoviePageStep1Servlet</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>AdminSearchServlets</servlet-name>
         <url-pattern>/AdminSearchServlets</url-pattern>
@@ -177,6 +224,10 @@
     <servlet-mapping>
         <servlet-name>updateCustomerServlet</servlet-name>
         <url-pattern>/updateCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <url-pattern>/CustomerDeleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomerEmailViewServlet</servlet-name>
@@ -246,4 +297,249 @@
         <servlet-name>group2</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <url-pattern>/CustomerDeleteServlet</url-pattern>
+    </servlet-mapping>
+        <servlet>
+            <servlet-name>CustomerBookingServlet</servlet-name>
+            <servlet-class>com.controller.CustomerBookingServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>MoviePageStep1Servlet</servlet-name>
+            <servlet-class>com.controller.MoviePageStep1Servlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>EditBookingServlet</servlet-name>
+            <url-pattern>/EditBookingServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>CustomerBookingServlet</servlet-name>
+            <url-pattern>/CustomerBookingServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>MoviePageStep1Servlet</servlet-name>
+            <url-pattern>/MoviePageStep1Servlet</url-pattern>
+
+        </servlet-mapping>
+        <session-config>
+            <session-timeout>
+                30
+            </session-timeout>
+        </session-config>
+        <servlet>
+            <servlet-name>group2</servlet-name>
+            <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+            <init-param>
+                <param-name>com.sun.jersey.config.property.packages</param-name>
+                <param-value>com.rest</param-value>
+            </init-param>
+            <load-on-startup>1</load-on-startup>
+        </servlet>
+
+
+        <servlet>
+            <servlet-name>Step1Servlet</servlet-name>
+            <servlet-class>com.controller.Step1Servlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>Step2Servlet</servlet-name>
+            <servlet-class>com.controller.Step2Servlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>Step3Servlet</servlet-name>
+            <servlet-class>com.controller.Step3Servlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>DeleteBookingServlet</servlet-name>
+            <servlet-class>com.controller.DeleteBookingServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>EditBookingServlet</servlet-name>
+            <servlet-class>com.controller.EditBookingServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>DeleteBookingServlet</servlet-name>
+            <url-pattern>/DeleteBookingServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>Step1Servlet</servlet-name>
+            <url-pattern>/Step1Servlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>Step2Servlet</servlet-name>
+            <url-pattern>/Step2Servlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>Step3Servlet</servlet-name>
+            <url-pattern>/Step3Servlet</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>MovieAddServlet</servlet-name>
+            <servlet-class>com.controller.MovieAddServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>MovieSearchServlet</servlet-name>
+            <servlet-class>com.controller.MovieSearchServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>MovieDeleteServlet</servlet-name>
+            <servlet-class>com.controller.MovieDeleteServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>MovieUpdateServlet</servlet-name>
+            <servlet-class>com.controller.MovieUpdateServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>MovieViewServlet</servlet-name>
+            <servlet-class>com.controller.MovieViewServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>InitServlet</servlet-name>
+            <servlet-class>com.controller.InitServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>AdminServlet</servlet-name>
+            <servlet-class>com.controller.AdminServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>CustomerServlet</servlet-name>
+            <servlet-class>com.controller.CustomerServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>LogoutServlet</servlet-name>
+            <servlet-class>com.controller.LogoutServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>CustomerRegisterServlet</servlet-name>
+            <servlet-class>com.controller.CustomerRegisterServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>AdminRegisterServlet</servlet-name>
+            <servlet-class>com.controller.AdminRegisterServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>CustomerAccountServlet</servlet-name>
+            <servlet-class>com.controller.CustomerAccountServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>AdminAccountServlet</servlet-name>
+            <servlet-class>com.controller.AdminAccountServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>AdminSearchServlets</servlet-name>
+            <servlet-class>com.controller.AdminSearchServlets</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>CreateCustomerServlet</servlet-name>
+            <servlet-class>com.controller.CreateCustomerServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>updateCustomerServlet</servlet-name>
+            <servlet-class>com.controller.updateCustomerServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>CustomerEmailViewServlet</servlet-name>
+            <servlet-class>com.controller.CustomerEmailViewServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>NewServlet</servlet-name>
+            <servlet-class>com.controller.NewServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>DeleteAdminServlet</servlet-name>
+            <servlet-class>com.controller.DeleteAdminServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>DeleteCustomerServlet</servlet-name>
+            <servlet-class>com.controller.DeleteCustomerServlet</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>CustomerDeleteServlet</servlet-name>
+            <servlet-class>com.controller.CustomerDeleteServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>AdminSearchServlets</servlet-name>
+            <url-pattern>/AdminSearchServlets</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>CreateCustomerServlet</servlet-name>
+            <url-pattern>/CreateCustomerServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>updateCustomerServlet</servlet-name>
+            <url-pattern>/updateCustomerServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>CustomerEmailViewServlet</servlet-name>
+            <url-pattern>/CustomerEmailViewServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>InitServlet</servlet-name>
+            <url-pattern>/InitServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>AdminServlet</servlet-name>
+            <url-pattern>/AdminServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>CustomerServlet</servlet-name>
+            <url-pattern>/CustomerServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>LogoutServlet</servlet-name>
+            <url-pattern>/LogoutServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>CustomerRegisterServlet</servlet-name>
+            <url-pattern>/CustomerRegisterServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>AdminRegisterServlet</servlet-name>
+            <url-pattern>/AdminRegisterServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>CustomerAccountServlet</servlet-name>
+            <url-pattern>/CustomerAccountServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>AdminAccountServlet</servlet-name>
+            <url-pattern>/AdminAccountServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>NewServlet</servlet-name>
+            <url-pattern>/NewServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>DeleteAdminServlet</servlet-name>
+            <url-pattern>/DeleteAdminServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>DeleteCustomerServlet</servlet-name>
+            <url-pattern>/DeleteCustomerServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>MovieSearchServlet</servlet-name>
+            <url-pattern>/MovieSearchServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>MovieDeleteServlet</servlet-name>
+            <url-pattern>/MovieDeleteServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>MovieUpdateServlet</servlet-name>
+            <url-pattern>/MovieUpdateServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>MovieViewServlet</servlet-name>
+            <url-pattern>/MovieViewServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>group2</servlet-name>
+            <url-pattern>/rest/*</url-pattern>
+        </servlet-mapping>
+
 </web-app>
