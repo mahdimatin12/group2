@@ -112,6 +112,7 @@ nav a:hover {
 
 .tableDiv {
     width: 50%;
+    margin-top: 5%;
     margin-left: 20%;
 }
 
@@ -323,8 +324,8 @@ tables{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-        
-    
+
+
 }
 .content {
     max-width: 50%;
@@ -379,6 +380,23 @@ select {
     font-weight: 300;
     border: solid .2px gray;
 
+}
+
+.astyle {
+    display: block;
+    height: 30px;
+    width: 80%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    border: solid .2px gray;
+}
+
+.astyle:hover {
+     background-color: lightblue;
 }
 
 
@@ -481,7 +499,7 @@ aside a:hover {
 .formDiv fieldset {
     border: 1px solid black;
     float: right;
-   
+
 }
 
 .formDiv legend {

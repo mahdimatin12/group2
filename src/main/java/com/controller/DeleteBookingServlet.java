@@ -33,12 +33,12 @@ public class DeleteBookingServlet extends HttpServlet {
                 bookingSqlDAO.delete(mbID);
                 msg = "your booking was successfully deleted";
                 session.setAttribute("msg", msg);
-                request.getRequestDispatcher("DeleteBooking.jsp").include(request, response);
+                request.getRequestDispatcher("booking.jsp").include(request, response);
             } catch (Exception e) {
                 System.out.println("update failed");
             }
         } else {
-            System.out.println("failed to git mbID");
+            System.out.println("failed to get mbID");
 
         }
     }

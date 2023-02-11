@@ -40,6 +40,8 @@
                 BookingSqlDAO bookingSqlDAO = (BookingSqlDAO) session.getAttribute("bookingSqlDAO");
                 List<Booking> bookings = bookingSqlDAO.getBookings(id);
                 int rows = bookings.size();
+                String msgsession = (String) session.getAttribute("msg");
+                String msg2session = (String) session.getAttribute("msg2");
             %>
             <div class="tableDiv">
 
@@ -47,8 +49,15 @@
 
                 <table class="bookings" width="100%">
                     <caption>
-                        You have <strong style="color:#e52323"><%= rows%></strong> bookings
+                        <p id="msgptag"><%= (msgsession != null) ? msgsession : ""%></p>
+                        <p id="msgptag"><%= (msg2session != null) ? msg2session : ""%></p>
+                        You have <strong style="color:#e52323"><%= rows%></strong> booking(s)
                     </caption>
+                    <script>
+                        setTimeout(function () {
+                            document.getElementById("msgptag").style.display = "none";
+                        }, 2000);
+                    </script>
                     <colgroup>
                         <col id="poster">
                         <col id="name">
@@ -72,7 +81,7 @@
                             int mbID = bookingSqlDAO.getmbID(bookingSqlDAO.getMovieID(booking.getMovieName()), booking.getBookingid());
                         %>
                         <td><a href="http://localhost:8080/group2/EditBooking.jsp?bID=<%= booking.getBookingid()%>&mID=<%=bookingSqlDAO.getMovieID(booking.getMovieName())%>&d=<%= booking.getDate()%>&mbID=<%=mbID%>"><img src="image/pencil-327.png"></a></td>
-                            <td><a href="http://localhost:8080/group2/DeleteBooking.jsp?mbID=<%=mbID%>&mName=<%=booking.getMovieName()%>&d=<%= booking.getDate()%>"><img src="image/trash-can-10417.png"></a></td>
+                        <td><a href="http://localhost:8080/group2/DeleteBooking.jsp?mbID=<%=mbID%>&mName=<%=booking.getMovieName()%>&d=<%= booking.getDate()%>"><img src="image/trash-can-10417.png"></a></td>
                     </tr>
                     <% }%>
                 </table>
