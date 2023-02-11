@@ -1,4 +1,3 @@
-
 package com.controller;
 
 import com.model.Customer;
@@ -13,13 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class CustomerDeleteServlet extends HttpServlet {
 
+public class CustomerDeleteServlet extends HttpServlet {
     
-   @Override
+@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         HttpSession session = request.getSession();
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
         
@@ -46,10 +44,12 @@ public class CustomerDeleteServlet extends HttpServlet {
         }
 
         if (emailView != null) {
-            request.getRequestDispatcher("index.jsp").include(request, response);
+            request.getRequestDispatcher("main.jsp").include(request, response);
         } else {
             session.invalidate();
-            request.getRequestDispatcher("index.jsp").include(request, response);
+            request.getRequestDispatcher("main.jsp").include(request, response);
         }
     }
+  
+
 }
