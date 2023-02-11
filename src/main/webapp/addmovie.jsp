@@ -27,24 +27,30 @@
         <div>
         <%
             String yearerror = (String) session.getAttribute("yearError");
+            session.removeAttribute("yearerror");
             String runerror = (String) session.getAttribute("runError");
-            String movieAddmsg = (String) session.getAttribute("movieAddMsg");
+            session.removeAttribute("runerror");
+            String movieaddmsg = (String) session.getAttribute("movieAddMsg");
+            session.removeAttribute("movieAddMsg");
+            String fieldempty = (String) session.getAttribute("fieldEmpty");
+            session.removeAttribute("fieldEmpty");
         %>
-
         <h1> Movie Details</h1>
         <br>
-        <h3><span style="font-size: 10px; color: orange;"><%= (movieAddmsg != null) ? movieAddmsg : ""%></span></h3>
-        <h3><span style="font-size: 10px; color: orange;"><%= (yearerror != null) ? yearerror : ""%></span></h3>
-        <h3><span style="font-size: 10px; color: orange;"><%= (runerror != null) ? runerror : ""%></span></h3>
-        <form id="form1" action="/group2/MovieAddServlet" method="POST" align="center">
+        
+        
+        <!--Form for Adding a movie -->
+        <form action="/group2/MovieAddServlet" method="POST" align="center">
+            <span style="font-size: 10px; color: orange;"><%= (movieaddmsg != null) ? movieaddmsg : ""%></span>
+            <span style="font-size: 10px; color: orange;"><%= (fieldempty != null) ? fieldempty : ""%></span>
             <div>
                 <label>Movie Title/Name</label>
-                <input name="name"  id="name" type="text" placeholder="Movie Title/Name"%>">
+                <input name="name"  id="name" type="text" placeholder="Movie Title/Name"%>
             </div>
             <div>
                 <label>Movie Genre</label>
             <select name="genre" id="genre">
-                <option value="">--Please choose genre--</option>
+                <option value="">Choose genre</option>
                 <option value="action">Action</option>
                 <option value="adventure">Adventure</option>
                 <option value="animation">Animation</option>
@@ -58,18 +64,19 @@
                 <option value="war">War</option>
             </select>
             </div>
-            <div>
+            <div>                
                 <label>Release Year </label>
-                <input name="year"  id="year" type="text" placeholder="<%= (yearerror != null) ? yearerror : "Release year"%>">
-            </div>
+                <input name="year"  id="year" type="text" placeholder="Release year eg:(2015)">
+                <span style="font-size: 10px; color: orange;"><%= (yearerror != null) ? yearerror : ""%></span>
             <div>
                 <label>Description </label>
                 <input name="description" id="description" type="text" placeholder="Summary,Cast...">
-            </div>
-            
+            </div>            
             <div>
-                <label>Run time </label>
-                <input name="runtime" id="runtime" type="text" placeholder="<%= (runerror != null) ? runerror :"movie length"%>">
+                 
+                <label>Run time </label>                
+                <input name="runtime" id="runtime" type="text" placeholder="movie length">
+                <span style="font-size: 10px; color: orange;"><%= (runerror != null) ? runerror : ""%></span>
             </div>
              <div>
                 <label>Image URL </label>
@@ -78,14 +85,13 @@
             <div>
                 <label>Video URL </label>
                 <input name="vidurl" id="vidurl" type="text" placeholder="Add video URL Link">
-            </div>            
+            </div>          
             
             <div><input type="hidden" value="movie">
-            <input type="submit" value="ADD" style="cursor: pointer">
+            <input type="submit" value="Add Movie" style="cursor: pointer">
             </div>
         </form>
         </div>
-
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>

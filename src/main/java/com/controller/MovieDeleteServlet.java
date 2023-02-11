@@ -5,6 +5,7 @@
  */
 package com.controller;
 
+
 import com.model.Movie;
 import com.model.dao.MovieSqlDAO;
 import java.io.IOException;
@@ -26,9 +27,14 @@ public class MovieDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+  //Servlet to Delete the  movie by id in moviedb.movie_bookings&moviesdb.bookings through MovieSqlDAO
+  
         HttpSession session = request.getSession();
         MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
-        int id = Integer.parseInt(request.getParameter("mid"));
+        //int id = Integer.parseInt(request.getParameter("mid"));
+        Movie movie = (Movie)session.getAttribute("movie");
+        int id = movie.getid();
         String movieDeleteMsg = "";
         if (id != 0) {
             try {
@@ -36,6 +42,7 @@ public class MovieDeleteServlet extends HttpServlet {
                 movieSqlDAO.delete(id);
                 movieDeleteMsg = "Movie deleted successfully";
                 session.setAttribute("movieDeleteMsg", movieDeleteMsg);
+                session.removeAttribute("movie");
                 request.getRequestDispatcher("movies.jsp").include(request, response);
             } catch (SQLException ex) {
                 Logger.getLogger(MovieDeleteServlet.class.getName()).log(Level.SEVERE, null, ex);

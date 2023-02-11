@@ -120,8 +120,7 @@ public class MovieSqlDAO {
     }
 
     //Delete Query - by ID
-    public void delete(int ID) throws SQLException {
-        
+    public void delete(int ID) throws SQLException {        
         deleteSt.setString(1, "" + ID);
         int row = deleteSt.executeUpdate();
         System.out.println("Row " + row + " has been successfully deleted");

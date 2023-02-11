@@ -169,6 +169,10 @@
         <url-pattern>/MovieSearchServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>MovieAddServlet</servlet-name>
+        <url-pattern>/MovieAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MovieDeleteServlet</servlet-name>
         <url-pattern>/MovieDeleteServlet</url-pattern>
     </servlet-mapping>

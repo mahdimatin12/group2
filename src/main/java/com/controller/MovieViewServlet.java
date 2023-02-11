@@ -33,9 +33,9 @@ public class MovieViewServlet extends HttpServlet {
         
         MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
         Movie movie = null;
-        int Id = Integer.parseInt(request.getParameter("Id"));      
+        String moviename = (request.getParameter("name"));      
             try {
-                movie = movieSqlDAO.getMovie(Id);
+                movie = movieSqlDAO.getMovie(moviename);
             } catch (SQLException ex) {
                 Logger.getLogger(MovieSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
