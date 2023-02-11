@@ -7,12 +7,15 @@
         <title>Movies: Assessment 3</title>
         <link href="css/ZStyles.css" rel="stylesheet">
         <style>
-     
-            
-    </style>
+
+
+        </style>
     </head>
 
-    <body style="background-color:#FFFFF0;">
+    <body>
+        <!--  
+           * Header of the page
+        -->
         <header>
             <nav class="clear">
                 <ul>
@@ -24,11 +27,16 @@
             <span>&#9654</span>
             <h1>mymovies.com</h1>
         </header>
-          
 
-        <!-- main content goes here -->
+
+        <!-- main content goes here
+             *The Sign up form for admin and customer are in.
+             *Using radio button for Differentiate  between admin and customer.
+             *Using Post method to handle the .
+        
+        -->
         <article class="main">
-            <div class="loginContent" style="background-color:#f0f8ff;">
+            <div class="loginContent" >
                 <%
                     String error = (String) session.getAttribute("error");
                     String nameerror = (String) session.getAttribute("nameerror");
@@ -69,11 +77,11 @@
                     <input name="password" type="password" placeholder="Enter your password (Admin)"><p class="datafont"><%= (passerror != null) ? passerror : ""%></p>
                     <input type="hidden" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">   
-
+                    
                 </form>
-                
+
                 <!-- -----------------------------------------------Customer Register Form---------------------------------------------------------- -->
-               <%
+                <%
                     String error2 = (String) session.getAttribute("error");
                     String nameerror2 = (String) session.getAttribute("nameerror2");
                     session.removeAttribute("nameerror2");
@@ -91,7 +99,7 @@
 
                 <form id="form2" class="admin" action="/group2/CustomerRegisterServlet" method="POST">
 
-                   
+
                     <input name="name"  type="text" placeholder="Enter your name (Customer)"><p class="datafont"><%= (nameerror2 != null) ? nameerror2 : ""%></p>
 
                     <select name="gender" id="gender">

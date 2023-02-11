@@ -42,11 +42,10 @@ public class AdminRegisterServlet extends HttpServlet {
         String genderError = "";
 
          int errorNum = 0;
-        //"^[\\d]{1,2}[-][\\d]{1,2}[-](19)[\\d]{2,2}$|^[\\d]{1,2}[-][\\d]{1,2}[-](200)[\\d]{1,1}$|^[\\d]{1,2}[-][\\d]{1,2}[-](2010)$";
+       
         String nameRegex = "[a-z A-Z]+([ '-][a-zA-Z]+)*";
         String dobRgex = "^(19)[\\d]{2,2}[-][\\d]{1,2}[-][\\d]{1,2}$|^(200)[\\d]{1,1}[-][\\d]{1,2}[-][\\d]{1,2}|^(2010)[\\d]{0,0}[-][\\d]{1,2}[-][\\d]{1,2}$";//1900-2010
         String phoneRegex = "^[+0]\\d{1,2}\\d{6,11}$";
-        //String genderRegEx = "^M(ale)?$|^F(emale)?$";
         String passRegEx = "[A-Z][A-Za-z1-9!@#$%^&*]{8,}";
         String emailRegEx = "[a-zA-Z0-9_%+-]+[.][a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+(.com)";
 

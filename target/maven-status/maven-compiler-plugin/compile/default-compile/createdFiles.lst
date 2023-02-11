@@ -16,6 +16,7 @@ com\model\dao\MovieSqlDAO.class
 com\rest\CustomerSqlService.class
 com\controller\Step1Servlet.class
 com\controller\Step2Servlet.class
+com\controller\updateCustomerServlet.class
 com\controller\CustomerEmailViewServlet.class
 com\controller\Step3Servlet.class
 com\model\Customer.class
@@ -23,11 +24,8 @@ com\controller\CustomerServlet.class
 com\controller\MovieUpdateServlet.class
 com\model\dao\AdminSqlDAO.class
 com\controller\AdminAccountServlet.class
-<<<<<<< HEAD
 com\rest\CustomersSqlService.class
-=======
 com\rest\BookingSqlService.class
->>>>>>> main
 com\model\Movies.class
 com\utils\In.class
 com\controller\AdminRegisterServlet.class
@@ -35,6 +33,7 @@ com\model\dao\CustomerSqlDAO.class
 com\model\Admin.class
 com\controller\MovieAddServlet.class
 com\rest\AdminSqlService.class
+com\controller\CreateCustomerServlet.class
 com\rest\MovieSqlService.class
 com\controller\BookingServlet.class
 com\model\dao\SqlDB.class
