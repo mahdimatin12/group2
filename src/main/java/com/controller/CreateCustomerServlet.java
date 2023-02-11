@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class CreateCustomersServlet extends HttpServlet {
+public class CreateCustomerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -67,7 +67,7 @@ public class CreateCustomersServlet extends HttpServlet {
                     request.getRequestDispatcher("customer.jsp").include(request, response);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(CreateCustomersServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CreateCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

@@ -7,6 +7,7 @@ C:\group2\src\main\java\com\controller\CustomerAccountServlet.java
 C:\group2\src\main\java\com\controller\updateCustomerServlet.java
 C:\group2\src\main\java\com\model\Admin.java
 C:\group2\src\main\java\com\model\Booking.java
+C:\group2\src\main\java\com\controller\CreateCustomerServlet.java
 C:\group2\src\main\java\com\model\Customers.java
 C:\group2\src\main\java\com\model\dao\AdminSqlDAO.java
 C:\group2\src\main\java\com\controller\MovieSearchServlet.java
@@ -24,7 +25,6 @@ C:\group2\src\main\java\com\controller\Step3Servlet.java
 C:\group2\src\main\java\com\controller\MovieAddServlet.java
 C:\group2\src\main\java\com\controller\MovieUpdateServlet.java
 C:\group2\src\main\java\com\controller\AdminServlet.java
-C:\group2\src\main\java\com\controller\CreateCustomersServlet.java
 C:\group2\src\main\java\com\rest\AdminSqlService.java
 C:\group2\src\main\java\com\rest\CustomerSqlService.java
 C:\group2\src\main\java\com\controller\MovieViewServlet.java
