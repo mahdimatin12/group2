@@ -7,6 +7,7 @@ com\model\dao\BookingSqlDAO.class
 com\model\Booking.class
 com\controller\MainServlet.class
 com\controller\AdminServlet.class
+com\controller\CustomerDeleteServlet.class
 com\controller\DeleteAdminServlet.class
 com\controller\AdminSearchServlets.class
 com\controller\CustomerRegisterServlet.class

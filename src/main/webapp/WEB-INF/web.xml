@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+    <servlet-mapping>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <url-pattern>/CustomerDeleteServlet</url-pattern>
+
     <servlet>
         <servlet-name>CustomerBookingServlet</servlet-name>
         <servlet-class>com.controller.CustomerBookingServlet</servlet-class>
@@ -19,6 +24,7 @@
     <servlet-mapping>
         <servlet-name>MoviePageStep1Servlet</servlet-name>
         <url-pattern>/MoviePageStep1Servlet</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -34,6 +40,8 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
+
     <servlet>
         <servlet-name>Step1Servlet</servlet-name>
         <servlet-class>com.controller.Step1Servlet</servlet-class>
@@ -70,6 +78,7 @@
         <servlet-name>Step3Servlet</servlet-name>
         <url-pattern>/Step3Servlet</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>MovieAddServlet</servlet-name>
         <servlet-class>com.controller.MovieAddServlet</servlet-class>
@@ -135,10 +144,6 @@
         <servlet-class>com.controller.updateCustomerServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CustomerDeleteServlet</servlet-name>
-        <servlet-class>com.controller.CustomerDeleteServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CustomerEmailViewServlet</servlet-name>
         <servlet-class>com.controller.CustomerEmailViewServlet</servlet-class>
     </servlet>
@@ -154,6 +159,10 @@
         <servlet-name>DeleteCustomerServlet</servlet-name>
         <servlet-class>com.controller.DeleteCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <servlet-class>com.controller.CustomerDeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminSearchServlets</servlet-name>
         <url-pattern>/AdminSearchServlets</url-pattern>
@@ -165,10 +174,6 @@
     <servlet-mapping>
         <servlet-name>updateCustomerServlet</servlet-name>
         <url-pattern>/updateCustomerServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CustomerDeleteServlet</servlet-name>
-        <url-pattern>/CustomerDeleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomerEmailViewServlet</servlet-name>

@@ -19,6 +19,9 @@ C:\group2\src\main\java\com\model\Booking.java
 C:\group2\src\main\java\com\rest\CustomerSqlService.java
 C:\group2\src\main\java\com\controller\MovieViewServlet.java
 C:\group2\src\main\java\com\controller\CreateCustomerServlet.java
+
+C:\group2\src\main\java\com\controller\CustomerDeleteServlet.java
+
 C:\group2\src\main\java\com\model\Customers.java
 C:\group2\src\main\java\com\model\dao\AdminSqlDAO.java
 C:\group2\src\main\java\com\controller\AdminRegisterServlet.java

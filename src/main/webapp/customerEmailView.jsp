@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer Email View</title>
+        <title>Account</title>
 
         <link href="css/styles.css" rel="stylesheet">
         <link href="css/ramya.css" rel="stylesheet">
@@ -25,38 +25,67 @@
         <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
     </header>
 
+    <%
+        CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
+        Customer customer = (Customer) session.getAttribute("customer");
+        customer = customerSqlDAO.getCustomer(customer.getEmail());
+        String emailView = request.getParameter("emailView");
+        // String submitted = request.getParameter("submitted");
+
+    %>
+    <%        String nameError = (String) session.getAttribute("nameError");
+        session.removeAttribute("nameError");
+        String genderError = (String) session.getAttribute("genderError");
+        session.removeAttribute("genderError");
+        String dobError = (String) session.getAttribute("dobError");
+        session.removeAttribute("dobError");
+        String phoneError = (String) session.getAttribute("phoneError");
+        session.removeAttribute("phoneError");
+        String passError = (String) session.getAttribute("passError");
+        session.removeAttribute("passError");
+//                String error = (String) session.getAttribute("error");
+//                session.removeAttribute("error");
+        String update = (String) session.getAttribute("update");
+        session.removeAttribute("update");
+    %>
     <article class="main">
-        <div style="margin-left:20%" class="content">
-            <form id="form1" action="/group2/CustomerEmailViewServlet" method="POST">
+        <div>
+            <form id="form1" style="width: 40%; margin-left:25%; margin-top:3%;" action="/group2/updateCustomerServlet" method="POST">
+
+                <table class="fl-table">
+                    <thead>         
+                    <caption> Edit Customer <span class="message"><%= (update != null) ? update : ""%><%= (dobError != null) ? dobError : ""%></span></caption>
+                    <th><tr><td>ID: </td><td><input type="text" name="ID" value="<%= customer.getid()%>" readonly="true" /></td></tr></th>
+                    <th><tr><td>Name: </td><td><input type="text" name="name"  value="<%= (nameError != null) ? nameError : customer.getName()%>"/></td></tr></th>
+
+                    <th><tr><td>Gender:<select name="gender" id="gender">     
+                        <option value=""><%= (genderError != null) ? genderError : "Gender"%></option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select></td></tr></th>
+                   
+                    <th><tr><td>DOB: </td><td><input type="date" name="dob" value="<%= customer.getDob()%>"/></td></tr></th>
+                    <th><tr><td>Mobile Number: </td><td><input type="text" name="phone" value="<%= (phoneError != null) ? phoneError : customer.getPhone()%>"/></td></tr></th>
+                    <th><tr><td>Email: </td><td><input type="text" name="email" value="<%= customer.getEmail()%>" readonly="true"/></td></tr></th>
+                    <th><tr><td>Password: </td><td><input type="text" id="password" name="password" value="<%= (passError != null) ? passError : customer.getPassword()%>" /></td></tr></th>
+                    <tr><input type="hidden" name="submitted" value="submitted"></tr>                
+                    </thead>
+                    <tr>
+                        <td>
+                            <% if (emailView != null) { %>
+                            <a id="button" href="main.jsp">Accounts</a> 
+                            <%} else { %>
+                            <a id="button" href="main.jsp">Dashboard</a>
+                            <%}%>
+                        </td>
+                        <td>
+                            <input id="button" type="submit" value="Update" /> 
+                            <a id="button" href="/group2/CustomerDeleteServlet">Delete</a>
+                        </td>
+                    </tr>
+                </table>
             </form>
-
-            <%
-                Customer customer = (Customer) session.getAttribute("customer");
-                CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
-                customer = customerSqlDAO.getCustomer(customer.getEmail());
-
-            %>
-
-            <table class="fl-table">
-                <thead>
-                    <tr>             
-                <th>Edit Account</th>
-                <th></th>
-                </tr>
-                </thead>
-                <tbody>
-
-                    <tr><td>ID:</td><td><%= customer.getid()%></td></tr>
-                    <tr><td>Name</td><td><%= customer.getName()%></td></tr>
-                    <tr><td> Gender:<td><%= customer.getGender()%></td></tr>
-                    <tr><td> DOB:<td><%= customer.getDob()%></td></tr>
-                    <tr><td>Phone:</td>  <td><%= customer.getPhone()%></td></tr>
-                    <tr><td>Email:  <td><a href="ShowCustomerInfoServlet?emailView=<%= customer.getEmail()%>"><%= customer.getEmail()%>></a> </td> </tr> 
-                    <tr><td> <a class="button" href="/group2/updateCustomer.jsp"> Update </a></td><td>    <a class="button" href="/group2/CustomerDeleteServlet"> delete </a></td></tr>
-
-                </tbody>
-            </table> 
-        </div>
+        </div> 
     </article>
     <footer>
         <p>SIUA 2023, UST, Sydney.

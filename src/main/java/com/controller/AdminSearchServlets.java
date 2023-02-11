@@ -20,15 +20,21 @@ public class AdminSearchServlets extends HttpServlet {
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int id = Integer.parseInt(request.getParameter(""+"id"));        
+        int id = Integer.parseInt(request.getParameter(""+"id"));  
+        
       
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
 
         Customer customer = null;
         try {
+            
             customer = customerSqlDAO.getCustomer(id);
         } catch (SQLException ex) {
             Logger.getLogger(AdminSearchServlets.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(NumberFormatException e){
+            request.setAttribute("errorMessage", "Invalid input format!");
+        
+            
         }
 
         if (customer != null) {
