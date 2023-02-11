@@ -43,5 +43,6 @@ com\controller\CustomerAccountServlet.class
 com\controller\LogoutServlet.class
 com\controller\MovieSearchServlet.class
 com\model\Movie.class
+com\controller\CustomerBookingServlet.class
 com\controller\DeleteBookingServlet.class
 com\controller\MovieDeleteServlet.class

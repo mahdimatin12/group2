@@ -19,7 +19,9 @@ C:\group2\src\main\java\com\model\Booking.java
 C:\group2\src\main\java\com\rest\CustomerSqlService.java
 C:\group2\src\main\java\com\controller\MovieViewServlet.java
 C:\group2\src\main\java\com\controller\CreateCustomerServlet.java
+
 C:\group2\src\main\java\com\controller\CustomerDeleteServlet.java
+
 C:\group2\src\main\java\com\model\Customers.java
 C:\group2\src\main\java\com\model\dao\AdminSqlDAO.java
 C:\group2\src\main\java\com\controller\AdminRegisterServlet.java
@@ -33,6 +35,7 @@ C:\group2\src\main\java\com\controller\CustomerEmailViewServlet.java
 C:\group2\src\main\java\com\controller\MovieDeleteServlet.java
 C:\group2\src\main\java\com\model\dao\CustomerSqlDAO.java
 C:\group2\src\main\java\com\rest\BookingSqlService.java
+C:\group2\src\main\java\com\controller\CustomerBookingServlet.java
 C:\group2\src\main\java\com\controller\DeleteBookingServlet.java
 C:\group2\src\main\java\com\controller\CustomerServlet.java
 C:\group2\src\main\java\com\model\Movies.java

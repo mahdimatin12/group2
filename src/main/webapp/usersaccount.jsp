@@ -25,7 +25,8 @@
             <nav class="clear">
                 <ul>
                     <li><a href="#">ABOUT THE APP</a></li>
-                    <li><a href="/group2/LogoutServlet" >LOGOUT</a></li>                   
+                    <li><a href="/group2/LogoutServlet" >LOGOUT</a></li>
+                    <a  href="updateprofile.jsp">Dashboard</a>
                 </ul>
             </nav>
 
@@ -55,8 +56,8 @@
         %>
         <%AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
             String updatemsg = (String) session.getAttribute("updatemsg");
-            // session.removeAttribute("submitted");
-%>
+            
+         %>
         <article class ="main">
 
             <form method="POST" action="/group2/AdminAccountServlet">

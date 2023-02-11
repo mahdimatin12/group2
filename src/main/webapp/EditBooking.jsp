@@ -21,7 +21,9 @@
         <%
             BookingSqlDAO bookingSqlDAO = (BookingSqlDAO) session.getAttribute("bookingSqlDAO");
             List<String> movieNames = bookingSqlDAO.getMovies();
-            String msg = (String) session.getAttribute("msg");
+            String msg1 = (String) session.getAttribute("msg1");
+             String msg2 = (String) session.getAttribute("msg2");
+
             int bID = 0;
             int mID = 0;
             int mbID = 0;
@@ -33,7 +35,7 @@
                 mbID = Integer.parseInt(request.getParameter("mbID"));
                 date = request.getParameter("d");
             } catch (NumberFormatException nfe) {
-                System.out.println("EditBooking.jsp Line-31");
+                System.out.println("EditBooking.jsp Line-31--> "+nfe);
             }
         %>
         <header>
@@ -51,7 +53,7 @@
             <div class="tableDiv"> 
                 <table class="bookings" width="100%">
                     <caption>
-                        You can update this booking here:
+                        <%= (msg2 != null) ? msg2 : ""%>
                     </caption>
                     <colgroup>                        
                         <col id="name">
@@ -69,11 +71,14 @@
 
                 <form id="form1" method="post" action="/group2/EditBookingServlet">
                     <fieldset>
-                        <legend><%= (msg != null) ? msg : ""%></legend>
+                        <legend>
+                            <%= (msg1 != null) ? msg1 : ""%>
+                        </legend>
                         <select name="movie">
                             <option value="">--Pick another movie--</option>
                             <% for (String movieName : movieNames) {%>
-                            <option value="<%=movieName%>"><%=movieName%></option>                            
+                            <option value="<%=movieName%>"><%=movieName%></option> 
+
                             <%}%>
                         </select>
                         <input type="date" name="date">
@@ -82,14 +87,22 @@
                         <input type="hidden" value="<%=mbID%>" name="mbID">
                         <input type="submit" value="UPDATE">
                     </fieldset>
+
                 </form>
                 </table>
             </div>
+            <%
+                session.removeAttribute("msg1");
+                session.removeAttribute("msg2");
+                
+            %>    
+
         </article>
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
             <p>Contact: <a href="mailto:nobody@nowhere.com">group3@ust.com</a></p>
         </footer>
+
     </body>
 </html>

@@ -15,6 +15,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -26,10 +27,35 @@ public class BookingSqlService {
     @GET
     @Path("bookings")
     @Produces(MediaType.APPLICATION_XML)
-    public Bookings getBookings() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
+    public Bookings getBookingsws() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         BookingSqlDAO bookingSqlDAO = new BookingSqlDAO(new SqlDBConnector().connection());
         Bookings bookings = new Bookings();
-        bookings.addAll(bookingSqlDAO.getBookings());
+        bookings.addAll(bookingSqlDAO.getBookingsws());
+        return bookings;
+    }
+
+    // get a booking by ID:
+//    @GET
+//    @Path("returnbooking")
+//    @Produces(MediaType.APPLICATION_XML)
+//    private Bookings getBookingID(@PathParam("ID") int ID) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
+//        BookingSqlDAO bookingSqlDAO = new BookingSqlDAO(new SqlDBConnector().connection());
+//        Bookings bookings = new Bookings();
+//        Booking booking = bookingSqlDAO.getBooking(ID);
+//
+//        bookings.add(booking);
+//        return bookings;
+//    }
+    // get a booking by ID:
+    @GET
+    @Path("booking/ID/{ID}") //http://localhost:8080/demo/rest/sqlapi/user/ID/100000
+    @Produces(MediaType.APPLICATION_XML)
+    public Bookings getBooking(@PathParam("ID") int ID) throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
+        BookingSqlDAO bookingSqlDAO = new BookingSqlDAO(new SqlDBConnector().connection());
+
+        Booking booking = bookingSqlDAO.getBooking(ID);
+        Bookings bookings = new Bookings();
+        bookings.add(booking);
         return bookings;
     }
 
@@ -55,7 +81,6 @@ public class BookingSqlService {
 //
 //        return Response.status(200).entity(bookings).build();
 //    }
-
     // add a booking:
     @GET
     @Path("addbooking/{date}-{customerid}-{moviesid}")
@@ -137,13 +162,4 @@ public class BookingSqlService {
 //            }
 //        });
 //    }
-//
-//    private Bookings doFetchBooking(@QueryParam("ID") int ID) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
-//        BookingSqlDAO bookingSqlDAO = new BookingSqlDAO(new SqlDBConnector().connection());
-//
-//        Booking booking = bookingSqlDAO.getBooking(ID);
-//        Bookings bookings = new Bookings();
-//        bookings.add(booking);
-//        return bookings;
-//////    }
 }

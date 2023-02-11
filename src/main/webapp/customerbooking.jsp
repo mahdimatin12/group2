@@ -11,7 +11,7 @@
     <head lang="en">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>Movies: Assessment 3</title>
+        <title>Customer Booking Page</title>
         <link href="css/styles.css" rel="stylesheet">
     </head>
 
@@ -35,7 +35,7 @@
         <article class="main">
             <div class="tableDiv" style="width:20%">
 
-                <form id="form1" method="POST" action="/group2/Step1Servlet"> 
+                <form id="form1" method="POST" action="/group2/CustomerBookingServlet"> 
                     <fieldset style="border: 1px solid black">
                         <legend><%=(empty != null) ? empty : ""%></legend>
                         <input type="date" name="date">             
@@ -43,8 +43,8 @@
                     </fieldset>
                 </form>                        
             </div>
-                        
-                       <%session.removeAttribute("empty");%>
+                        <% empty = "";%>
+                        <%= session.setAttribute("empty",empty)%>
         </article>
         <footer>
             <p>SIUA 2023, UST, Sydney.

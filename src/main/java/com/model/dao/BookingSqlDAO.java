@@ -83,22 +83,23 @@ public class BookingSqlDAO {
     }
 
     // get booking by id:
-    public Booking getBooking(int bookingID) throws SQLException {
-        String fetch = "SELECT name,imgUrl,bookingid,date\n"
+    public Booking getBooking(int mbID) throws SQLException {
+        String fetch = "SELECT *\n"
                 + "FROM moviedb.movies m\n"
                 + "JOIN moviedb.movies_bookings mb ON m.ID = mb.moviesid\n"
                 + "JOIN moviedb.bookings b ON mb.bookingid = b.ID\n"
-                + "where mb.ID =" + "'" + bookingID + "'";
+                + "where mb.ID =" + "'" + mbID + "'";
 
         ResultSet rs = st.executeQuery(fetch);
         Booking booking = null;
 
         while (rs.next()) {
-            String name = rs.getString(1);
-            String imgUrl = rs.getString(2);
-            int bookingid = Integer.parseInt(rs.getString(3));
-            String date = rs.getString(4);
-            booking = new Booking(bookingid, name, imgUrl, date, bookingid);
+            String name = rs.getString(2);
+            String imgUrl = rs.getString(7);
+            int ID = Integer.parseInt(rs.getString(9));
+            int bookingid = Integer.parseInt(rs.getString(11));
+            String date = rs.getString(14);
+            booking = new Booking(ID, name, imgUrl, date, bookingid);
         }
 
         return booking;
@@ -121,6 +122,29 @@ public class BookingSqlDAO {
             int bookingid = Integer.parseInt(rs.getString(3));
             String date = rs.getString(4);
             temp.add(new Booking(name, imgUrl, bookingid, date));
+        }
+        return temp;
+    }
+
+    // get all bookings for rest api call:
+    public List<Booking> getBookingsws() throws SQLException {
+        String fetch = "SELECT *\n"
+                + "FROM moviedb.movies m\n"
+                + "JOIN moviedb.movies_bookings mb ON m.ID = mb.moviesid\n"
+                + "JOIN moviedb.bookings b ON mb.bookingid = b.ID\n";
+
+        ResultSet rs = st.executeQuery(fetch);
+
+        List<Booking> temp = new ArrayList<>();
+
+        while (rs.next()) {
+            String name = rs.getString(2);
+            String imgUrl = rs.getString(7);
+            int ID = Integer.parseInt(rs.getString(9));
+            int bookingid = Integer.parseInt(rs.getString(11));
+            String date = rs.getString(14);
+
+            temp.add(new Booking(ID, name, imgUrl, date, bookingid));
         }
         return temp;
     }

@@ -1,30 +1,31 @@
 <%-- 
-    Document   : step1
-    Created on : 2 Feb. 2023, 5:02:11 pm
+    Document   : moviebookingpage
+    Created on : 9 Feb. 2023, 11:44:42 pm
     Author     : 236347
 --%>
 
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head lang="en">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>Movies: Assessment 3</title>
+        <title>movie booking page</title>
         <link href="css/styles.css" rel="stylesheet">
     </head>
 
     <body>
         <%
-            String empty = (String) session.getAttribute("empty");           
+            String empty = (String) session.getAttribute("empty");
+            int moviesid = (Integer)session.getAttribute("movieid");
+            
+
         %>
         <header>
             <nav class="clear">
                 <ul>
                     <li><a href="#">ABOUT THE APP</a></li>
-                    <li><a href="main.jsp">DASHBOARD</a></li> 
-                    <li><a href="main.jsp">BOOKINGS</a></li> 
+                    <li><a href="main.jsp">Dashboard</a></li>
                     <li><a href="/group2/LogoutServlet">LOGOUT</a></li>    
                 </ul>
             </nav>
@@ -35,16 +36,16 @@
         <article class="main">
             <div class="tableDiv" style="width:20%">
 
-                <form id="form1" method="POST" action="/group2/Step1Servlet"> 
+                <form id="form1" method="POST" action="/group2/MoviePageStep1Servlet"> 
                     <fieldset style="border: 1px solid black">
                         <legend><%=(empty != null) ? empty : ""%></legend>
-                        <input type="date" name="date">             
+                        <input type="date" name="date">                       
                         <input type="submit" value="ADD">
                     </fieldset>
                 </form>                        
             </div>
-                        
-                       <%session.removeAttribute("empty");%>
+            <% empty = "";%>
+
         </article>
         <footer>
             <p>SIUA 2023, UST, Sydney.
