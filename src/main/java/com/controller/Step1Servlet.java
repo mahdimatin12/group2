@@ -49,7 +49,7 @@ public class Step1Servlet extends HttpServlet {
                 Date convertedsystemDate = formatter.parse(systemDate);
 
                 if (convertedinputDate.before(convertedsystemDate)) {
-                    empty = "date cannot be in the past";
+                    empty = "Date cannot be in the past";
                     session.setAttribute("empty", empty);
                     request.getRequestDispatcher("step1.jsp").include(request, response);
 
@@ -70,7 +70,7 @@ public class Step1Servlet extends HttpServlet {
             }
 
         } else {
-            empty = "you should pick a date";
+            empty = "You should pick a date";
             session.setAttribute("empty", empty);
             request.getRequestDispatcher("step1.jsp").include(request, response);
 

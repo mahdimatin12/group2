@@ -45,19 +45,20 @@
                     int customerid = customer.getid();
                 %>
                 
-                <p>Pick your movie</p>
-                <form id="form1" method="post" action="/group2/Step3Servlet">
+               
+                <form class="movieForm" method="post" action="/group2/Step3Servlet">
                     <fieldset style="border: 1px solid black">
-                        <legend style="color:#e52323"><%= (added != null) ? added : ""%></legend>
+                        <legend style="color:#e52323"><%= (added != null) ? added : "Pick your movie(s)"%></legend>
                         <select name="movie">
                             <% for (String movieName : movieNames) {%>
                             <option value="<%=movieName%>"><%=movieName%></option>
                             <%}%>
                         </select>
                         <input type="submit" value="ADD">
+                        <a class="astyle" href="step1.jsp">CHANGE DATE</a>
                     </fieldset>
                 </form>
-                        <a class="astyle" href="step1.jsp">BACK</a>       
+                              
             </div>
         </article>
         <footer>
