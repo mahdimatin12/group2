@@ -41,9 +41,8 @@ com\utils\In.class
 com\controller\AdminRegisterServlet.class
 com\rest\AdminSqlService.class
 com\controller\MoviePageStep1Servlet.class
-
 com\controller\CreateCustomerServlet.class
-
+com\controller\CreateCustomerServlet.class
 com\rest\MovieSqlService.class
 com\controller\BookingServlet.class
 com\controller\CustomerAccountServlet.class

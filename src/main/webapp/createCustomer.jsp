@@ -41,7 +41,7 @@
 
                     <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
-                    <form id="form1" method="post" action="/group2/CreateCustomersServlet" >                      
+                    <form id="form1" method="post" action="/group2/CreateCustomerServlet" >                      
 
                         <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Full Name"%>">
 
