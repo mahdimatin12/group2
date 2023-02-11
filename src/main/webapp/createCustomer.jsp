@@ -12,8 +12,8 @@
         <header>
             <nav class="clear">
                 <ul>
-                    <li><a class="button" href="index.jsp"> Home </a></li>
-                    <li><a class="button" href="customer.jsp">Cancel</a></li>
+                    <li><a class="button" href="index.jsp"> HOME </a></li>
+                    <li><a class="button" href="customer.jsp">CANCEL</a></li>
                 </ul>
             </nav>
         </header>
@@ -37,15 +37,15 @@
                         String error = (String) session.getAttribute("error");
                         session.removeAttribute("error");
                     %>
-                    <h1>Register Form <span style="font-size: 10px; color: orange;"><%= (error != null) ? error : ""%><%= (dobError != null) ? dobError : ""%></span></h1>
+                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;"><%= (error != null) ? error : ""%><%= (dobError != null) ? dobError : ""%></span></h1>
 
                     <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
-                    <form id="form1" method="post" action="/group2/CreateCustomerServlet" >                      
+                    <form id="form1" method="post" action="/group2/CreateCustomersServlet" >                      
 
                         <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Full Name"%>">
 
-                        <select name="Gender" id="gender">     
+                        <select name="gender" id="gender" style="width: 80%; margin-left:0px;">     
                             <option value=""><%= (genderError != null) ? genderError : "Gender"%></option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
