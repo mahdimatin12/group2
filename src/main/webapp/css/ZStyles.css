@@ -451,12 +451,12 @@ aside a:hover {
 
 
 input::placeholder {
-    color: #1c87c9;
+
     opacity: 1;
     font-size: 11px;
 }
 input:placeholder-shown {
-    border: 1px solid #095484;
+    border: 1px solid ;
 }
 .datafont{
     font-size: 10px;

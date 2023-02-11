@@ -21,9 +21,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 
+/**
+ *
+ * @author 236370|Zaki
+ */
 @Path("adminapi")
 public class AdminSqlService {
-    
+
+    /**
+     * Get all admins from DB and show in API
+     *
+     */
     @GET
     @Path("admins") //http://localhost:8080/group2/rest/adminapi/admins
     @Produces(MediaType.APPLICATION_XML)
@@ -34,6 +42,10 @@ public class AdminSqlService {
         return admins;
     }
 
+    /**
+     * Get admin by ID
+     *
+     */
     @GET
     @Path("admin/ID/{ID}") //http://localhost:8080/group2/rest/adminapi/admin/ID/1025
     @Produces(MediaType.APPLICATION_XML)
@@ -44,6 +56,11 @@ public class AdminSqlService {
         admins.add(admin);
         return admins;
     }
+
+    /**
+     * Create admin and post it in DB
+     *
+     */
 
     @GET //http://localhost:8080/group2/rest/adminapi/saveadmin/Seema-Female-19990505-0756237564-seema.s65@movie.com-Seemah123
     @Path("saveadmin/{name}-{gender}-{dob}-{phone}-{email}-{password}")
