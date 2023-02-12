@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.controller;
 
 import com.model.Admin;
 import com.model.dao.AdminSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author 236370
+ *@author Zaki|236370
+ *Java Servlet code implements the logic to delete an admin from the database.
+ *GET request is received by this servlet, it retrieves the current session and the admin data access object (AdminSqlDAO) stored in the session
+ * 
  */
 public class DeleteAdminServlet extends HttpServlet {
 
@@ -30,7 +27,9 @@ public class DeleteAdminServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
         String emailView = (String) session.getAttribute("emailView");
-
+      
+        
+        //adminSqlDAO object to retrieve the admini from the database using the getAdmin method and passing the email address.
         Admin admin = null;
         if (emailView != null) {
             try {
@@ -41,7 +40,7 @@ public class DeleteAdminServlet extends HttpServlet {
         } else {
             admin = (Admin) session.getAttribute("admin");
         }
-
+       // if the admin variable is not null, the delete method of the adminSqlDAO object is called to delete the administrator from the database.
         if (admin != null) {
             try {
                 adminSqlDAO.delete(admin.getid());
