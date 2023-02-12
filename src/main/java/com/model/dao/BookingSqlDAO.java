@@ -1,15 +1,20 @@
 package com.model.dao;
 
 import com.model.Booking;
-import com.model.Movie;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+/*
+BookingSqlSAO(Data Access Object) is for a movie booking system.
+The DAO uses a SQL database to store information about bookings & movies.
+The code contains several methods to perform CRUD (Create, Read, Update, and Delete) operations on the bookings data.
+
+*/
 
 public class BookingSqlDAO {
 
@@ -33,20 +38,19 @@ public class BookingSqlDAO {
     }
 
     //Create Booking for a User by ID
+    /*
+    This method creates a new booking in the database.    
+    It takes two parameters a customer ID and a String Date.       
+    */
     public void create(int customerid, String date) throws SQLException {
         String columns = "INSERT INTO moviedb.bookings(customerid,date)";
         String values = "VALUES('" + customerid + "','" + date + "')";
         st.executeUpdate(columns + values);
     }
-
-    // create a booking
-    public void create(int customerid, Date date) throws SQLException {
-        String columns = "INSERT INTO moviedb.bookings(customerid)";
-        String values = "VALUES('" + customerid + "','" + date + "')";
-        st.executeUpdate(columns + values);
-    }
+   
 
     // return booking current/last booking-id from booking table:
+    //This method returns the last booking ID in the bookings table. So that I can add multiple movies to this booking ID.
     public int currentBooking() throws SQLException {
         String fetch = "select ID from moviedb.bookings order by ID desc limit 1";
         ResultSet rs = st.executeQuery(fetch);
@@ -59,8 +63,9 @@ public class BookingSqlDAO {
         return currentBookingID;
     }
 
-    // Return the last booking id from bookings table
+   
     //Read All Bookings for a User
+    //this method returns a list of bookings for a particular user, based on the customer ID.
     public List<Booking> getBookings(int customerid) throws SQLException {
         String fetch = "SELECT name,imgUrl,bookingid,date\n"
                 + "FROM moviedb.movies m\n"
@@ -83,6 +88,7 @@ public class BookingSqlDAO {
     }
 
     // get booking by id:
+    //This method returns a specific booking based on its ID in the movies_bookings table.
     public Booking getBooking(int mbID) throws SQLException {
         String fetch = "SELECT *\n"
                 + "FROM moviedb.movies m\n"
@@ -124,6 +130,20 @@ public class BookingSqlDAO {
             temp.add(new Booking(name, imgUrl, bookingid, date));
         }
         return temp;
+    }
+
+    //get booking date by movies_bookings table (ID):
+    public String getBookingDate(int mbID) throws SQLException {
+        String fetch = "select date from moviedb.bookings b\n"
+                + "join  moviedb.movies_bookings mb\n"
+                + "on b.ID = mb.bookingid where mb.ID =" + "'" + mbID + "'";
+
+        ResultSet rs = st.executeQuery(fetch);
+        String bookingDate = null;
+        while (rs.next()) {
+            bookingDate = rs.getString(1);
+        }
+        return bookingDate;
     }
 
     // get all bookings for rest api call:
@@ -222,6 +242,7 @@ public class BookingSqlDAO {
     }
 
     // Update booking date and movie by moviesid and mbID:
+    //This method updates a booking's date and movie in the database.
     public void update(String bookingd, int moviesid, int mbID) throws SQLException {
         updateSt.setString(1, bookingd);
         updateSt.setString(2, Integer.toString(moviesid));
@@ -231,6 +252,7 @@ public class BookingSqlDAO {
     }
 
     //Delete a booking from movies_bookings- by ID
+    //This method deletes a booking from the database.
     public void delete(int mbID) throws SQLException {
         deleteSt.setString(1, "" + mbID);
         int row = deleteSt.executeUpdate();

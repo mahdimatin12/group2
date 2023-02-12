@@ -1,13 +1,7 @@
 package com.controller;
 
-import com.model.Customer;
 import com.model.dao.BookingSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +12,14 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236347
  */
+
+/*
+In the doPost method, the HttpServletRequest object is used to retrieve the value of the 
+"mbID" parameter from the form.
+The mbID is then used to delete a booking record from the database using the delete method of the BookingSqlDAO class.
+
+BookingSqlDAO object from the session is used to interact with the database to delete the booking record.
+*/
 public class DeleteBookingServlet extends HttpServlet {
 
     @Override
