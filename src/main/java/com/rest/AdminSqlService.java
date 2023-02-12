@@ -22,16 +22,17 @@ import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 
 /**
- *@author 236370|Zaki
- * RESTful Web Service that implements several endpoints to perform CRUD operations (Create, Read, Update, Delete) on a database 
- * service is using JAXB to handle the marshalling and unmarshalling of XML data.
- * 
+ * @author 236370|Zaki RESTful Web Service that implements several endpoints to
+ * perform CRUD operations (Create, Read, Update, Delete) on a database service
+ * is using JAXB to handle the marshalling and unmarshalling of XML data.
+ *
  */
 @Path("adminapi")
 public class AdminSqlService {
 
     /**
-     *  retrieves a list of all admin from the database and returns it in XML format.
+     * retrieves a list of all admin from the database and returns it in XML
+     * format.
      *
      */
     @GET
@@ -45,7 +46,8 @@ public class AdminSqlService {
     }
 
     /**
-     * retrieves a specific admin from the database based on their ID and returns it in XML format.
+     * retrieves a specific admin from the database based on their ID and
+     * returns it in XML format.
      *
      */
     @GET
@@ -60,10 +62,10 @@ public class AdminSqlService {
     }
 
     /**
-     *creates a new admin and stores it in the database. The admin's information is passed as path parameters in the URL.
+     * creates a new admin and stores it in the database. The admin's
+     * information is passed as path parameters in the URL.
      *
      */
-
     @GET //http://localhost:8080/group2/rest/adminapi/saveadmin/Noah-Male-19990505-0756237564-noah.happy@movie.com-Zakijan123
     @Path("saveadmin/{name}-{gender}-{dob}-{phone}-{email}-{password}")
     @Consumes(MediaType.APPLICATION_XML)
@@ -77,11 +79,9 @@ public class AdminSqlService {
         AdminSqlDAO adminSqlDAO = new AdminSqlDAO(new SqlDBConnector().connection());
 
         Admin admin = new Admin(name, gender, dob, phone, email, password);
-        Admins admins = new Admins();
-        admins.addAll(adminSqlDAO.getAdmins());
-        admins.add(admin);
         adminSqlDAO.create(name, gender, dob, phone, email, password);
-        admins.addAll(adminSqlDAO.getAdmins());
+        Admins admins = new Admins();
+        admins.add(admin);
         return Response.status(200).entity(admin).build();
     }
 }
