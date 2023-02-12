@@ -131,7 +131,7 @@
                     <p class="role"> Customer Management|02</p>
                     <p>
                         System admin can 
-                        create users.
+                        create customer.
                         System admin can view 
                         all customers. 
                         Customers data should 
@@ -140,7 +140,7 @@
                     </p></div>
                 <div class="team_member">
                     <div class="team_img">
-                        <img style="border-radius: 50%;" src="image/shylaja.png.jpg" alt="Team_image">
+                        <img style="border-radius: 50%;" src="image/shylaja1.jpg" alt="Team_image">
                     </div>
                     <h3>Shylaja Thiagarajan</h3>
                     <p class="role">  Movie Management|03</p>
@@ -155,7 +155,7 @@
                     <div class="team_img">
                         <img style="border-radius: 50%;" src="image/mahdi.jpg" alt="Team_image">
                     </div>
-                    <h3>Mahdi Ghulami</h3>
+                    <h3>Mahdi Matin</h3>
                     <p class="role"> Booking Managemen|04</p>
                     <p>Customer can create a 
                         new Booking.
