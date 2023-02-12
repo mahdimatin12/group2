@@ -38,13 +38,11 @@
                         String genderError = (String) session.getAttribute("genderError");
                         session.removeAttribute("genderError");
                         String exist = (String) session.getAttribute("Error");
-                        session.removeAttribute("Error");
-                        
+                        session.removeAttribute("Error");                      
                         
                     %>
-                    
-                    
-                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;" class="message"><%= (dobError != null) ? dobError : ""%></span></h1>   
+                                       
+                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;" class="message"><%= (exist != null) ? exist : ""%><%= (dobError != null) ? dobError : ""%></span></h1>   
                                       
                     <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
@@ -58,7 +56,7 @@
                             <option value="female">Female</option>
                         </select>
 
-                        <input name="dob" type="date" >
+                        <input name="dob" type="date" placeholder="<%= (dobError != null) ? dobError : "date of birth"%>">
 
                         <input type="text" name="phone" placeholder="<%= (phoneError != null) ? phoneError : "Phone number"%>">
 
@@ -69,8 +67,7 @@
 
                     </form>
                 </div>
-            </article>      
-        <%= (exist != null) ? exist : ""%>
+            </article>             
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>

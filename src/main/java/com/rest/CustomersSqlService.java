@@ -57,11 +57,9 @@ public class CustomersSqlService {
      
         CustomerSqlDAO customerSqlDAO = new CustomerSqlDAO(new SqlDBConnector().connection());
         Customer customer = new Customer(name, gender,dob, phone, email, password);
-        Customers customers = new Customers();
-        customers.addAll(customerSqlDAO.getCustomers());
-        customers.add(customer);
         customerSqlDAO.create(name, gender, dob, phone, email, password);
-        customers.addAll(customerSqlDAO.getCustomers());
+        Customers customers = new Customers();
+        customers.add(customer);
         return Response.status(200).entity(customer).build();
     }
 }
