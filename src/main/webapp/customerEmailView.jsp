@@ -72,12 +72,7 @@
                     <caption style=" background-color: purple; align-content: center; font-weight:bold; height:30px;"> Edit Customer &ensp;&ensp;<span class="message"><%= (update != null) ? update : ""%><%= (dobError != null) ? dobError : ""%></span></caption>
                     <th><tr><td style="color:black;">ID: </td><td><input type="text" name="ID" value="<%= customer.getid()%>" readonly="true" /></td></tr></th>
                     <th><tr><td style="color:black;">Name: </td><td><input type="text" name="name"  value="<%= (nameError != null) ? nameError : customer.getName()%>"/></td></tr></th>
-                    <th><tr><td style="color:black; ">Select Gender</td><td>
-                            <select name="gender" id="gender">     
-                                <option value=""><%= (genderError != null) ? genderError : customer.getGender()%></option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select></td></tr></th>
+                    <th><tr><td style="color:black;">Gender: </td><td><input name="gender" value="<%= (genderError != null) ? genderError : customer.getGender()%>" /></td></tr></th>                
                     <th><tr><td style="color:black;">DOB: </td><td><input type="date" name="dob" value="<%= customer.getDob()%>"/></td></tr></th>
                     <th><tr><td style="color:black;">Mobile Number: </td><td><input type="text" name="phone" value="<%= (phoneError != null) ? phoneError : customer.getPhone()%>"/></td></tr></th>
                     <th><tr><td style="color:black;">Email: </td><td><input type="text" name="email" value="<%= customer.getEmail()%>" readonly="true"/></td></tr></th>

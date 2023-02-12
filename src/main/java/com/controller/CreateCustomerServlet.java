@@ -42,7 +42,7 @@ public class CreateCustomerServlet extends HttpServlet {
         String emailRegEx = "[a-zA-Z0-9_%+-]+[.][a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+(.com)";
         String passRegEx = "[A-Z][A-Za-z]{5,}\\d{2,}";
         
-        boolean checkerror = false;
+        boolean checkerror = true;
         String error = "";
 
         //These line of code checks the value stored in the variable matches the Regex pattern.
@@ -81,8 +81,9 @@ public class CreateCustomerServlet extends HttpServlet {
                 CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
                 Customer customerSql = customerSqlDAO.getCustomer(email);
 
-                if (customerSql != null) {              
-                    session.setAttribute("error", "Customer already exists");              
+                if (customerSql != null) {
+                    error = "Customer already exists";
+                    session.setAttribute("Error",error );              
                     request.getRequestDispatcher("createCustomer.jsp").include(request, response);
                 } else {
                     customerSqlDAO.create(name, gender, dob, phone, email, password);
@@ -94,6 +95,7 @@ public class CreateCustomerServlet extends HttpServlet {
                 Logger.getLogger(CreateCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
+            session.setAttribute("Error",error );
             request.getRequestDispatcher("createCustomer.jsp").include(request, response);
         }
     }

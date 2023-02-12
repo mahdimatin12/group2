@@ -20,9 +20,7 @@
             <span>&#9654</span>
             <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
         </header>
-        
-          
-            
+    
             <article class="main">
                 <div class="loginContent">           
 
@@ -39,12 +37,14 @@
                         session.removeAttribute("passError");
                         String genderError = (String) session.getAttribute("genderError");
                         session.removeAttribute("genderError");
-                        String exist = (String) session.getAttribute("error");
+                        String exist = (String) session.getAttribute("Error");
+                        session.removeAttribute("Error");
                         
                         
                     %>
                     
-                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;" class="message"><%= (exist != null) ? exist : ""%><%= (dobError != null) ? dobError : ""%></span></h1>   
+                    
+                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;" class="message"><%= (dobError != null) ? dobError : ""%></span></h1>   
                                       
                     <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
@@ -52,7 +52,7 @@
 
                         <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Full Name"%>">
 
-                        <select name="gender" id="gender" style="width: 80%; margin-left:0px;">     
+                        <select name="gender" id="gender" style="width: 80%; margin-left:6px;">     
                             <option value=""><%= (genderError != null) ? genderError : "Gender"%></option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -69,8 +69,8 @@
 
                     </form>
                 </div>
-            </article>
-        </main>
+            </article>      
+        <%= (exist != null) ? exist : ""%>
         <footer>
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
