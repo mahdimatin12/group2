@@ -31,7 +31,7 @@
             <div style="margin-top: 5%">
                 <form id="form1" style="width: 20%; margin-left:25%; margin-top:-3%;" action="/group2/AdminSearchServlet" method="POST">
                     <input style="margin-top: 0%" name="id" type="text" id="id" placeholder="<%= (error != null) ? error : "Search By ID..."%>">
-                    <input style="width: 25%; margin-left:90%; margin-top: -10%;" id="searchbtn" type="submit" value="Search">
+                    <input style="width: 25%; margin-left:90%; margin-top: -12%;" id="searchbtn" type="submit" value="Search">
                 </form>
                 <br>
                 <table  class="fl-table">
