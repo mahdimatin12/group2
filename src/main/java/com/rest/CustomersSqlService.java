@@ -15,9 +15,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 
+//Java class that provides REST API services for a customer database. 
 @Path("sqlapi")
 public class CustomersSqlService {
-
+    
+    //@GET, which are used to handle GET requests.
+    //The method retrieves all customers from the database and returns the result as an XML format.
     @GET
     @Path("customers") //http://localhost:8080/group2/rest/sqlapi/customers
     @Produces(MediaType.APPLICATION_XML)
@@ -28,6 +31,8 @@ public class CustomersSqlService {
         return customers;
     }
     
+    //@GET, which are used to handle GET requests.
+    //This method retrieves a single customer based on the provided customer ID. 
     @GET
     @Path("customer/ID/{ID}") //http://localhost:8080/group2/rest/sqlapi/customer/ID/
     @Produces(MediaType.APPLICATION_XML)
@@ -39,8 +44,11 @@ public class CustomersSqlService {
         customers.add(customer);
         return customers;
     }
+    
+    //@GET, which are used to handle GET requests.
+    //This method saves a new customer to the database. 
     @GET
-    @Path("savecustomer/{name}-{gender}-{dob}-{phone}-{email}-{password}")//http://localhost:8080/group2/rest/sqlapi/savecustomer/Sergio-Female-2005-234567-sergio.s@movie.com-sergio123
+    @Path("savecustomer/{name}-{gender}-{dob}-{phone}-{email}-{password}")//http://localhost:8080/group2/rest/sqlapi/savecustomer/Fanna-Female-20050525-0234567231-fanna.f@movie.com-Fanna123
     @Produces(MediaType.APPLICATION_XML)
     public Response saveCustomer(@PathParam("name") String name,@PathParam("gender") String gender, @PathParam("dob") String dob, 
                                  @PathParam("phone") String phone, @PathParam("email") String email,
@@ -48,7 +56,6 @@ public class CustomersSqlService {
                                  SQLException, InstantiationException, IllegalAccessException, IOException {
      
         CustomerSqlDAO customerSqlDAO = new CustomerSqlDAO(new SqlDBConnector().connection());
-       // List<Customer> customers = customerSqlDAO.getCustomers();
         Customer customer = new Customer(name, gender,dob, phone, email, password);
         Customers customers = new Customers();
         customers.addAll(customerSqlDAO.getCustomers());

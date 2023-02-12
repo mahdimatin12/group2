@@ -3,8 +3,6 @@ package com.controller;
 import com.model.Customer;
 import com.model.dao.CustomerSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+/*
+*@Author: Zaki|236370
+*Java Servlet class which handles the functionality of updating an admin account information. I
+*java web application which receives HTTP requests and sends HTTP responses.
+*validates the input data and checks if the input data for the name, password, phone number, date of birth.
+*
+ */
 
 public class CustomerAccountServlet extends HttpServlet {
 
@@ -34,13 +40,15 @@ public class CustomerAccountServlet extends HttpServlet {
         String genderError = "";
 
         int errorNum = 0;
-        
+
+        //Regex for validation criteria.
         String nameRegex = "[a-z A-Z]+([ '-][a-zA-Z]+)*";
         String dobRgex = "^(19)[\\d]{2,2}[-][\\d]{1,2}[-][\\d]{1,2}$|^(200)[\\d]{1,1}[-][\\d]{1,2}[-][\\d]{1,2}|^(2010)[\\d]{0,0}[-][\\d]{1,2}[-][\\d]{1,2}$";//1900-2010
         String phoneRegex = "^[+0]\\d{1,2}\\d{6,11}$";
         String genderRegEx = "^M(ale)?$|^F(emale)?$|^m(ale)?$|^f(emale)?$";
         String passRegEx = "[A-Z][A-Za-z1-9!@#$%^&*]{8,}";
 
+        //retrieves the data entered in the form using the request object's getParameter
         int ID = Integer.parseInt(request.getParameter("ID"));
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
@@ -49,6 +57,8 @@ public class CustomerAccountServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        //All below if are Checking regex with the entered data by user
+        //error messages for invalid input data such as invalid name, password, phone number, date of birth, and gender.
         if (!name.matches(nameRegex)) {
             nameError = "*Update Failed: The name must be alphabetical!";
             errorNum++;
@@ -72,6 +82,8 @@ public class CustomerAccountServlet extends HttpServlet {
             errorNum++;
         }
 
+        // If all the input data is valid, it updates the admin account by calling 
+        //...the update method of the Admin class and the update method of the AdminSqlDAO class.
         if (errorNum == 0) {
             String submitted = request.getParameter("submitted");
             if (submitted != null && submitted.equals("submitted")) {
@@ -87,7 +99,7 @@ public class CustomerAccountServlet extends HttpServlet {
                     customerSqlDAO.update(name, gender, dob, phone, password, ID);
                     nextPage = true;
                     session.setAttribute("customer", customer);
-                    
+
                     session.setAttribute("updatemsg", "update Successful!");
 
                     session.removeAttribute("nameerror");
@@ -103,7 +115,7 @@ public class CustomerAccountServlet extends HttpServlet {
             }
 
         } else {
-
+            // any error in the input data, the error message is stored in the session and passed back to the view. 
             session.setAttribute("nameerror", nameError);
             session.setAttribute("passerror", passError);
             session.setAttribute("phoneerror", phoneError);

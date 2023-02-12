@@ -33,7 +33,7 @@
         <header>
             <nav class="clear">
                 <ul>
-                    <li><a href="testingtable.jsp">ABOUT THE APP</a></li>
+                    <li><a href="aboutus.jsp">ABOUT THE APP</a></li>
                     <li><a href="register.jsp">SIGN UP</a></li>                    
                     <li><a href="login.jsp">LOGIN</a></li>
 

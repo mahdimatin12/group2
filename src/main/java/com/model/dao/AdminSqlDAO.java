@@ -7,9 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import java.util.List;
-
+/*
+*@Author: Zaki|236370
+*This is a Java class that performs CRUD (Create, Read, Update, Delete) operations.
+*operation should be on "admins" table in a database. 
+*The class uses the SQL language to interact with the database.
+*/
 
 public class AdminSqlDAO {
 
@@ -25,14 +29,14 @@ public class AdminSqlDAO {
         this.deleteSt = connection.prepareStatement(deleteQuery);
     }
 
-    //Create Query
+    //create method creates a new record in the "admins" table by constructing an SQL INSERT statement and executing it using a Statement object.
     public void create(String name, String gender, String dob, String phone, String email, String password) throws SQLException {
         String columns = "INSERT INTO moviedb.admins(NAME,GENDER,DOB,PHONE,EMAIL,PASSWORD)";
         String values = "VALUES('" + name + "','" + gender + "','" + dob + "','" + phone + "','" + email + "','" + password + "')";
         st.executeUpdate(columns + values);
     }
 
-    //Read Query - Read One
+    //The getAdmin methods retrieve information about a single admin from the "admins" table by ID
     public Admin getAdmin(int ID) throws SQLException {
         String query = "SELECT * FROM moviedb.admins WHERE ID=" + ID;
         ResultSet rs = st.executeQuery(query);
@@ -53,7 +57,7 @@ public class AdminSqlDAO {
         return null;
     }
 
-    //Read Query - Read One
+    //The getAdmin methods retrieve information about a single admin from the "admins" table by email
     public Admin getAdmin(String email) throws SQLException {
         String query = "SELECT * FROM moviedb.admins WHERE EMAIL='" + email + "'";
         ResultSet rs = st.executeQuery(query);
@@ -74,7 +78,7 @@ public class AdminSqlDAO {
         return null;
     }
 
-    //Read Query - Read One by Email and Password
+    //login method retrieves information about an admin based on the email and password by constructing and executing an SQL SELECT statement.
     public Admin login(String email, String password) throws SQLException {
         String query = "SELECT * FROM moviedb.admins WHERE EMAIL='" + email + "' AND PASSWORD='" + password + "'";
         ResultSet rs = st.executeQuery(query);
@@ -95,7 +99,7 @@ public class AdminSqlDAO {
         return null;
     }
 
-    //Read Query - Read All
+    //"getAdmins" method retrieves information about all admins from the "admins" table
     public List<Admin> getAdmins() throws SQLException {
         String query = "SELECT * FROM moviedb.admins";
         ResultSet rs = st.executeQuery(query);
@@ -115,7 +119,7 @@ public class AdminSqlDAO {
         return temp;
     }
 
-    //Update Query (Name, gender,dob,phone Password) by ID
+    //update method updates the information about an admin in the "admins" table
     public void update(String name,String gender,String dob,String phone, String password, int ID) throws SQLException {
         updateSt.setString(1, name);
         updateSt.setString(2, gender);
@@ -127,7 +131,7 @@ public class AdminSqlDAO {
         System.out.println("Row " + row + " has been successflly updated");
     }
 
-    //Delete Query - by ID
+    //delete method deletes an admin's information from the "admins" table 
     public void delete(int ID) throws SQLException {
         deleteSt.setString(1, "" + ID);
         int row = deleteSt.executeUpdate();
