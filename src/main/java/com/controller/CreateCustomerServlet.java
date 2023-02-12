@@ -12,6 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/*
+*@author Ramya
+*The web application HTTP request reads data,process and send HTTP response to the client. 
+*validates the form data using regular expressions for different fields name,gender,date of birth,phone number,password.
+*
+*/
+
 public class CreateCustomerServlet extends HttpServlet {
 
     @Override
@@ -19,46 +26,65 @@ public class CreateCustomerServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-  
+        //retrieves the value of the object getParameter and store it in local variable.
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
         String dob = request.getParameter("dob");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        String nameRegEx ="[a-z A-Z]+([ '-][a-zA-Z]+)*";
-        String phoneRegEx= "^[+0]\\d{1,2}\\d{6,11}$";
+
+        //Regular expression pattern to validate customer information
+        String nameRegEx = "[a-z A-Z]+([ '-][a-zA-Z]+)*";
+        String dobRegEx = "^(19)[\\d]{2,2}[-][\\d]{1,2}[-][\\d]{1,2}$|^(200)[\\d]"
+                + "{1,1}[-][\\d]{1,2}[-][\\d]{1,2}|^(2010)[\\d]{0,0}[-][\\d]{1,2}[-][\\d]{1,2}$";//1900-2010
+        String phoneRegEx = "^[+0]\\d{1,2}\\d{6,11}$";
         String emailRegEx = "[a-zA-Z0-9_%+-]+[.][a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+(.com)";
         String passRegEx = "[A-Z][A-Za-z]{5,}\\d{2,}";
-        String error="";
         
-             if (!email.matches(emailRegEx) || !password.matches(passRegEx)){
-            if (!name.matches(nameRegEx)) {
-                session.setAttribute("nameError", "Incorrect name format");
-                
-            if(gender.isEmpty()){
-              session.setAttribute("genderError", "Please Select your gender");
-            }
-            }if (!phone.matches(phoneRegEx)) {
-                session.setAttribute("phoneError", "Incorrect phone format");
-            }
-            if (!email.matches(emailRegEx)) {
-                session.setAttribute("emailError", "Incorrect email format");
-            }
-            if (!password.matches(passRegEx)) {
-                session.setAttribute("passError", "Incorrect password format");
-            }
-            
-            request.getRequestDispatcher("createCustomer.jsp").include(request, response);
+        boolean checkerror = false;
+        String error = "";
 
-       } else {
+        //These line of code checks the value stored in the variable matches the Regex pattern.
+        //checks error message and store it in the session.
+        if (!name.matches(nameRegEx)) {
+            session.setAttribute("nameError", "Incorrect name format");
+            checkerror = false;
+        }
+        if (gender.isEmpty()) {
+            session.setAttribute("genderError", "Please Select your gender");
+            checkerror = false;
+        }
+        if (!phone.matches(phoneRegEx)) {
+            session.setAttribute("phoneError", "Incorrect phone format");
+            checkerror = false;
+        }
+        if (!email.matches(emailRegEx)) {
+            session.setAttribute("emailError", "Incorrect email format");
+            checkerror = false;
+
+        }
+        if (!dob.matches(dobRegEx)) {
+            session.setAttribute("dobError", "Incorrect  dob");
+            checkerror = false;
+        }
+        if (!password.matches(passRegEx)) {
+            session.setAttribute("passError", "Incorrect password format");
+            checkerror = false;
+        }
+
+        //check if boolean value is true,if true retrieves object from the session and retrieves customer object with email from database.
+        //if customer object is not null, it means customer already exists and error message is set in the session.
+        //if the customer object is null, it means customer not exists and new customer is created and stored in the session.
+        if (checkerror == true) {
             try {
                 CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
                 Customer customerSql = customerSqlDAO.getCustomer(email);
 
                 if (customerSql != null) {
-                    session.setAttribute("error", "Customer already exists");
+                    
+                    session.setAttribute("error", error);
+                    error ="Customer already exists";
                     request.getRequestDispatcher("createCustomer.jsp").include(request, response);
                 } else {
                     customerSqlDAO.create(name, gender, dob, phone, email, password);
@@ -69,7 +95,9 @@ public class CreateCustomerServlet extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(CreateCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            request.getRequestDispatcher("createCustomer.jsp").include(request, response);
         }
     }
+
 }
-    

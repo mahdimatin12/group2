@@ -12,6 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/*
+*@author Ramya
+*Java Servlet class that performs the operations of updating a customer information. 
+*The web application HTTP request reads data,process and send HTTP response to the client. 
+*validates the form data using regular expressions for different fields name,gender,date of birth,phone number,password.
+*
+*/
 public class updateCustomerServlet extends HttpServlet {
 
     @Override
@@ -21,7 +28,8 @@ public class updateCustomerServlet extends HttpServlet {
         HttpSession session = request.getSession();
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
         String emailView = request.getParameter("emailView");
-
+        
+        //retrieves the value of the object getParameter and store it in local variable.
         int ID = Integer.parseInt(request.getParameter("ID"));
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
@@ -29,33 +37,41 @@ public class updateCustomerServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
+        
+        //Regular expression pattern to validate customer information
         String nameRegEx = "[a-z A-Z]+([ '-][a-zA-Z]+)*";
+        String genderRegEx = "^M(ale)?$|^F(emale)?$|^m(ale)?$|^f(emale)?$";
         String dobRegEx = "^(19)[\\d]{2,2}[-][\\d]{1,2}[-][\\d]{1,2}$|^(200)[\\d]"
                 + "{1,1}[-][\\d]{1,2}[-][\\d]{1,2}$|^(201)[\\d 0][-][\\d]{1,2}[-][\\d]{1,2}$";//1900-2010
         String phoneRegEx = "^[+0]\\d{1,2}\\d{6,11}$";
         String passRegEx = "[A-Z][A-Za-z]{5,}\\d{2,}";
-        //String error = "";
+        
 
         Customer customer = null;
-
+        
+        //These line of code checks the value stored in the variable matches the Regex pattern.
+        //checks error message and store it in the session.
         if (!name.matches(nameRegEx)) {
-            session.setAttribute("nameError", "Incorrect name format");
+            session.setAttribute("nameError", "Failed! Name does not match");
         }
-        if (gender.isEmpty()) {
-            session.setAttribute("genderError", "Please Select your gender");
+        if (!gender.matches(genderRegEx)) {
+            session.setAttribute("genderError", "Failed! Select Male or Female");
         }
 
         if (!phone.matches(phoneRegEx)) {
-            session.setAttribute("phoneError", "Incorrect phone format");
+            session.setAttribute("phoneError", "Failed! Enter a valid phone number");
         }
         if (!dob.matches(dobRegEx)) {
-            session.setAttribute("dobError", "Incorrect dob format");
+            session.setAttribute("dobError", "Failed! Date of birth must be at least 13 or older");
         }
 
         if (!password.matches(passRegEx)) {
-            session.setAttribute("passError", "Incorrect password format");
+            session.setAttribute("passError", "Failed! Incorrect password");
         }
+        
+       //Checks if the customer information has been submitted or not.
+       //after the submission retrieves value from the session and updates customer information.
+       //if the customer information not submitted it removes the session attribute update.
 
         String submitted = request.getParameter("submitted");
         if (submitted != null && submitted.equals("submitted")) {
