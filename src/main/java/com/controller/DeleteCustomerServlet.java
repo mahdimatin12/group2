@@ -31,34 +31,22 @@ public class DeleteCustomerServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
-        String emailView = (String) session.getAttribute("emailView");
 
         //adminSqlDAO object to retrieve the admini from the database using the getAdmin method and passing the email address.
         Customer customer = null;
-        if (emailView != null) {
-            try {
-                customer = customerSqlDAO.getCustomer(emailView);
-            } catch (SQLException ex) {
-                Logger.getLogger(DeleteCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            customer = (Customer) session.getAttribute("customer");
-        }
-      
+
+        customer = (Customer) session.getAttribute("customer");
+
         // if the admin variable is not null, the delete method of the adminSqlDAO object is called to delete the administrator from the database.
         if (customer != null) {
             try {
                 customerSqlDAO.delete(customer.getid());
+                session.invalidate();
+                request.getRequestDispatcher("index.jsp").include(request, response);
             } catch (SQLException ex) {
                 Logger.getLogger(DeleteCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
-        if (emailView != null) {
-            request.getRequestDispatcher("index.jsp").include(request, response);
-        } else {
-            session.invalidate();
-            request.getRequestDispatcher("index.jsp").include(request, response);
-        }
     }
 }

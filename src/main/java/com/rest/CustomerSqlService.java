@@ -43,7 +43,7 @@ public class CustomerSqlService {
      *
      */
     @GET
-    @Path("customer/ID/{ID}") //http://localhost:8080/group2/rest/customerapi/customer/ID/10013
+    @Path("customer/ID/{ID}") //http://localhost:8080/group2/rest/customerapi/customer/ID/10042
     @Produces(MediaType.APPLICATION_XML)
     public Customers getCustomer(@PathParam("ID") int ID) throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         CustomerSqlDAO customerSqlDAO = new CustomerSqlDAO(new SqlDBConnector().connection());
@@ -58,7 +58,7 @@ public class CustomerSqlService {
      *
      */
 
-    @GET //http://localhost:8080/group2/rest/customerapi/savecustomer/Seema-Female-19990505-0756237564-seema.s65@movie.com-Seema123
+    @GET //http://localhost:8080/group2/rest/customerapi/savecustomer/AliSina-Male-19990505-0756237564-ali.sina65@movie.com-Sinajan123
     @Path("savecustomer/{name}-{gender}-{dob}-{phone}-{email}-{password}")
     @Consumes(MediaType.APPLICATION_XML)
     public Response saveCustomer(@PathParam("name") String name,
