@@ -72,12 +72,14 @@ public class CustomerSqlService {
             @PathParam("password") String password) throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
 
         CustomerSqlDAO customerSqlDAO = new CustomerSqlDAO(new SqlDBConnector().connection());
-
+        
         Customer customer = new Customer(name, gender, dob, phone, email, password);
         customerSqlDAO.create(name, gender, dob, phone, email, password);
+        Customer cust = new Customer();
         Customers customers = new Customers();
-        customers.add(customer);
-        return Response.status(200).entity(customer).build();
+        cust = customerSqlDAO.getCustomer(email);
+        customers.add(cust);
+        return Response.status(200).entity(customers).build();
     }
 
 }

@@ -80,8 +80,10 @@ public class AdminSqlService {
 
         Admin admin = new Admin(name, gender, dob, phone, email, password);
         adminSqlDAO.create(name, gender, dob, phone, email, password);
+        Admin admin1=new Admin();
         Admins admins = new Admins();
-        admins.add(admin);
-        return Response.status(200).entity(admin).build();
+        admin1=adminSqlDAO.getAdmin(email);
+        admins.add(admin1);
+        return Response.status(200).entity(admins).build();
     }
 }
