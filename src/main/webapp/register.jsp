@@ -19,7 +19,7 @@
         <header>
             <nav class="clear">
                 <ul>
-                    <li><a href="#">About The App</a></li>                        
+                    <li><a href="aboutus.jsp">About The App</a></li>                        
                     <li><a href="index.jsp">Home</a></li>
                 </ul>
             </nav>
@@ -76,8 +76,9 @@
                     <input name="email" type="text" placeholder="Enter your email (Admin)"><p class="datafont"><%= (emailerror != null) ? emailerror : ""%></p>
                     <input name="password" type="password" placeholder="Enter your password (Admin)"><p class="datafont"><%= (passerror != null) ? passerror : ""%></p>
                     <input type="hidden" value="admin">
-                    <input type="submit" value="REGISTER" style="cursor: pointer">   
-                    
+                    <input type="submit" value="REGISTER" style="cursor: pointer">
+                    <p style="color:black ; font-size: 10px;margin-top: 20px;margin-left:0%; "> Already have an account? <a href="login.jsp"> click here</a></p>
+
                 </form>
 
                 <!-- -----------------------------------------------Customer Register Form---------------------------------------------------------- -->
@@ -115,6 +116,7 @@
                     <input type="hidden" value="admin">
                     <input type="submit" value="REGISTER" style="cursor: pointer">  
 
+                      <p style="color:black ; font-size: 10px;margin-top: 20px;margin-left:0%; "> Already have an account? <a href="login.jsp"> click here</a></p>
                 </form>
             </div>
             <!-- -----------------------------------------------JavaScript for Differentiate ---------------------------------------------------------- -->
