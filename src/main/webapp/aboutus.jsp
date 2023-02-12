@@ -140,7 +140,7 @@
                     </p></div>
                 <div class="team_member">
                     <div class="team_img">
-                        <img src="team2.png" alt="Team_image">
+                        <img style="border-radius: 50%;" src="image/shylaja.png.jpg" alt="Team_image">
                     </div>
                     <h3>Shylaja Thiagarajan</h3>
                     <p class="role">  Movie Management|03</p>
