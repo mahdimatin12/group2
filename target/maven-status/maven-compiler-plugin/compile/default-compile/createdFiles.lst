@@ -33,6 +33,7 @@ com\model\dao\CustomerSqlDAO.class
 com\model\Admin.class
 com\controller\MovieAddServlet.class
 com\rest\AdminSqlService.class
+com\controller\MoviePageStep1Servlet.class
 com\controller\CreateCustomerServlet.class
 com\rest\MovieSqlService.class
 com\controller\BookingServlet.class

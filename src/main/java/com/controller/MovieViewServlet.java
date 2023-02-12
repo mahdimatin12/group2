@@ -8,7 +8,7 @@ package com.controller;
 import com.model.Movie;
 import com.model.dao.MovieSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +23,7 @@ import javax.servlet.http.HttpSession;
  * @author 236365
  */
 public class MovieViewServlet extends HttpServlet {
+// Servlet get movie by name and shows movies details in moviedetails.jsp
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -30,16 +31,16 @@ public class MovieViewServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String movieSearchMsg = "";
-        
+
         MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
         Movie movie = null;
-        int Id = Integer.parseInt(request.getParameter("Id"));      
-            try {
-                movie = movieSqlDAO.getMovie(Id);
-            } catch (SQLException ex) {
-                Logger.getLogger(MovieSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
+        String moviename = (request.getParameter("name"));
+        try {
+            movie = movieSqlDAO.getMovie(moviename);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // checking if movie not null
         if (movie != null) {
             session.setAttribute("movie", movie);
             request.getRequestDispatcher("moviedetails.jsp").include(request, response);
