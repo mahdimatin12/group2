@@ -29,7 +29,7 @@ public class BookingSqlService {
     /*
     getBookingsws: This method retrieves all bookings from the database.
     It uses the BookingSqlDAO class to interact with the database and retrieve the data.
-    The method is accessible through the URL "http://localhost:8080/demo/rest/bookingapi/bookings". 
+    The method is accessible through the URL "http://localhost:8080/group2/rest/bookingapi/bookings". 
     It returns the result as an XML document.    
     */
     @GET
@@ -47,11 +47,11 @@ public class BookingSqlService {
     /*
     This method retrieves a specific booking from the database based on the ID.
     It uses the BookingSqlDAO class to interact with the database and retrieve the data.
-    The method is accessible through the URL "http://localhost:8080/demo/rest/bookingapi/booking/ID/{ID}" where {ID} is the ID of the booking you want to retrieve.
+    The method is accessible through the URL "http://localhost:8080/group2/rest/bookingapi/booking/ID/{ID}" where {ID} is the ID of the booking you want to retrieve.
     It returns the result as an XML document.
     */
     @GET
-    @Path("booking/ID/{ID}") //http://localhost:8080/demo/rest/sqlapi/user/ID/100000
+    @Path("booking/ID/{ID}") 
     @Produces(MediaType.APPLICATION_XML)
     public Bookings getBooking(@PathParam("ID") int ID) throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         BookingSqlDAO bookingSqlDAO = new BookingSqlDAO(new SqlDBConnector().connection());
@@ -65,7 +65,7 @@ public class BookingSqlService {
     /*
     This method adds a record to the "movies_bookings" table in the database.
     It uses the BookingSqlDAO class to interact with the database and add the data.
-    The method is accessible through the URL "http://localhost:8080/demo/rest/bookingapi/addmb/{moviesid}-{customerid}" where {moviesid} is the ID of the movie and {customerid} is the ID of the customer.
+    The method is accessible through the URL "http://localhost:8080/group2/rest/bookingapi/addmb/{moviesid}-{customerid}" where {moviesid} is the ID of the movie and {customerid} is the ID of the customer.
     The method returns a simple string indicating success or failure.    
     */
     @GET
@@ -80,7 +80,7 @@ public class BookingSqlService {
     /*
     This method adds a new booking to the database.
     It uses the BookingSqlDAO class to interact with the database and add the data.
-    The method is accessible through the URL "http://localhost:8080/demo/rest/bookingapi/addbooking/{date}-{customerid}-{moviesid}" where {date} is the date of the booking,
+    The method is accessible through the URL "http://localhost:8080/group2/rest/bookingapi/addbooking/{date}-{customerid}-{moviesid}" where {date} is the date of the booking,
     {customerid} is the ID of the customer,
     and {moviesid} is the ID of the movie.
     The method returns the added booking as an XML document.
