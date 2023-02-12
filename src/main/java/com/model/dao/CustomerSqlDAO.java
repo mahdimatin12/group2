@@ -142,4 +142,6 @@ public class CustomerSqlDAO {
         int row = deleteSt.executeUpdate();
         System.out.println("Row " + row + " has been successfully deleted");
     }
+    
 }
+
