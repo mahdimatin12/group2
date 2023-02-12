@@ -95,7 +95,7 @@ public class CreateCustomerServlet extends HttpServlet {
                 Logger.getLogger(CreateCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            session.setAttribute("Error",error );
+            
             request.getRequestDispatcher("createCustomer.jsp").include(request, response);
         }
     }
