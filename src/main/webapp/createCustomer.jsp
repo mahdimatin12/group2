@@ -44,8 +44,7 @@
                         
                     %>
                     
-                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;" class="message"><%= (exist != null) ? exist : ""%><%= (dobError != null) ? dobError : ""%></span></h1>
-                   
+                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;" class="message"><%= (exist != null) ? exist : ""%><%= (dobError != null) ? dobError : ""%></span></h1>   
                                       
                     <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 

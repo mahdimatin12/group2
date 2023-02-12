@@ -81,10 +81,8 @@ public class CreateCustomerServlet extends HttpServlet {
                 CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
                 Customer customerSql = customerSqlDAO.getCustomer(email);
 
-                if (customerSql != null) {
-                    
-                    session.setAttribute("error", error);
-                    error ="Customer already exists";
+                if (customerSql != null) {              
+                    session.setAttribute("error", "Customer already exists");              
                     request.getRequestDispatcher("createCustomer.jsp").include(request, response);
                 } else {
                     customerSqlDAO.create(name, gender, dob, phone, email, password);
