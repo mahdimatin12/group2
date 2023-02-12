@@ -13,6 +13,7 @@ C:\group2\src\main\java\com\model\dao\AdminSqlDAO.java
 C:\group2\src\main\java\com\controller\MovieSearchServlet.java
 C:\group2\src\main\java\com\rest\BookingSqlService.java
 C:\group2\src\main\java\com\controller\DeleteBookingServlet.java
+C:\group2\src\main\java\com\controller\AdminSearchServlet.java
 C:\group2\src\main\java\com\model\Movies.java
 C:\group2\src\main\java\com\rest\MovieSqlService.java
 C:\group2\src\main\java\com\controller\BookingServlet.java
@@ -35,7 +36,6 @@ C:\group2\src\main\java\com\model\dao\SqlDB.java
 C:\group2\src\main\java\com\utils\In.java
 C:\group2\src\main\java\com\model\Admins.java
 C:\group2\src\main\java\com\controller\MoviePageStep1Servlet.java
-C:\group2\src\main\java\com\controller\AdminSearchServlets.java
 C:\group2\src\main\java\com\controller\CustomerEmailViewServlet.java
 C:\group2\src\main\java\com\controller\MovieDeleteServlet.java
 C:\group2\src\main\java\com\model\dao\CustomerSqlDAO.java

@@ -44,7 +44,17 @@ public class Movie implements Serializable {
         this.runtime = runtime;
         this.imgUrl = imgUrl;
         this.vidUrl = vidUrl;
-    }    
+    } 
+
+    public Movie(String name, String genre, int year, String imgUrl) {
+        this.name = name;
+        this.genre = genre;
+        this.year = year;
+        this.imgUrl = imgUrl;
+    }
+    
+    
+    
      public void update(int id, String name, String genre, int year, String description, String runtime, String imgUrl, String vidUrl) {
         this.id = id;
         this.name = name;

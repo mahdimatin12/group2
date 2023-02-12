@@ -13,11 +13,18 @@
         <meta name="viewport" content="width=device-width">
         <title>Movies: Assessment 3</title>
         <link href="css/styles.css" rel="stylesheet">
+        <style>
+            legend {
+                background-color: #000;
+                color: #fff;
+                padding: 3px 6px;
+            }
+        </style>
     </head>
 
     <body>
         <%
-            String empty = (String) session.getAttribute("empty");           
+            String empty = (String) session.getAttribute("empty");
         %>
         <header>
             <nav class="clear">
@@ -36,15 +43,17 @@
             <div class="tableDiv" style="width:20%">
 
                 <form class="dateForm" method="POST" action="/group2/Step1Servlet"> 
-                    <fieldset style="border: 1px solid black">
+                    <fieldset style="background-color:#CCC;
+                              max-width:500px;
+                              padding:16px;">
                         <legend><%=(empty != null) ? empty : "Select your bookig date"%></legend>
                         <input type="date" name="date">             
                         <input type="submit" value="NEXT">
                     </fieldset>
                 </form>                        
             </div>
-                        
-                       <%session.removeAttribute("empty");%>
+
+            <%session.removeAttribute("empty");%>
         </article>
         <footer>
             <p>SIUA 2023, UST, Sydney.

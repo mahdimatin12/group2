@@ -12,12 +12,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author 236347
  */
+
+
+/*
+Bookings implements the Serializable interface,
+so objects of this class can be serialized,
+so they can be saved or sent.
+
+The class uses JAXB annotations to specify how the objects of this class should be marshalled and unmarshalled from and to XML.
+
+*/
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "bookings")
 public class Bookings implements Serializable {
     @XmlElement(name = "booking")
+    
+    //The class has a private field "bookings" which is a list of "Booking" objects.
     private List<Booking> bookings = new ArrayList<>();
-
+    
+    
+    //The class provides methods to add, remove, and retrieve "Booking" objects from the list.
     public Bookings() {
     }
     

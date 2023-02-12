@@ -14,11 +14,16 @@
                 <ul>
                     <li><a class="button" href="index.jsp"> HOME </a></li>
                     <li><a class="button" href="customer.jsp">CANCEL</a></li>
+                    <li><a class="button" href="main.jsp">DASHBOARD</a></li>
                 </ul>
             </nav>
+            <span>&#9654</span>
+            <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
         </header>
-        <main>
-            <article>
+        
+          
+            
+            <article class="main">
                 <div class="loginContent">           
 
                     <%
@@ -35,10 +40,14 @@
                         String genderError = (String) session.getAttribute("genderError");
                         session.removeAttribute("genderError");
                         String error = (String) session.getAttribute("error");
-                        session.removeAttribute("error");
+                        
+                        
                     %>
-                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;"><%= (error != null) ? error : ""%><%= (dobError != null) ? dobError : ""%></span></h1>
-
+                    
+                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;"><%= (dobError != null) ? dobError : ""%></span></h1>
+                    
+                    <h2><%= (error != null) ? error : ""%> </h2>
+                    
                     <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
                     <form id="form1" method="post" action="/group2/CreateCustomerServlet" >                      
@@ -72,3 +81,4 @@
 
     </body>
 </html>
+

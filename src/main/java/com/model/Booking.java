@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.model;
 
 import java.io.Serializable;
@@ -10,6 +5,17 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/*
+Booking Model, represents a booking of a movie.
+JAXB annotations support XML marshalling and unmarshalling.
+The class implements the Serializable interface
+that so that an instance of this class can perform read and write.
+*/
+
+
+//This class can be used to store and retrieve information about movie bookings.
+// There are 5 constructors to create instances of this class,
+//and getters and setters for each of 5 instance variable.
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "booking")
@@ -20,7 +26,6 @@ public class Booking implements Serializable {
     private String imgUrl;
     private String date;
     private int bookingid;
-   
 
     public Booking() {
     }
@@ -32,11 +37,9 @@ public class Booking implements Serializable {
         this.date = date;
         this.bookingid = bookingid;
     }
-  
-    
-   
+
     public Booking(String movieName, String imgUrl, int bookingid, String date) {
-        
+
         this.movieName = movieName;
         this.imgUrl = imgUrl;
         this.bookingid = bookingid;

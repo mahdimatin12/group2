@@ -68,7 +68,6 @@ header span {
 
 }
 
-
 nav {
     background-color:black;     
     border: 1px solid rgba(255,255,255,.5);	
@@ -106,7 +105,6 @@ nav a:hover {
 .main {
     height: 1200px;
     margin-top: 2%;
-
 }
 
 .tableDiv {
@@ -133,10 +131,6 @@ nav a:hover {
     height: 350px;
     margin: 20px;
     padding: 20px;
-
-
-
-
 }
 .dateForm input {
     text-align: center;
@@ -158,35 +152,52 @@ nav a:hover {
     border-radius: 0;
 }
 
-
 .movieForm {
     width: 500px;
     height: 350px;
     margin: 20px;
     padding: 20px;
-   
 
 }
 .movieForm input {
-    
-    text-align: center;
-    display: inline;
+      
     width: 150px;
     margin: 10px;
     padding: 10px;
-    margin-left: 25%;
+      
 }
 
-.movieForm a {
+.movieForm input:hover {
+    background-color: lightblue;
+}
+
+
+.mUpdateForm {
+
+    width: 500px;
+    height: 350px;
+    margin: 20px;
+    padding: 20px;
+
+}
+
+.movieForm legend {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+}
+
+input {
+    margin: 0.4rem;
+}
+
+.mUpdateForm input {
     text-align: center;   
     width: 150px;
     margin: 10px;
     padding: 10px;
-    margin-left: 25%;
-    text-decoration: none;
-    border-radius: 0;
+    margin-left: 25%;  
 }
-
 
 .main h2 {
     font-size: 1em;
@@ -222,7 +233,6 @@ nav ul, header h1, footer p, .contentWrapper {
     max-width: 1200px;
     margin: 0 auto; 
 }
-
 
 @media (min-width: 481px) and (max-width:768px) {
 
@@ -444,22 +454,7 @@ select {
 
 }
 
-.astyle {
-    display: block;
-    height: 30px;
-    width: 80%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 5px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-    border: solid .2px gray;
-}
 
-.astyle:hover {
-    background-color: lightblue;
-}
 
 
 #form1 input[type="submit"]:hover {
@@ -521,6 +516,7 @@ aside a:hover {
     width: 100%;
     margin-top: 25px;
     border-collapse: collapse;
+    text-align: center;
 
 }
 .bookings caption {
@@ -534,6 +530,11 @@ aside a:hover {
     padding: 3px 7px 2px 7px;
     vertical-align: middle;
 }
+
+.bookings tr {
+    text-align: center;
+}
+
 .bookings th {
     text-transform:uppercase;
     text-align: left;
