@@ -54,24 +54,24 @@
         %>
         <h1> Add Movie Details</h1>
         <form action="/group2/MovieAddServlet" method="POST" align="center">                  
-            <span style="font-size: 10px; color: orange;"><%= (fieldempty != null) ? fieldempty : ""%></span>
+            <span style="font-size: 12px; color: orange;"><%= (fieldempty != null) ? fieldempty : ""%></span>
 
             <div class="form" >
                 <div class="field">
 
                     <label for="name">Movie Name</label><span class="user"> </span>
                     <input type="text" name="name" id="name" placeholder="Movie Name" class="main-input">
-                    <span style="font-size: 10px; color: orange;"><%= (movieaddmsg != null) ? movieaddmsg : ""%></span>
+                    <span style="font-size: 12px; color: orange;"><%= (movieaddmsg != null) ? movieaddmsg : ""%></span>
                 </div>
                 <div class="field">
                     <label for="year">Year</label><span class="user"></span>
                     <input type="text" name="year" id="year" placeholder="Release year eg:(2015)" class="main-input">
-                    <span style="font-size: 10px; color: orange;"><%= (yearerror != null) ? yearerror : ""%></span>
+                    <span style="font-size: 12px; color: orange;"><%= (yearerror != null) ? yearerror : ""%></span>
                 </div>
                 <div class="field">
                     <label for="runtime">Run Time</label><span class=""></span>
                     <input type="text" name="runtime" id="runtime" placeholder="Movie Runtime eg:2h 30m" class="main-input">
-                    <span style="font-size: 10px; color: orange;"><%= (runerror != null) ? runerror : ""%></span>
+                    <span style="font-size: 12px; color: orange;"><%= (runerror != null) ? runerror : ""%></span>
                 </div>
                 <div class="field">
                     <label for="imgurl">Image link</label>

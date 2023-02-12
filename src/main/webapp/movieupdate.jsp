@@ -83,8 +83,8 @@
                 </div>
                 <div class="field brief">
 
-                    <label>Movie Genre</label>
-                    <select name="ugenre" id="genre" class="main-input">6
+                    <label >Movie Genre</label>
+                    <select style="height:40px; " name="ugenre" id="genre" class="main-input1">
                         <option value="<%=movie.getGenre()%>"><%=movie.getGenre()%></option>
                         <option value="action">Action</option>
                         <option value="adventure">Adventure</option>
