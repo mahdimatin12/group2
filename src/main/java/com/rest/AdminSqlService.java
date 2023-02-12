@@ -22,14 +22,16 @@ import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 
 /**
- *
- * @author 236370|Zaki
+ *@author 236370|Zaki
+ * RESTful Web Service that implements several endpoints to perform CRUD operations (Create, Read, Update, Delete) on a database 
+ * service is using JAXB to handle the marshalling and unmarshalling of XML data.
+ * 
  */
 @Path("adminapi")
 public class AdminSqlService {
 
     /**
-     * Get all admins from DB and show in API
+     *  retrieves a list of all admin from the database and returns it in XML format.
      *
      */
     @GET
@@ -43,7 +45,7 @@ public class AdminSqlService {
     }
 
     /**
-     * Get admin by ID
+     * retrieves a specific admin from the database based on their ID and returns it in XML format.
      *
      */
     @GET
@@ -58,7 +60,7 @@ public class AdminSqlService {
     }
 
     /**
-     * Create admin and post it in DB
+     *creates a new admin and stores it in the database. The admin's information is passed as path parameters in the URL.
      *
      */
 

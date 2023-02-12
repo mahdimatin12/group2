@@ -1,15 +1,24 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.Random;
-import javax.management.relation.Role;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/*
+ *This is the class for the Admin.
+ *@author Zaki|236370
+ *The class implements the Serializable interface
+ *The class has several fields:
+ * There are several constructors provided to create instances of the Admin class.
+ *There are also getters and setters provided for each field of the class
+ *toString method that returns a string representation of the Admin instance.
+ *
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "admin")
 public class Admin implements Serializable {
+    //The fields of the class.
 
     private int id;
     private String name;
@@ -22,6 +31,7 @@ public class Admin implements Serializable {
     public Admin() {
     }
 
+    //constructors provided to intialize the feild of the Admin 
     public Admin(int id, String name, String gender, String dob, String phone, String email, String password) {
         this.id = id;
         this.name = name;
@@ -31,6 +41,7 @@ public class Admin implements Serializable {
         this.email = email;
         this.password = password;
     }
+    //constructors provided to intialize the feild of the Admin 
 
     public Admin(String name, String gender, String dob, String phone, String email, String password) {
         this.name = name;
@@ -40,7 +51,7 @@ public class Admin implements Serializable {
         this.email = email;
         this.password = password;
     }
-
+    //updates all the fields of the Admin instance with the provided arguments
     public void update(int id, String name, String gender, String dob, String phone, String email, String password) {
         this.id = id;
         this.name = name;
@@ -51,10 +62,24 @@ public class Admin implements Serializable {
         this.password = password;
     }
 
-     public boolean login(String email, String password) {
+    // returns true if the provided email and password match the email and password of the Admin instance
+    public boolean login(String email, String password) {
         return this.email.equals(email) && this.password.equals(password);
     }
-
+    //returns true if the Admin feild has the same id as pararmeter
+    public boolean match(int id) {
+        return this.id == id;
+    }
+     //returns true if the Admin feild has the same email as pararmeter
+    public boolean match(String email) {
+        return this.email.equals(email);
+    }
+   //returns true if the Admin  has the same admin as pararmeter
+    public boolean match(Admin other) {
+        return this.id == other.id;
+    }
+    //getters and setters provided for each field of the class
+    
     public String getGender() {
         return gender;
     }
@@ -77,20 +102,6 @@ public class Admin implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-   
-
-    public boolean match(int id) {
-        return this.id == id;
-    }
-
-    public boolean match(String email) {
-        return this.email.equals(email);
-    }
-
-    public boolean match(Admin other) {
-        return this.id == other.id;
     }
 
     public int getid() {
@@ -124,11 +135,10 @@ public class Admin implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
+   //toString method that returns a string representation of the Admin feilds.
     @Override
     public String toString() {
         return "Admin{" + "id=" + id + ", name=" + name + ", gender=" + gender + ", dob=" + dob + ", phone=" + phone + ", email=" + email + ", password=" + password + '}';
     }
 
-  
 }

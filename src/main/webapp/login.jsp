@@ -47,13 +47,17 @@
                                 <input name="password" placeholder="admin password" type="password">                               
                                 <input type="submit" value="SIGN IN" style="cursor: pointer">
 
+                                  <p style="color:black ; font-size: 10px;margin-top: 20px;margin-left:0%; ">  Not Register? <a href="register.jsp"> click here</a></p>
                             </form>
 
                             <form id="form2" class="admin" action="/group2/CustomerServlet" method="POST">
                                 <input name="email" placeholder="customer email" type="text">
                                 <input name="password" placeholder="customer password" type="password">                               
-                                <input type="submit" value="SIGN IN" style="cursor: pointer;">            
+                                <input type="submit" value="SIGN IN" style="cursor: pointer;"> 
+                                
+                                 <p style="color:black ; font-size: 10px;margin-top: 20px;margin-left:0%; "> Not Register? <a href="register.jsp"> click here</a></p>
                             </form>
+                             
                         </div>
 
                         <script>

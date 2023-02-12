@@ -9,14 +9,11 @@
         <title>Account Page</title>
         <link href="css/ZStyles.css" rel="stylesheet">
         <style>
-             img{
-
-                height: 20px;
-                width: 20px; 
-                margin-top: 6%;
-                margin-left:40%;
+           .trcustomer{
+                width: 100%;
+               background-color: yellow;
             }
-           
+
         </style>
     </head>
 
@@ -25,9 +22,9 @@
         <header>
             <nav class="clear">
                 <ul>
-                    <li><a href="#">ABOUT THE APP</a></li>
+                    <li><a href="aboutus.jsp">ABOUT THE APP</a></li>
                     <li><a href="/group2/LogoutServlet" >LOGOUT</a></li>
-                    <a  href="updateprofile.jsp">Dashboard</a>
+                    
                 </ul>
             </nav>
 
@@ -57,13 +54,13 @@
         %>
         <%AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
             String updatemsg = (String) session.getAttribute("updatemsg");
-            
-         %>
+
+        %>
         <article class ="main">
 
             <form method="POST" action="/group2/AdminAccountServlet">
                 <table class="account-table" >
-                    <tr><th>Admin Account</th><th style="color:greenyellow"><%= (updatemsg != null) ? updatemsg : ""%> </th></tr>
+                    <tr><th style="background-color:#552e5a;">Admin Account</th><th style="color:greenyellow;background-color:#552e5a"><%= (updatemsg != null) ? updatemsg : ""%> </th></tr>
                     <tr><td>ID:</td> <td><input type="text" name="ID" value="<%= admin.getid()%>" readonly="true" /></td> </tr>
                     <tr><td>Name:</td> <td><input type="text" name="name" value="<%=admin.getName()%>"/><p class="datafont"><%= (nameerror != null) ? nameerror : ""%></p></td> </tr>  
                     <tr><td>Gender:</td> <td><input type="text" name="gender" value="<%=admin.getGender()%>"/><p class="datafont"><%= (gendererror != null) ? gendererror : ""%></p></td></tr> 
@@ -110,7 +107,7 @@
 
             <form method="POST" action="/group2/CustomerAccountServlet">
                 <table  class="account-table"  >
-                    <tr><th>Customer Account</th><th style="color:greenyellow"><%= (updatemsg1 != null) ? updatemsg1 : ""%> </th></tr>
+                    <tr><th style="background-color:#552e5a;">Customer Account</th><th style="color:greenyellow ;background-color:#552e5a;"><%= (updatemsg1 != null) ? updatemsg1 : ""%> </th></tr>
                     <tr><td>ID:</td> <td><input type="text" name="ID" value="<%= customer.getid()%>" readonly="true" /></td> </tr>
                     <tr><td>Name:</td> <td><input type="text" name="name" value="<%=customer.getName()%>"/><p class="datafont"><%= (nameerror != null) ? nameerror : ""%></p></td> </tr>  
                     <tr><td>Gender:</td> <td><input type="text" name="gender" value="<%=customer.getGender()%>"/><p class="datafont"><%= (gendererror != null) ? gendererror : ""%></p></td></tr> 
@@ -126,13 +123,13 @@
                         <td>
                             <input class="button" id="updatebtn" type="submit" value="Update" /> 
 
-                             <a class="button" id="deletebtn" href="deletemsg.jsp">Delete</a>
+                            <a class="button" id="deletebtn" href="deletemsg.jsp">Delete</a>
                         </td>
                     </tr>
                 </table>   
             </form>
         </article> 
-                    
+
         <%  }%>    
 
         <!---------------- Footer of the Page ----------------->

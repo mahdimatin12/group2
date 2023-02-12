@@ -12,8 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+/*
+ *Java Servlet that handles the login process for an admin.
+ */
 public class AdminServlet extends HttpServlet {
+    //servlet implements the doPost method, which is called when the form on the login page is submitted.
+    //doPost method, the servlet retrieves the email and password values from the request parameters.
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -21,7 +25,7 @@ public class AdminServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
         String email = request.getParameter("email");
-        String password = request.getParameter("password");       
+        String password = request.getParameter("password");
         Admin admin = null;
 
         if (email != null) {
@@ -34,9 +38,11 @@ public class AdminServlet extends HttpServlet {
             admin = (Admin) session.getAttribute("admin");
         }
 
+        //If the Admin object is not found, the servlet sets an error message in the session and forwards the request to the login page.
         if (admin == null) {
             session.setAttribute("error", "Admin not found, Try again.");
             request.getRequestDispatcher("login.jsp").include(request, response);
+            //If the Admin object is found, the servlet sets the admin attribute in the session and forwards the request to the main page.
         } else {
             session.setAttribute("admin", admin);
             request.getRequestDispatcher("main.jsp").include(request, response);

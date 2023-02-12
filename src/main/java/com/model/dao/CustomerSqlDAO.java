@@ -7,8 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import java.util.List;
+
+/*
+*@Author: Zaki|236370
+*This is a Java class that performs CRUD (Create, Read, Update, Delete) operations.
+*operation should be on "Customers" table in a database. 
+*The class uses the SQL language to interact with the database.
+ */
 
 public class CustomerSqlDAO {
 
@@ -27,14 +33,14 @@ public class CustomerSqlDAO {
         this.deleteStatement = connection.prepareStatement(deletebookings);
     }
 
-    //Create new Customer
+    //create method creates a new record in the "Customers" table by constructing an SQL INSERT statement and executing it using a Statement object.
     public void create(String name, String gender, String dob, String phone, String email, String password) throws SQLException {
         String columns = "INSERT INTO moviedb.customers(NAME,GENDER,DOB,PHONE,EMAIL,PASSWORD)";
         String values = "VALUES('" + name + "','" + gender + "','" + dob + "','" + phone + "','" + email + "','" + password + "')";
         st.executeUpdate(columns + values);
     }
 
-    //Read a Customer by ID - Read One
+    //The getCustomer methods retrieve information about a single Customer from the "Customers" table by ID
     public Customer getCustomer(int ID) throws SQLException {
         String query = "SELECT * FROM moviedb.customers WHERE ID=" + ID;
         ResultSet rs = st.executeQuery(query);
@@ -55,7 +61,7 @@ public class CustomerSqlDAO {
         return null;
     }
 
-    //Read a Customer by email - Read One
+    //The getCustomer methods retrieve information about a single Customer from the "Customers" table by ID
     public Customer getCustomer(String email) throws SQLException {
         String query = "SELECT * FROM moviedb.customers WHERE EMAIL='" + email + "'";
         ResultSet rs = st.executeQuery(query);
@@ -75,8 +81,8 @@ public class CustomerSqlDAO {
         }
         return null;
     }
+//login method retrieves information about an Customer based on the email and password by constructing and executing an SQL SELECT statement.
 
-    //Read a Customer by Email and Password - Read One 
     public Customer login(String email, String password) throws SQLException {
         String query = "SELECT * FROM moviedb.customers WHERE EMAIL='" + email + "' AND PASSWORD='" + password + "'";
         ResultSet rs = st.executeQuery(query);
@@ -97,7 +103,7 @@ public class CustomerSqlDAO {
         return null;
     }
 
-    //Read list of Customers - Read All
+    //"getCustomers" method retrieves information about all Customers from the "Customers" table
     public List<Customer> getCustomers() throws SQLException {
         String query = "SELECT * FROM moviedb.customers";
         ResultSet rs = st.executeQuery(query);
@@ -117,7 +123,7 @@ public class CustomerSqlDAO {
         return temp;
     }
 
-    //Update Customer (Name, Password) by ID
+    //update method updates the information about an Customer in the "Customers" table
     public void update(String name, String gender, String dob, String phone, String password, int ID) throws SQLException {
         updateSt.setString(1, name);
         updateSt.setString(2, gender);
@@ -129,7 +135,7 @@ public class CustomerSqlDAO {
         System.out.println("Row " + row + " has been successfully updated");
     }
 
-    //Delete bookings - by customerID
+    //delete method deletes an Customer's information from the "Customers" table 
     public void deletebookings(int ID) throws SQLException {
         deleteStatement.setString(1, "" + ID);
         int row = deleteStatement.executeUpdate();
