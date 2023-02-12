@@ -23,8 +23,7 @@
             <nav class="clear">
                 <ul>
                     <li><a href="#">ABOUT THE APP</a></li>
-                    <li><a href="main.jsp">Dashboard</a></li> 
-                    <li><a href="testjsp.jsp">TEST JSP</a></li> 
+                    <li><a href="main.jsp">Dashboard</a></li>                    
                     <li><a href="/group2/LogoutServlet">LOGOUT</a></li>    
                 </ul>
             </nav>
