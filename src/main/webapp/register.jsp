@@ -19,8 +19,8 @@
         <header>
             <nav class="clear">
                 <ul>
-                    <li><a href="aboutus.jsp">About The App</a></li>                        
-                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="aboutus.jsp">ABOUT THE APP</a></li>                        
+                    <li><a href="index.jsp">HOME</a></li>
                 </ul>
             </nav>
 

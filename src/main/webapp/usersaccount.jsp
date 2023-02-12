@@ -65,7 +65,7 @@
                     <tr><td>Name:</td> <td><input type="text" name="name" value="<%=admin.getName()%>"/><p class="datafont"><%= (nameerror != null) ? nameerror : ""%></p></td> </tr>  
                     <tr><td>Gender:</td> <td><input type="text" name="gender" value="<%=admin.getGender()%>"/><p class="datafont"><%= (gendererror != null) ? gendererror : ""%></p></td></tr> 
                     <tr><td>DOB:</td> <td><input type="date" name="dob" value="<%=admin.getDob()%>" /><p class="datafont"><%= (doberror != null) ? doberror : ""%></p></td> </tr> 
-                    <tr><td>Mobil:</td> <td><input type="text" name="phone" value="<%=admin.getPhone()%>" /><p class="datafont"><%= (phoneerror != null) ? phoneerror : ""%></p></td></tr> 
+                    <tr><td>Mobile:</td> <td><input type="text" name="phone" value="<%=admin.getPhone()%>" /><p class="datafont"><%= (phoneerror != null) ? phoneerror : ""%></p></td></tr> 
                     <tr><td>Email:</td> <td><input type="text" name="email" value="<%= admin.getEmail()%>" readonly="true"/></td> </tr> 
                     <tr><td>Password:</td> <td><input type="password" name="password" value="<%= admin.getPassword()%>" /><p class="datafont"><%= (passerror != null) ? passerror : ""%></p></td> </tr> 
                     <tr><input type="hidden" name="submitted" value="submitted"></tr>
@@ -112,7 +112,7 @@
                     <tr><td>Name:</td> <td><input type="text" name="name" value="<%=customer.getName()%>"/><p class="datafont"><%= (nameerror != null) ? nameerror : ""%></p></td> </tr>  
                     <tr><td>Gender:</td> <td><input type="text" name="gender" value="<%=customer.getGender()%>"/><p class="datafont"><%= (gendererror != null) ? gendererror : ""%></p></td></tr> 
                     <tr><td>DOB:</td> <td><input type="date" name="dob" value="<%=customer.getDob()%>" /><p class="datafont"><%= (doberror != null) ? doberror : ""%></p></td> </tr> 
-                    <tr><td>Mobil:</td> <td><input type="text" name="phone" value="<%=customer.getPhone()%>" /><p class="datafont"><%= (phoneerror != null) ? phoneerror : ""%></p></td></tr> 
+                    <tr><td>Mobile:</td> <td><input type="text" name="phone" value="<%=customer.getPhone()%>" /><p class="datafont"><%= (phoneerror != null) ? phoneerror : ""%></p></td></tr> 
                     <tr><td>Email:</td> <td><input type="text" name="email" value="<%= customer.getEmail()%>" readonly="true"/></td> </tr> 
                     <tr><td>Password:</td> <td><input type="password" name="password" value="<%= customer.getPassword()%>" /><p class="datafont"><%= (passerror != null) ? passerror : ""%></p></td> </tr> 
                     <tr><input type="hidden" name="submitted" value="submitted"></tr>

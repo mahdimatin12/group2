@@ -64,7 +64,7 @@ public class AdminSqlService {
      *
      */
 
-    @GET //http://localhost:8080/group2/rest/adminapi/saveadmin/Seema-Female-19990505-0756237564-seema.s65@movie.com-Seemah123
+    @GET //http://localhost:8080/group2/rest/adminapi/saveadmin/Noah-Male-19990505-0756237564-noah.happy@movie.com-Zakijan123
     @Path("saveadmin/{name}-{gender}-{dob}-{phone}-{email}-{password}")
     @Consumes(MediaType.APPLICATION_XML)
     public Response saveAdmin(@PathParam("name") String name,

@@ -13,7 +13,7 @@
         <header>
             <nav class="clear">
                 <ul>
-                    <li><a href="#">ABOUT THE APP</a></li>
+                    <li><a href="aboutus.jsp">ABOUT THE APP</a></li>
                     <li><a href="/group2/LogoutServlet">LOGOUT</a></li>                   
                 </ul>
             </nav>
