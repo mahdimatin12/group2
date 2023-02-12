@@ -10,35 +10,24 @@
         <link rel="stylesheet" href="css/styles.css">
          <link href="css/ramya.css" rel="stylesheet">
     </head>
-
     <header>
         <nav class="clear">
             <ul>
-
                 <li><a class="button" href="customer.jsp">Customers List</a></li>
                 <li><a class="button" href="main.jsp">Home</a></li> 
-
             </ul>
         </nav>
-
         <span>&#9654</span>
         <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
     </header>
     <article>
         <div style="margin-top: 5%">
-
-            <%
-                request.setAttribute("email", null);
-                request.removeAttribute("email");
-            %>
+            
             <%
                 Customer customer = (Customer) session.getAttribute("customer");
                 CustomerSqlDAO customerSqlDAO = (CustomerSqlDAO) session.getAttribute("customerSqlDAO");
                 customer = customerSqlDAO.getCustomer("id");
-
             %>
-
-
             <table class="fl-table">
                 <thead>
                     <tr>
@@ -58,12 +47,9 @@
                         <td>${customer.dob}</td>
                         <td>${customer.phone}</td>
                         <td>${customer.email}</td>
-
                     </tr>                
-
                 </tbody>
             </table>
-
         </div>
     </article>
     <footer>

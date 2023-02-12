@@ -67,9 +67,6 @@ header span {
     font-size: 2em;
 
 }
-legend {
-    color:#e52323;
-}
 
 nav {
     background-color:black;     
@@ -106,14 +103,17 @@ nav a:hover {
 }
 
 .main {
-    height: 1200px;  
-
+    height: 1200px;
+    margin-top: 2%;
 }
 
 .tableDiv {
-    width: 50%;
-    margin-top: 5%;
-    margin-left: 20%;
+    width: 50%;    
+    margin-left: 25%;
+
+}
+.tableDiv table caption {
+    margin-top: 0px;
 }
 
 .tableDiv #add {
@@ -124,6 +124,79 @@ nav a:hover {
     background-color: lightblue;
     border-radius: 5px;
     border: solid lightblue;
+}
+
+.dateForm {
+    width: 500px;
+    height: 350px;
+    margin: 20px;
+    padding: 20px;
+}
+.dateForm input {
+    text-align: center;
+    display: block;
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    margin-left: 25%;
+}
+
+.dateForm a {
+    text-align: center;
+    display: block;
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    margin-left: 25%;
+    text-decoration: none;
+    border-radius: 0;
+}
+
+.movieForm {
+    width: 500px;
+    height: 350px;
+    margin: 20px;
+    padding: 20px;
+
+}
+.movieForm input {
+      
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+      
+}
+
+.movieForm input:hover {
+    background-color: lightblue;
+}
+
+
+.mUpdateForm {
+
+    width: 500px;
+    height: 350px;
+    margin: 20px;
+    padding: 20px;
+
+}
+
+.movieForm legend {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+}
+
+input {
+    margin: 0.4rem;
+}
+
+.mUpdateForm input {
+    text-align: center;   
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+    margin-left: 25%;  
 }
 
 .main h2 {
@@ -160,7 +233,6 @@ nav ul, header h1, footer p, .contentWrapper {
     max-width: 1200px;
     margin: 0 auto; 
 }
-
 
 @media (min-width: 481px) and (max-width:768px) {
 
@@ -382,22 +454,7 @@ select {
 
 }
 
-.astyle {
-    display: block;
-    height: 30px;
-    width: 80%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 5px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-    border: solid .2px gray;
-}
 
-.astyle:hover {
-     background-color: lightblue;
-}
 
 
 #form1 input[type="submit"]:hover {
@@ -408,14 +465,26 @@ select {
 }
 
 aside {
-    position: absolute;
+    text-align: center;
+    margin: 10px;
+
+}
+aside .dashOptions {    
+    display: inline-block;
     background-color: black;
-    width: 50%;
-    height: 15%;
-    margin-left: 25%;
-    margin-top: 5%;
+    width: 15%;  
+    height: 100px;
     border-radius: 5px;
     box-shadow: 0 0 20px gray;
+    margin: 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+.welcomemsg {
+
+    margin-left: 27%;
+    color: darkblue;
+
 }
 
 aside img {
@@ -447,6 +516,7 @@ aside a:hover {
     width: 100%;
     margin-top: 25px;
     border-collapse: collapse;
+    text-align: center;
 
 }
 .bookings caption {
@@ -460,6 +530,11 @@ aside a:hover {
     padding: 3px 7px 2px 7px;
     vertical-align: middle;
 }
+
+.bookings tr {
+    text-align: center;
+}
+
 .bookings th {
     text-transform:uppercase;
     text-align: left;
@@ -502,9 +577,6 @@ aside a:hover {
 
 }
 
-.formDiv legend {
-    text-align: right;
-}
 
 .formDiv input,select,fieldset {
     margin: 5px;

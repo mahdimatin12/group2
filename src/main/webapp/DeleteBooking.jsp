@@ -16,6 +16,12 @@
         <meta name="viewport" content="width=device-width">
         <title>Delete Booking</title>
         <link href="css/styles.css" rel="stylesheet">
+        <style>
+            input[type="submit"]:hover {
+                cursor: pointer;
+                
+            }
+        </style>
     </head>
     <body>
         <%
@@ -69,7 +75,7 @@
                         <legend></legend>                        
                         <input type="hidden" value="<%=mbID%>" name="mbID">
                         <input type="hidden" value="submitted">
-                        <input type="submit" value="DELETE">
+                        <input style="width: 30%; margin-left: 30%;" type="submit" value="DELETE">
                     </fieldset>
                 </form>
                 </table>

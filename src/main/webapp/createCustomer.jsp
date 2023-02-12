@@ -12,13 +12,18 @@
         <header>
             <nav class="clear">
                 <ul>
-                    <li><a class="button" href="index.jsp"> Home </a></li>
-                    <li><a class="button" href="customer.jsp">Cancel</a></li>
+                    <li><a class="button" href="index.jsp"> HOME </a></li>
+                    <li><a class="button" href="customer.jsp">CANCEL</a></li>
+                    <li><a class="button" href="main.jsp">DASHBOARD</a></li>
                 </ul>
             </nav>
+            <span>&#9654</span>
+            <h1>mymovies<span style="font-size: 0.5em;margin-left: 0;">.com</span></h1>
         </header>
-        <main>
-            <article>
+        
+          
+            
+            <article class="main">
                 <div class="loginContent">           
 
                     <%
@@ -28,34 +33,39 @@
                         session.removeAttribute("phoneError");
                         String emailError = (String) session.getAttribute("emailError");
                         session.removeAttribute("emailError");
+                        String dobError = (String) session.getAttribute("dobError");
+                        session.removeAttribute("dobError");
                         String passError = (String) session.getAttribute("passError");
                         session.removeAttribute("passError");
                         String genderError = (String) session.getAttribute("genderError");
                         session.removeAttribute("genderError");
-                        String error = (String) session.getAttribute("error");
-                        session.removeAttribute("error");
+                        String exist = (String) session.getAttribute("error");
+                        
+                        
                     %>
-                    <h1>Register Form <span style="font-size: 10px; color: orange;"><%= (error != null) ? error : ""%></span></h1>
-
+                    
+                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;" class="message"><%= (exist != null) ? exist : ""%><%= (dobError != null) ? dobError : ""%></span></h1>
+                   
+                                      
                     <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
                     <form id="form1" method="post" action="/group2/CreateCustomerServlet" >                      
 
-                        <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Customer name"%>">
+                        <input name="name" type="text" placeholder="<%= (nameError != null) ? nameError : "Full Name"%>">
 
-                        <select name="gender" id="gender">     
+                        <select name="gender" id="gender" style="width: 80%; margin-left:0px;">     
                             <option value=""><%= (genderError != null) ? genderError : "Gender"%></option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
 
-                        <input name="dob" type="date">
+                        <input name="dob" type="date" >
 
                         <input type="text" name="phone" placeholder="<%= (phoneError != null) ? phoneError : "Phone number"%>">
 
-                        <input name="email" type="text" placeholder="<%= (emailError != null) ? emailError : "Customer email"%>">
+                        <input name="email" type="text" placeholder="<%= (emailError != null) ? emailError : "Email"%>">
 
-                        <input name="password" type="password" placeholder="<%= (passError != null) ? passError : "Customer password"%>">
+                        <input name="password" type="password" placeholder="<%= (passError != null) ? passError : "Password"%>">
                         <input style="cursor: pointer" type="submit" value="REGISTER">
 
                     </form>
@@ -70,3 +80,4 @@
 
     </body>
 </html>
+

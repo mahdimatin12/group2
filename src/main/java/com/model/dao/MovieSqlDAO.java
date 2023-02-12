@@ -104,6 +104,26 @@ public class MovieSqlDAO {
         }
         return temp;
     }
+    
+    
+    //Read all movies for the homepage:
+    public List<Movie> getHomeMovies() throws SQLException {
+        String query = "SELECT * FROM moviedb.movies";
+        ResultSet rs = st.executeQuery(query);
+        List<Movie> temp = new ArrayList<>();
+        while (rs.next()) {           
+            String name = rs.getString(2);
+            String genre = rs.getString(3);
+            int year = Integer.parseInt(rs.getString(4));           
+            String imgurl = rs.getString(7);
+          
+            temp.add(new Movie(name, genre, year, imgurl));
+        }
+        return temp;
+    }
+    
+    
+    
 
     //Update a Movie by ID
     public void update(String name, String genre, int year, String description, String runtime, String imgurl, String vidurl, int ID) throws SQLException {
