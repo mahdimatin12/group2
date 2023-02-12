@@ -39,15 +39,14 @@
                         session.removeAttribute("passError");
                         String genderError = (String) session.getAttribute("genderError");
                         session.removeAttribute("genderError");
-                        String error = (String) session.getAttribute("error");
+                        String exist = (String) session.getAttribute("error");
                         
                         
                     %>
                     
-                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;"><%= (dobError != null) ? dobError : ""%></span></h1>
-                    
-                    <h2><%= (error != null) ? error : ""%> </h2>
-                    
+                    <h1 style="width: bold; color:black;">Register Form <span style="font-size: 10px; color: orange;" class="message"><%= (exist != null) ? exist : ""%><%= (dobError != null) ? dobError : ""%></span></h1>
+                   
+                                      
                     <button id="p1"><img src="image/person-244.svg" style="height: 20px;width: 20px;">Customer</button>
 
                     <form id="form1" method="post" action="/group2/CreateCustomerServlet" >                      
