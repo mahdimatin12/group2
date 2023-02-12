@@ -18,23 +18,11 @@
             MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
             Movie movie = (Movie) session.getAttribute("movie");
         %>
-        <form action="/group2/MovieDeleteServlet">
-            <legend> Are you sure you want to delete<%=movie.getName()%></legend>
+        <form action="/MovieDeleteServlet">
+            <legend> Are you sure you want to delete <%=movie.getName()%></legend>
             <input type="hidden" value="<%=movie.getid()%>" name="mid">
-            <!--<input type="submit" value="delete">-->
-            <input type="button" value="Delete" 
-             onclick="confirmDelete('<%= request.getContextPath()%>/group2/MovieDeleteServlet')">
-
-            <script>
-                function confirmDelete(url) {
-                    if (confirm("Are you sure you want to delete?")) {
-                        window.location.href = url;
-                    }
-                }
-            </script>   
-
+            <input type="submit" value="delete">                     
         </form>
-
     </body>
 </html>
 

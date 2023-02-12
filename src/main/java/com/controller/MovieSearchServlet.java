@@ -18,40 +18,33 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * Servlet to Delete the movie by id in moviedb.movie_bookings & moviesdb.bookings through MovieSqlDAO.
  * @author 236365
  */
 public class MovieSearchServlet extends HttpServlet {
 
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        // Get the session object to retrieve the "movieSqlDAO" and "movie" attributes
         HttpSession session = request.getSession();
-        String movieSearchMsg="";
-        //tring IdRegex = "^[0-9]{6}$";
-        //String Iderror = "Incorrect ID format";
+        String movieSearchMsg="";       
         
         MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
         Movie movie = new Movie();
-        String name = request.getParameter("name");
-        
+        String name = request.getParameter("name");        
 
         if (name != null) {
             try {
+                // get movie by name
                 movie = movieSqlDAO.getMovie(name);
             } catch (SQLException ex) {
                 Logger.getLogger(MovieSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         } 
-        
+        // Check  movie value and redirects accordingly
         if (movie != null) {
             session.setAttribute("movie", movie);            
             request.getRequestDispatcher("moviedetails.jsp").include(request, response);

@@ -7,7 +7,7 @@ package com.controller;
 
 import com.model.Movie;
 import com.model.dao.MovieSqlDAO;
-import static com.oracle.webservices.api.databinding.DatabindingModeFeature.ID;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -24,62 +24,83 @@ import javax.servlet.http.HttpSession;
  */
 public class MovieUpdateServlet extends HttpServlet {
 
+ //Servlet to update a movie by id in moviedb.movies through MovieSqlDAO
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+             // Get the movie object from the session
         HttpSession session = request.getSession();
-        MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");
-        Movie movie=(Movie)session.getAttribute("movie");
-        String yearRegex = "(20[0-1][0-9])";
-        String runRegex = "([0-4]|4[0-9])\\s*h\\s*([0-5][0-9]|[0-5]*)\\s*m";
-        
-        int Id=movie.getid();
-        String movieName = request.getParameter("uname");
+
+        MovieSqlDAO movieSqlDAO = (MovieSqlDAO) session.getAttribute("movieSqlDAO");        
+        Movie movie =(Movie)session.getAttribute("movie");
+        int Id = movie.getid();
+        String movieName = movie.getName();
+
         String movieGenre = request.getParameter("ugenre");
-        int movieYear = Integer.parseInt(request.getParameter("uyear"));
         String movieDescription = request.getParameter("udescription");
         String movierunTime = request.getParameter("uruntime");
         String movieImgurl = request.getParameter("uimgurl");
         String movievidurl = request.getParameter("uvidurl");
-
-        String movieUpdateMsg = "Update Successful";
-        String yearError = "";
-        String runError = "";
-        int errorNum = 0;
-      String movieYr = request.getParameter("uyear");
-        if (!movieYr.matches(yearRegex)) {
-            yearError = "Year between 2000-2023 only";
-            session.setAttribute("yearerror", yearError);
-            errorNum++;            
-        }
-        if (!movierunTime.matches(runRegex)) {
-            runError = "Incorrect format eg:2h 45m and runtime less than 5hrs";
-            session.setAttribute("runerror", runError);
-            errorNum++;            
-        }       
+        String movieYr = request.getParameter("uyear");
         
+        //Check if any field is empty
+        if (movieGenre == null || movieDescription == null || movierunTime == null
+            || movieImgurl == null || movievidurl == null || movieYr == null) {
+            session.setAttribute("fieldEmpty", "Please enter value for fields");
+            request.getRequestDispatcher("moviedetails.jsp").include(request, response);
+        }
+        
+        if (movieImgurl.isEmpty()
+           ||movieGenre.isEmpty() || movieDescription.isEmpty() || movierunTime.isEmpty() || movievidurl.isEmpty() || movieYr.isEmpty()) {
+            session.setAttribute("fieldEmpty", "Please enter value for all fields");
+            request.getRequestDispatcher("moviedetails.jsp").include(request, response);
+        }              
+        // variable for storing error messages
+        String movieupdatemsg = "";
+        String yearerror = "";
+        String runerror = "";
+        int errorNum = 0;
+        int movieYear=0;
+         
+         
+        try {
+            movieYear = Integer.parseInt(request.getParameter("uyear"));            
+        } catch (NumberFormatException e) {
+           yearerror = "Year format(YYYY,and between 2000-2023) ";
+           session.setAttribute("yearError", yearerror);
+           request.getRequestDispatcher("addmovie.jsp").include(request, response);
+        }        
+         
+        String yearRegex = "(20[0-1][0-9]|20[2][0-3])";
+        String runRegex = "^([0-3]h\\s*[0-5][0-9]m\\s*)$";
+
+        if (!movieYr.matches(yearRegex)) {
+            yearerror = "Year format(YYYY,and between 2000-2023) ";
+            errorNum++;
+        }
+
+        if (!movierunTime.matches(runRegex)) {
+            runerror = "Runtime Format eg:2h 45m and less than 4h";
+            errorNum++;
+        }
+        //Check all condition satisfy
         if (errorNum == 0) {
             try {
-
                 movieSqlDAO.update(movieName, movieGenre, movieYear, movieDescription, movierunTime, movieImgurl, movievidurl, Id);
-                movie=movieSqlDAO.getMovie(Id);
-                session.setAttribute("movieUpdateMsg", movieUpdateMsg);
-                session.removeAttribute("yearerror");              
-                session.removeAttribute("runerror");
+                session.removeAttribute("movie");
+                movie = movieSqlDAO.getMovie(Id);
                 session.setAttribute("movie", movie);
                 request.getRequestDispatcher("moviedetails.jsp").include(request, response);
 
             } catch (SQLException ex) {
-                Logger.getLogger(MovieUpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MovieAddServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-        }else{            
-             
-              request.getRequestDispatcher("moviedetails.jsp").include(request, response);
+        } //Redirect to movieupdate.jsp and set errors in session
+        else {
+            session.setAttribute("uprunError", runerror);
+            session.setAttribute("upyearError", yearerror);
+            request.getRequestDispatcher("movieupdate.jsp").include(request, response);
         }
-       
 
     }
-
 }

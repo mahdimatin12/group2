@@ -34,6 +34,7 @@
                         <div class="loginContent">
                             <%
                                 String exist = (String) session.getAttribute("error");
+                                session.removeAttribute("error");
                             %>
                             <h1>Sign In As <span style="font-size: 10px; color: orange;"><%= (exist != null) ? exist : ""%></span></h1>
 

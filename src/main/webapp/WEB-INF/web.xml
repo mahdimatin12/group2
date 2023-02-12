@@ -242,6 +242,10 @@
         <url-pattern>/MovieUpdateServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>MovieAddServlet</servlet-name>
+        <url-pattern>/MovieAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MovieViewServlet</servlet-name>
         <url-pattern>/MovieViewServlet</url-pattern>
     </servlet-mapping>

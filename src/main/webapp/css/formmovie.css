@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form {
+    background-color: #f6f6f6;
+    width: 800px;
+    height: 600px;
+    padding: 40px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    position: relative;
+}
+.field {
+    width: 48%;
+    height: calc(75% / 3);
+    position: relative;
+}
+.field label  {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.field span.user {
+    position: absolute;
+    color: tomato;
+    left: 70px;
+    top: 0;
+}
+
+.field .main-input {
+    width: 100%;
+    box-shadow: 0 1px 0 0 #e1e1e1;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+}
+
+.field .genre-input {
+    width: 100%;
+    box-shadow: 0 1px 0 0 #e1e1e1;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.field .main-input:focus {
+    outline: none;
+}
+.field .main-input::placeholder {
+    color: #999;
+    font-size: 12px;
+}
+.field textarea.main-input {
+    height: 110px;
+}
+.field.brief {
+    flex-grow: 2;
+}
+.form .btn {
+    position: absolute;
+    width: 250px;
+    bottom: 1px;
+}
+.form .btn button {
+    width: 100%;
+    height: 36px;
+    background-color: #009688;
+    color: white;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 4px;
+}
+
+
+.field .main-input1 {
+    width: 100%;
+    box-shadow: 0 1px 0 0 #e1e1e1;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+}
+.field .main-input1:focus {
+    outline: none;
+}
+.field .main-input1::placeholder {
+    color: #999;
+    font-size: 14px;
+}
+.field textarea.main-input1 {
+    height: 150px;
+}
+.field.brief1 {
+    flex-grow: 2;
+}

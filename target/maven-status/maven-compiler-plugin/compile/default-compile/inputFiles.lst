@@ -36,6 +36,10 @@ C:\group2\src\main\java\com\model\dao\SqlDB.java
 C:\group2\src\main\java\com\utils\In.java
 C:\group2\src\main\java\com\model\Admins.java
 C:\group2\src\main\java\com\controller\MoviePageStep1Servlet.java
+
+C:\group2\src\main\java\com\controller\AdminSearchServlets.java
+
+
 C:\group2\src\main\java\com\controller\CustomerEmailViewServlet.java
 C:\group2\src\main\java\com\controller\MovieDeleteServlet.java
 C:\group2\src\main\java\com\model\dao\CustomerSqlDAO.java

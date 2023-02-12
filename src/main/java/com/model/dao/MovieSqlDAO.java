@@ -20,7 +20,7 @@ import java.util.List;
  * @author 236365
  */
 public class MovieSqlDAO {
-
+//The code make connection with database and perform CRUD operations in moviesdb;
     private Statement st;
     private PreparedStatement updateSt;
     private String updateQuery = "UPDATE moviedb.movies SET NAME=?,GENRE=?,YEAR=?,DESCRIPTION=?,RUNTIME=?,IMGURL=?,VIDURL=? WHERE ID=?";
@@ -28,7 +28,7 @@ public class MovieSqlDAO {
     private String deleteQuery = "DELETE FROM moviedb.movies WHERE ID=?";
     private PreparedStatement deletebookingSt;
     private String deleteQuerybooking = "DELETE FROM moviedb.movies_bookings WHERE moviesid=?";
-
+    //constructor with connection as argument
     public MovieSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
@@ -72,7 +72,7 @@ public class MovieSqlDAO {
 
         while (rs.next()) {
             String currentMoviename = rs.getString(2);
-            if (moviename.equals(currentMoviename)) {
+            if (moviename.equalsIgnoreCase(currentMoviename)) {
                 int ID = Integer.parseInt(rs.getString(1));
                 String genre = rs.getString(3);
                 int year =Integer.parseInt(rs.getString(4));
@@ -146,7 +146,7 @@ public class MovieSqlDAO {
         int row = deleteSt.executeUpdate();
         System.out.println("Row " + row + " has been successfully deleted");
     }
-    
+    //Delete Query - delete from moviedb.movies_bookings
     public void deletebooking(int ID) throws SQLException {
         //String query="select * from moviedb.movies_bookings where moviesid='+ID+'";
         deletebookingSt.setString(1, "" + ID);
