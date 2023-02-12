@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.controller;
 
-import com.model.Customer;
 import com.model.dao.BookingSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +15,19 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236347
  */
+
+/*
+It does the following:
+
+Get the BookingSqlDAO object stored in the session.
+Get the booking ID stored in the session.
+Get the name of the movie selected by the user from the form.
+Use the BookingSqlDAO object to retrieve the movie ID for the selected movie name from the database.
+
+Store a success message in the session as an attribute.
+Forward the request to the step2.jsp page for display.
+
+*/
 public class Step3Servlet extends HttpServlet {
 
     @Override

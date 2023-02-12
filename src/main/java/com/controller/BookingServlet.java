@@ -5,17 +5,20 @@ import com.model.Bookings;
 import com.model.Customer;
 import com.model.dao.BookingSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+/*
+BookingServlet implements the doPost method which handles HTTP POST requests.
+The BookingSqlDAO object is retrieved from the session using the getAttribute method and stored in the bookingSqlDAO variable.
+A new Customer object is retrieved from the session using the getAttribute method and stored in the customer variable.
+
+*/
+
 
 public class BookingServlet extends HttpServlet {
 

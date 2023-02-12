@@ -52,12 +52,14 @@
                         <p id="msgptag"><%= (msgsession != null) ? msgsession : ""%></p>
                         <p id="msgptag"><%= (msg2session != null) ? msg2session : ""%></p>
                         You have <strong style="color:#e52323"><%= rows%></strong> booking(s)
+                        
                     </caption>
                     <script>
                         setTimeout(function () {
                             document.getElementById("msgptag").style.display = "none";
                         }, 2000);
                     </script>
+                     <%session.removeAttribute("msg");%>
                     <colgroup>
                         <col id="poster">
                         <col id="name">
@@ -79,6 +81,7 @@
                         <td><%= booking.getDate()%></td>
                         <%
                             int mbID = bookingSqlDAO.getmbID(bookingSqlDAO.getMovieID(booking.getMovieName()), booking.getBookingid());
+                            session.setAttribute("moviebID", mbID);
                         %>
                         <td><a href="http://localhost:8080/group2/EditBooking.jsp?bID=<%= booking.getBookingid()%>&mID=<%=bookingSqlDAO.getMovieID(booking.getMovieName())%>&d=<%= booking.getDate()%>&mbID=<%=mbID%>"><img src="image/pencil-327.png"></a></td>
                         <td><a href="http://localhost:8080/group2/DeleteBooking.jsp?mbID=<%=mbID%>&mName=<%=booking.getMovieName()%>&d=<%= booking.getDate()%>"><img src="image/trash-can-10417.png"></a></td>
@@ -91,6 +94,8 @@
             <p>SIUA 2023, UST, Sydney.
             <p>Step It Up Australia, group two. Assessment 3, the Movie web-app built using Java.</p>
             <p>Contact: <a href="mailto:nobody@nowhere.com">group3@ust.com</a></p>
-        </footer>
+        </footer>                
+                
+                 <%session.removeAttribute("msg2session");%>
     </body>
 </html>
